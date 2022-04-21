@@ -16,10 +16,9 @@ public class PracticaMP {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-    Menuini menuinicial=new Menuini();
-    menuinicial.presentarMenu();
-    menuinicial.doOperation();
-        
+Multiplexor mult=new Multiplexor();
+mult.run();
+
     }
     
 }

@@ -4,14 +4,17 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/Menuini.java</file>
+            <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/IniciarSesion.java</file>
             <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/Operador.java</file>
             <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/Usuario.java</file>
             <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/BaseDatos.java</file>
             <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/PracticaMP.java</file>
             <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/Persona.java</file>
-            <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/Registrarse.java</file>
+            <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/GUIMenuIni.java</file>
             <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/Personaje.java</file>
+            <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/Multiplexor.java</file>
             <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/Menu.java</file>
+            <file>file:/C:/Users/PcCom/Documents/NetBeansProjects/Practica/PracticaMP/src/practicamp/GUIIniSesion.java</file>
         </group>
     </open-files>
 </project-private>

@@ -10,7 +10,11 @@ package practicamp;
  * @author PcCom
  */
 public class Registrarse extends Menu{
+    private int opcion;
 
+    public int getOpcion() {
+        return opcion;
+    }
     @Override
     public void presentarMenu() {
         //pedir todas las cosas
@@ -18,7 +22,12 @@ public class Registrarse extends Menu{
 
     @Override
     public void doOperation() {
-        //leer todas las cosas
+         int opcion=0;
+        GUIRegistrarse m=new GUIRegistrarse(); 
+        m.setVisible(true);      
+        //opcion=m.getOpcion();
+        this.opcion=opcion;
+        
         
     }
     

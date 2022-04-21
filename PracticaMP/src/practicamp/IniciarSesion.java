@@ -9,29 +9,30 @@ package practicamp;
  *
  * @author PcCom
  */
-public class Menuini extends Menu {
-private int opcion;
+public class IniciarSesion extends Menu {
+  private String nombre;
+  private String password;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getPassword() {
+        return password;
+    }
     @Override
     public void presentarMenu() {
-        //creo que esto sobra
+        //creo q sobra
     }
 
     @Override
     public void doOperation() {
-        int opcion=0;
-        GUIMenuIni m=new GUIMenuIni(); 
+        GUIIniSesion m= new GUIIniSesion(); 
         m.setVisible(true);  
        while (m.isActive()==true){}
-        opcion=m.getOpcion();
-        this.opcion=opcion;
+      this.nombre=m.getNombre();
+      this.password=m.getPassword();
        m.dispose();
-    }
-
-    public int getOpcion() {
-        return this.opcion;
-    }
-
-    public Menuini() {
     }
     
 }
