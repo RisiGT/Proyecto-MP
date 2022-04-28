@@ -15,14 +15,11 @@ import java.io.IOException;
  */
 public class GUIMenuIni extends javax.swing.JFrame {
 
-    private int option;
-
     /**
      * Creates new form GUIMenuIni
      */
     public GUIMenuIni() {
         initComponents();
-        this.option = 0;
         this.setLocationRelativeTo(null);
     }
 
@@ -131,10 +128,6 @@ public class GUIMenuIni extends javax.swing.JFrame {
         m.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_SignInActionPerformed
-
-    public int getOption() {
-        return this.option;
-    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
