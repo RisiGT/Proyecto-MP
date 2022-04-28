@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import interfacesPersonalizacion.GUIEliminarPersonaje;
 import interfacesAdmin.GUICrearPersonaje;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -181,7 +182,6 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
         g.setVisible(true);
     }//GEN-LAST:event_BorrarPersonajeActionPerformed
 
-//<<<<<<< HEAD
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         BaseDatos b = new BaseDatos();
         try {
@@ -199,11 +199,7 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
             }
         }      // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
-
-//>>>>>>> origin/DejaosDeLLoros
-    /**
-     * @param args the command line arguments
-     */
+    
     public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

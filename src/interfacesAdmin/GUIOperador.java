@@ -5,7 +5,7 @@
  */
 package interfacesAdmin;
 
-import interfaces.GUIEditarPersonaje;
+import interfacesPersonalizacion.GUIEditarPersonaje;
 import interfaces.GUIValidarDesafios;
 import interfacesAdmin.GUIBanear;
 import practicamp.Operador;
