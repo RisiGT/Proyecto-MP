@@ -212,7 +212,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Personaje.setHabilidadespecial(b.getListaDisciplinas().get(ListaHabilidades.getSelectedIndex()));
+                Personaje.setHabilidadEspecial(b.getListaDisciplinas().get(ListaHabilidades.getSelectedIndex()));
             }
             case 2: {
                 try {
@@ -222,7 +222,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Personaje.setHabilidadespecial(b.getListaDones().get(ListaHabilidades.getSelectedIndex()));
+                Personaje.setHabilidadEspecial(b.getListaDones().get(ListaHabilidades.getSelectedIndex()));
             }
             case 3: {
                 try {
@@ -232,7 +232,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Personaje.setHabilidadespecial(b.getListaTalentos().get(ListaHabilidades.getSelectedIndex()));
+                Personaje.setHabilidadEspecial(b.getListaTalentos().get(ListaHabilidades.getSelectedIndex()));
             }
             Personaje.setSalud(Integer.valueOf(tfSalud.getText()));
             Personaje.setPoder(Integer.valueOf(tfPoder.getText()));
