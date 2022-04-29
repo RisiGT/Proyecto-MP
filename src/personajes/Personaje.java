@@ -22,29 +22,29 @@ import java.io.Serializable;
 public abstract class Personaje implements Serializable {
 
     private String nombre;
-    private Habilidad Habilidadespecial;
-    List<Arma> Armas = new ArrayList<>();
+    private Habilidad habilidadEspecial;
+    List<Arma> armas = new ArrayList<>();
 //    private Arma ArmasActivas[] = new Arma[2];    Esto es lo que estaba
     private Arma armaActiva;       // Pongo eso para que me funcione
-    List<Armadura> Armaduras = new ArrayList<>();
-    private Armadura ArmaduraActiva;
-    private Esbirro Esabirros[] = new Esbirro[50];//Esto hay que hacerlo con una lista
+    List<Armadura> armaduras = new ArrayList<>();
+    private Armadura armaduraActiva;
+    private Esbirro esbirros[] = new Esbirro[50];//Esto hay que hacerlo con una lista
     private int oro;
     private int salud;
     private int poder;
-    List<Debilidad> Debilidades = new ArrayList<>();
-    List<Fortaleza> Fortalezas = new ArrayList<>();
+    List<Debilidad> debilidades = new ArrayList<>();
+    List<Fortaleza> fortalezas = new ArrayList<>();
 
     public String getNombre() {
         return nombre;
     }
 
     public List<Arma> getArmas() {
-        return Armas;
+        return armas;
     }
 
     public Arma getArma(String nombre) {
-        for (Arma arma : Armas) {
+        for (Arma arma : armas) {
             if (arma.getName().equals(nombre)) {
                 return arma;
             }
@@ -53,7 +53,7 @@ public abstract class Personaje implements Serializable {
     }
 
     public Armadura getArmadura(String nombre) {
-        for (Armadura armadura : Armaduras) {
+        for (Armadura armadura : armaduras) {
             if (armadura.getName().equals(nombre)) {
                 return armadura;
             }
@@ -62,7 +62,7 @@ public abstract class Personaje implements Serializable {
     }
 
     public List<Armadura> getArmaduras() {
-        return Armaduras;
+        return armaduras;
     }
 
     public void setArmasActivas(Arma ArmasActiva) {
@@ -70,21 +70,21 @@ public abstract class Personaje implements Serializable {
     }
 
     public void setArmaduraActiva(Armadura ArmaduraActiva) {
-        this.ArmaduraActiva = ArmaduraActiva;
+        this.armaduraActiva = ArmaduraActiva;
     }
 
     public abstract int getTipo();
 
     public List<Debilidad> getDebilidades() {
-        return Debilidades;
+        return debilidades;
     }
 
     public List<Fortaleza> getFortalezas() {
-        return Fortalezas;
+        return fortalezas;
     }
 
-    public void setHabilidadespecial(Habilidad Habilidadespecial) {
-        this.Habilidadespecial = Habilidadespecial;
+    public void setHabilidadEspecial(Habilidad habilidadEspecial) {
+        this.habilidadEspecial = habilidadEspecial;
     }
 
     public void setSalud(int salud) {
