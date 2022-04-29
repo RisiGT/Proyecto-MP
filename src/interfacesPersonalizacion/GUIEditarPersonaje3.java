@@ -20,8 +20,8 @@ import practicamp.Usuario;
  */
 public class GUIEditarPersonaje3 extends javax.swing.JFrame {
 
-    Usuario usuario;
-    Personaje personaje;
+    private Usuario usuario;
+    private Personaje personaje;
 
     /**
      * Creates new form GUIEditarPersonaje3
