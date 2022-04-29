@@ -166,6 +166,7 @@ public class GUIIniSesion extends javax.swing.JFrame {
         this.password = new String(Password.getText());
         
         BaseDatos b = this.base;
+        
         try {
             b.DeserializePro("Operator");
         } catch (IOException | ClassNotFoundException ex) {
@@ -177,32 +178,36 @@ public class GUIIniSesion extends javax.swing.JFrame {
                 GUIOperador i = new GUIOperador(b.getOperador(name));
                 i.setVisible(true);
                 this.setVisible(false);
+                
             } else {
-                JOptionPane.showMessageDialog(null, "usuario o contraseña incorrectos");
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
             }
+            
         } else {
+            
             try {
                 b.DeserializePro("Usuario");
             } catch (IOException | ClassNotFoundException ex) {
                 Logger.getLogger(GUIIniSesion.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             try {
                 b.DeserializePro("Ban");
             } catch (IOException | ClassNotFoundException ex) {
                 Logger.getLogger(GUIIniSesion.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             if (!(b.perteneceBaneado(name))) {
                 if (b.pertenece(name)) {
                     if (b.okIni(name, password)) {
                         GUIMenuUsuario i = new GUIMenuUsuario(b.getUsuario(name));
                         i.setVisible(true);
                         this.setVisible(false);
-                        //aqui iniciamos el nuevo menu
                     } else {
-                        JOptionPane.showMessageDialog(null, "usuario o contraseña incorrectos");
+                        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "usuario o contraseña incorrectos");
+                    JOptionPane.showMessageDialog(null, "Usuario no existente");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Cuenta baneada");
@@ -216,7 +221,7 @@ public class GUIIniSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirMouseClicked
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_SalirActionPerformed
 
     private void Contraseña2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Contraseña2ActionPerformed
@@ -229,10 +234,6 @@ public class GUIIniSesion extends javax.swing.JFrame {
 //=======
                                           
 //>>>>>>> origin/DejaosDeLLoros
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

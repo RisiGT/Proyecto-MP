@@ -187,7 +187,7 @@ public class GUIRegistrarse extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordActionPerformed
 
     private void OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkActionPerformed
-        String nombre = Name.getText();
+        String name = Name.getText();
         String pass = Password.getText();
         String nick = Nick.getText();
         
@@ -196,6 +196,7 @@ public class GUIRegistrarse extends javax.swing.JFrame {
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(GUIRegistrarse.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         try {
             this.base.DeserializePro("Usuario");
         } catch (IOException | ClassNotFoundException ex) {
@@ -204,27 +205,29 @@ public class GUIRegistrarse extends javax.swing.JFrame {
         
         BaseDatos b = this.base;
         
-        if((b.perteneceOperador(nombre)) || (b.pertenece(nombre))){
+        if((b.perteneceOperador(name)) || (b.pertenece(name))){
             JOptionPane.showMessageDialog(null, "Nombre ya registrado");            
         }
         else {
             if (OperatorCode.getText().equals("123")) {
-                Operador o = new Operador(nombre, pass, nick);
+                Operador o = new Operador(name, pass, nick);
                 b.getListaoperadores().add(o);
                 try {
                     b.SerializePro("Operator");
                 } catch (IOException ex) {
                     Logger.getLogger(GUIRegistrarse.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                System.out.println("Operador " + name + " registrado");
             }
             else {
-                Usuario u = new Usuario(nombre, pass, nick);
+                Usuario u = new Usuario(name, pass, nick);
                 b.getListausuarios().add(u);
                 try {
                     b.SerializePro("Usuario");
                 } catch (IOException ex) {
                     Logger.getLogger(GUIRegistrarse.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                System.out.println("Usuario " + name + " alias " + nick + " registrado");
             }
                 
             GUIMenuIni i = new GUIMenuIni();
@@ -235,7 +238,7 @@ public class GUIRegistrarse extends javax.swing.JFrame {
     }//GEN-LAST:event_OkActionPerformed
 
     private void OkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OkMouseClicked
-        //aqui lo que hay que leer
+        // TODO add your handling code here:
     }//GEN-LAST:event_OkMouseClicked
 
     private void ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseClicked
@@ -252,9 +255,6 @@ public class GUIRegistrarse extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_OperatorCodeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
