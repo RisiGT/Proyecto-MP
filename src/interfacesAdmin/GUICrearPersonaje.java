@@ -5,6 +5,7 @@
  */
 package interfacesAdmin;
 
+import interfaces.GUISelectNombrePersonaje;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -91,50 +92,29 @@ public class GUICrearPersonaje extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        GUICrearPersonaje2 g = null;
-        try {
-            g = new GUICrearPersonaje2(3, Usuario);
-        } catch (IOException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        GUISelectNombrePersonaje g = null;
+        g = new GUISelectNombrePersonaje("Cazador", Usuario);
         g.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        GUICrearPersonaje2 g = null;
-        try {
-            g = new GUICrearPersonaje2(1, Usuario);
-        } catch (IOException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        GUISelectNombrePersonaje g = null;
+        g = new GUISelectNombrePersonaje("Vampiro", Usuario);
         g.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        GUICrearPersonaje2 g = null;
-        try {
-            g = new GUICrearPersonaje2(2, Usuario);
-        } catch (IOException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        GUISelectNombrePersonaje g = null;
+        g = new GUISelectNombrePersonaje("Licantropo", Usuario);
         g.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

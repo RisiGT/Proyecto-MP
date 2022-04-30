@@ -116,7 +116,7 @@ public class GUIRanking extends javax.swing.JFrame {
         int i = listaUsers.size();
         for (int j = 0; j < i; j++) {
 
-            dlm1.addElement((j + 1) + ".  " + listaUsers.get(j).getNombre() + "            ( " + listaUsers.get(j).getOro() + ")");
+            dlm1.addElement((j + 1) + ". " + listaUsers.get(j).getNombre() + "   ( " + listaUsers.get(j).getOro() + ")");
         }
         ListaRanking.setModel((ListModel<String>) dlm1);
 

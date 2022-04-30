@@ -94,18 +94,12 @@ public class GUIIniSesion extends javax.swing.JFrame {
 
         SignIn.setFont(new java.awt.Font("Viner Hand ITC", 0, 18)); // NOI18N
         SignIn.setText("Entrar");
-        SignIn.setToolTipText("");
-        SignIn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SignInMouseClicked(evt);
-            }
-        });
         SignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SignInActionPerformed(evt);
             }
         });
-        getContentPane().add(SignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, 120, 40));
+        getContentPane().add(SignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, 120, 40));
 
         Exit.setFont(new java.awt.Font("Viner Hand ITC", 0, 18)); // NOI18N
         Exit.setText("Salir");
@@ -142,10 +136,6 @@ public class GUIIniSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UserActionPerformed
 
-    private void SignInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignInMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SignInMouseClicked
-
     private void ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_ExitMouseClicked
@@ -160,7 +150,7 @@ public class GUIIniSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordActionPerformed
 
-    private void SignInActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    private void SignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInActionPerformed
         //this.Password= new String(Arrays.toString(Password.getPassword()));
         this.name = new String(User.getText());
         this.password = new String(Password.getText());
@@ -213,27 +203,8 @@ public class GUIIniSesion extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Cuenta baneada");
             }
         }
-//<<<<<<< HEAD
-    }                                       
-
-    private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SalirMouseClicked
-
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SalirActionPerformed
-
-    private void Contraseña2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Contraseña2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Contraseña2ActionPerformed
-
-    private void InicSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicSesionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InicSesionActionPerformed
-//=======
-                                          
-//>>>>>>> origin/DejaosDeLLoros
+    }//GEN-LAST:event_SignInActionPerformed
+                                
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -138,7 +138,7 @@ public class GUIOperador extends javax.swing.JFrame {
     private void ValidarDesafiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValidarDesafiosActionPerformed
         GUIValidarDesafios i = new GUIValidarDesafios();
         i.setVisible(true);
-        this.setVisible(false);    // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_ValidarDesafiosActionPerformed
 
     /**
