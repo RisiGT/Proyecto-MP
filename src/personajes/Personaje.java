@@ -94,4 +94,12 @@ public abstract class Personaje implements Serializable {
     public void setPoder(int poder) {
         this.poder = poder;
     }
+
+    public void setDebilidades(List<Debilidad> Debilidades) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setFortalezas(List<Fortaleza> Fortalezas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
