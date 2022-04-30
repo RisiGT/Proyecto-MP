@@ -260,7 +260,7 @@ public class GUISelectHabilidad extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
-            c.setHabilidadespecial(b.getListaTalentos().get(Habilidad));
+            c.setHabilidadEspecial(b.getListaTalentos().get(Habilidad));
             Usuario.getPersonajes().add(c);
             try {
                 b.DeserializePro("Usuario");

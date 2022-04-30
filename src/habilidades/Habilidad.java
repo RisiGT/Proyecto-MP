@@ -34,4 +34,12 @@ public abstract class Habilidad implements Serializable {
     public String getName() {
         return this.name;
     }
+
+    public int getCoste() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getMin() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -27,4 +27,8 @@ public class Armadura extends Equipo implements Serializable {
         return name;
     }
 
+    public int getModDefensa() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

@@ -41,4 +41,9 @@ public class Humano extends Esbirro implements Serializable {
     public void setLealtad(int lealtad) {
         this.lealtad = lealtad;
     }
+
+    @Override
+    public int tipo() {
+        return 3;
+    }
 }

@@ -6,6 +6,7 @@
 package personajes;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import personajes.Esbirro;
 
 /**
@@ -17,7 +18,7 @@ public class Demonio extends Esbirro implements Serializable {
     private String name;
     private int salud;
     private String pacto;
-    private Esbirro Esbirros[] = new Esbirro[50];//Esto hay que hacerlo con una lista
+    ArrayList<Esbirro> listaEsbirros  = new ArrayList<Esbirro>();
 
     public Demonio(String nombre, int salud, String pact) {
         this.name = nombre;
@@ -28,9 +29,9 @@ public class Demonio extends Esbirro implements Serializable {
     public void addEsbirro(Esbirro esb) {
         //Esbirros.add(esb);
     }
-
-    public Esbirro getEsbirro(int num) {
-        return this.Esbirros[num];
+    
+    public Object getListaEsbirros() {
+        return listaEsbirros;
     }
 
     @Override
@@ -41,5 +42,10 @@ public class Demonio extends Esbirro implements Serializable {
     @Override
     public boolean esHumano() {
         return false;
+    }
+
+    @Override
+    public int tipo() {
+        return 1;
     }
 }
