@@ -27,8 +27,26 @@ public class Armadura extends Equipo implements Serializable {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getModAtaque() {
+        return modAtaque;
+    }
+
+    public void setModAtaque(int modAtaque) {
+        this.modAtaque = modAtaque;
+    }
+
     public int getModDefensa() {
         return modDefensa;
     }
+
+    public void setModDefensa(int modDefensa) {
+        this.modDefensa = modDefensa;
+    }
+
+  
 
 }

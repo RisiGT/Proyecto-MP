@@ -64,7 +64,7 @@ public class BaseDatos implements Serializable {
     }
 
     public void SerializePro(String nombre) throws FileNotFoundException, IOException {
-        String fic = "D:\\" + nombre + "s.txt"; 
+        String fic = nombre + "s.txt"; //MODIFICAR RUTA
         ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(fic));
         switch (nombre) {
             case "Usuario":
@@ -129,7 +129,7 @@ public class BaseDatos implements Serializable {
 
     @SuppressWarnings({"unchecked", "unchecked"})
     public void DeserializePro(String nombre) throws FileNotFoundException, IOException, ClassNotFoundException {
-        String fic = "D:\\" + nombre + "s.txt";
+        String fic = nombre + "s.txt"; //MODIFICAR RUTA
         ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(fic));
 
         switch (nombre) {
@@ -235,7 +235,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean pertenece(String nombre) {
-        if (this.listausuarios != null) {
+        if (this.listausuarios == null) {
+        } else {
             for (Usuario list : listausuarios) {
                 if (list.getNombre().equals(nombre)) {
                     return true;
@@ -246,7 +247,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceBaneado(String nombre) {
-        if (this.listabaneados != null) {
+        if (this.listabaneados == null) {
+        } else {
             for (String list : listabaneados) {
                 if (list.equals(nombre)) {
                     return true;
@@ -275,7 +277,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceOperador(String nombre) {
-        if (this.listaoperadores != null) {
+        if (this.listaoperadores == null) {
+        } else {
             for (Operador list : listaoperadores) {
                 if (list.getNombre().equals(nombre)) {
                     return true;
@@ -286,7 +289,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceDisciplina(String nombre) {
-        if (this.listadisciplinas != null) {
+        if (this.listadisciplinas == null) {
+        } else {
             for (Disciplina list : listadisciplinas) {
                 if (list.getName().equals(nombre)) {
                     return true;
@@ -297,7 +301,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceDon(String nombre) {
-        if (this.listadones != null) {
+        if (this.listadones == null) {
+        } else {
             for (Don list : listadones) {
                 if (list.getName().equals(nombre)) {
                     return true;
@@ -308,7 +313,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceTalento(String nombre) {
-        if (this.listatalentos != null) {
+        if (this.listatalentos == null) {
+        } else {
             for (Talento list : listatalentos) {
                 if (list.getName().equals(nombre)) {
                     return true;
@@ -319,7 +325,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceDebilidades(String nombre) {
-        if (this.listadebilidades != null) {
+        if (this.listadebilidades == null) {
+        } else {
             for (Debilidad list : listadebilidades) {
                 if (list.getName().equals(nombre)) {
                     return true;
@@ -330,7 +337,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceFortalezas(String nombre) {
-        if (this.listafortalezas != null) {
+        if (this.listafortalezas == null) {
+        } else {
             for (Fortaleza list : listafortalezas) {
                 if (list.getName().equals(nombre)) {
                     return true;
@@ -341,7 +349,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceArma(String nombre) {
-        if (this.listaArmas != null) {
+        if (this.listaArmas == null) {
+        } else {
             for (Arma list : listaArmas) {
                 if (list.getName().equals(nombre)) {
                     return true;
@@ -352,7 +361,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceArmadura(String nombre) {
-        if (this.listaArmas != null) {
+        if (this.listaArmas == null) {
+        } else {
             for (Arma list : listaArmas) {
                 if (list.getName().equals(nombre)) {
                     return true;
@@ -363,7 +373,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceHumano(String nombre) {
-        if (this.listahumanos != null) {
+        if (this.listahumanos == null) {
+        } else {
             for (Humano list : listahumanos) {
                 if (list.getName().equals(nombre)) {
                     return true;
@@ -374,7 +385,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceGhoul(String nombre) {
-        if (this.listaghouls != null) {
+        if (this.listaghouls == null) {
+        } else {
             for (Ghoul list : listaghouls) {
                 if (list.getName().equals(nombre)) {
                     return true;
@@ -385,7 +397,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean perteneceDemonio(String nombre) {
-        if (this.listademonios != null) {
+        if (this.listademonios == null) {
+        } else {
             for (Demonio list : listademonios) {
                 if (list.getName().equals(nombre)) {
                     return true;
@@ -396,7 +409,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean yaDesafiado(String nombre) {
-        if (this.listadesafios != null) {
+        if (this.listadesafios == null) {
+        } else {
             for (Desafio list : listadesafios) {
                 if (list.getDesafiado().getNombre().equals(nombre)) {
                     return true;
@@ -433,12 +447,11 @@ public class BaseDatos implements Serializable {
             }
         }
     }
-    
+
     public void RechazarDesafio(String desafiado) throws IOException {
         for (Desafio list : listadesafios) {
             if ((list.getDesafiado().getNombre().equals(desafiado))) {
                 listausuarios.remove(list);
-                break;
             }
         }
         SerializePro("Desafio");

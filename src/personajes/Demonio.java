@@ -18,7 +18,7 @@ public class Demonio extends Esbirro implements Serializable {
     private String name;
     private int salud;
     private String pacto;
-    ArrayList<Esbirro> listaEsbirros  = new ArrayList<Esbirro>();
+   ArrayList<Esbirro> listaEsbirros  = new ArrayList<Esbirro>();//Esto hay que hacerlo con una lista
 
     public Demonio(String nombre, int salud, String pact) {
         this.name = nombre;
@@ -29,19 +29,39 @@ public class Demonio extends Esbirro implements Serializable {
     public void addEsbirro(Esbirro esb) {
         //Esbirros.add(esb);
     }
-    
+
+    public int getSalud() {
+        return salud;
+    }
+
+    public void setSalud(int salud) {
+        this.salud = salud;
+    }
+
+    public String getPacto() {
+        return pacto;
+    }
+
+    public void setPacto(String pacto) {
+        this.pacto = pacto;
+    }
+
     public ArrayList<Esbirro> getListaEsbirros() {
         return listaEsbirros;
     }
 
-    @Override
-    public String getName() {
-        return name;
+    public void setListaEsbirros(ArrayList<Esbirro> listaEsbirros) {
+        this.listaEsbirros = listaEsbirros;
     }
 
     @Override
     public boolean esHumano() {
         return false;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override

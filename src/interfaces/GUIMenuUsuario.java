@@ -83,6 +83,11 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
         });
 
         AceptarDesafio.setText("Aceptar/Rechazar Desafio");
+        AceptarDesafio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarDesafioActionPerformed(evt);
+            }
+        });
 
         Desafiar.setText("Desafiar");
         Desafiar.addActionListener(new java.awt.event.ActionListener() {
@@ -112,19 +117,27 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Ranking, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ConsultarOro, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(BorrarPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CrearPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Desafiar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ElegirEquipamiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(AceptarDesafio))
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(AceptarDesafio, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(72, 72, 72)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CrearPersonaje)
+                                .addComponent(BorrarPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(39, 39, 39)
+                            .addComponent(ElegirEquipamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(87, 87, 87)
+                            .addComponent(Desafiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(86, 86, 86)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Ranking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ConsultarOro, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                .addComponent(Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(410, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +171,9 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_CrearPersonajeActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        System.exit(0);
+         GUIMenuIni g3 = new GUIMenuIni();
+          g3.setVisible(true);
+          this.setVisible(false);
     }//GEN-LAST:event_SalirActionPerformed
 
     private void DesafiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DesafiarActionPerformed
@@ -173,9 +188,27 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_RankingActionPerformed
 
+    private void ElegirEquipamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElegirEquipamientoActionPerformed
+     GUISelectEquipamiento g = null;
+        try {
+            g = new GUISelectEquipamiento(usuario);
+        } catch (IOException ex) {
+            Logger.getLogger(GUIMenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUIMenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      g.setVisible(true);
+      this.setVisible(false);
+    }//GEN-LAST:event_ElegirEquipamientoActionPerformed
+
+    private void AceptarDesafioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarDesafioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AceptarDesafioActionPerformed
+
     private void BorrarPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarPersonajeActionPerformed
-        GUIEliminarPersonaje g = new GUIEliminarPersonaje(usuario);
-        g.setVisible(true);
+        GUIEliminarPersonaje i = new GUIEliminarPersonaje(usuario);
+        i.setVisible(true);
+        this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_BorrarPersonajeActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -193,22 +226,12 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
                 i.setVisible(true);
                 this.setVisible(false);
             }
-        }      // TODO add your handling code here:
+        }          // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
-    private void ElegirEquipamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElegirEquipamientoActionPerformed
-        GUISelectEquipamiento g = null;
-        try {
-            g = new GUISelectEquipamiento(usuario);
-        } catch (IOException ex) {
-            Logger.getLogger(GUIMenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUIMenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      g.setVisible(true);
-      this.setVisible(false);
-    }//GEN-LAST:event_ElegirEquipamientoActionPerformed
-    
+    /**
+     * @param args the command line arguments
+     */
     public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -236,6 +259,21 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() { //NO SE SI VA A FUNCIONAR
             public void run() {
+                BaseDatos b = new BaseDatos();
+                try {
+                    b.DeserializePro("Desafio");
+                } catch (IOException ex) {
+                    Logger.getLogger(GUIMenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(GUIMenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                for (Desafio desafio : b.getListadesafios()) {
+                    if ((desafio.getDesafiado().equals(usuario.getNombre())) && (desafio.getEstado() == 0)) {
+                        GUIDesafiado i = new GUIDesafiado(usuario, desafio);
+                        i.setVisible(true);
+                        new GUIMenuUsuario(usuario).setVisible(false);
+                    }
+                }
                 new GUIMenuUsuario(usuario).setVisible(true);
             }
         });

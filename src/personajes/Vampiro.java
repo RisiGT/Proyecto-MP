@@ -27,31 +27,82 @@ public class Vampiro extends Personaje implements Serializable {
     private Arma ArmasActivas[] = new Arma[2];
     List<Armadura> Armaduras = new ArrayList<>();
     private Armadura ArmaduraActiva;
-    private Esbirro Esabirros[] = new Esbirro[50];//Esto hay que hacerlo con una lista
+     ArrayList<Esbirro> Esbirros  = new ArrayList<Esbirro>();///Esto hay que hacerlo con una lista
     private int oro;
     private int salud;
     private int poder;
     List<Debilidad> Debilidades = new ArrayList<>();
     List<Fortaleza> Fortalezas = new ArrayList<>();
     private int edad;
-
+    private int ptosSangre;
+     
+     
     public void setHabilidadespecial(Disciplina Habilidadespecial) {
         this.Habilidadespecial = Habilidadespecial;
+    }
+
+    public ArrayList<Esbirro> getEsbirros() {
+        return Esbirros;
+    }
+
+    public void setEsbirros(ArrayList<Esbirro> Esbirros) {
+        this.Esbirros = Esbirros;
     }
 
     public void setEdad(int edad) {
         this.edad = edad;
     }
-    private int ptosSangre;
-    
-        public void setArmasActivas(Arma ArmasActivas) {
-        this.ArmasActivas[1] = ArmasActivas;
+
+    public void setPtosSangre(int ptosSangre) {
+        this.ptosSangre = ptosSangre;
     }
 
-    public void setArmaduraActiva(Armadura ArmaduraActiva) {
-        this.ArmaduraActiva = ArmaduraActiva;
+    public String getNombre() {
+        return nombre;
     }
-        
+
+    public Disciplina getHabilidadEspecial() {
+        return Habilidadespecial;
+    }
+
+    public Arma[] getArmasActivas() {
+        return ArmasActivas;
+    }
+
+    public Armadura getArmaduraActiva() {
+        return ArmaduraActiva;
+    }
+
+ 
+
+    public int getOro() {
+        return oro;
+    }
+
+    public int getSalud() {
+        return salud;
+    }
+
+    public int getPoder() {
+        return poder;
+    }
+
+    public List<Debilidad> getDebilidades() {
+        return Debilidades;
+    }
+
+    public List<Fortaleza> getFortalezas() {
+        return Fortalezas;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public int getPtosSangre() {
+        return ptosSangre;
+    }
+ 
 
     public Vampiro(String nombre, int salud, int poder, Arma arma, Armadura armadura, List<Debilidad> deb, List<Fortaleza> fort) {
         this.nombre = nombre;
@@ -61,14 +112,6 @@ public class Vampiro extends Personaje implements Serializable {
         this.Fortalezas = fort;
         this.salud = salud;
         this.poder = poder;
-    }
-
-    public List<Debilidad> getDebilidades() {
-        return Debilidades;
-    }
-
-    public List<Fortaleza> getFortalezas() {
-        return Fortalezas;
     }
 
     @Override
@@ -84,17 +127,5 @@ public class Vampiro extends Personaje implements Serializable {
     @Override
     public int getTipo() {
         return 1;
-    }
-    @Override
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getPtosSangre() {
-         return ptosSangre;
-    }
-
-    public void setPtosSangre(int i) {
-        this.ptosSangre = ptosSangre;
     }
 }

@@ -33,4 +33,28 @@ public class Disciplina extends Habilidad implements Serializable {
     public int getMin() {
         return this.coste;
     }
+
+    public int getAtaque() {
+        return ataque;
+    }
+
+    public void setAtaque(int ataque) {
+        this.ataque = ataque;
+    }
+
+    public int getDefensa() {
+        return defensa;
+    }
+
+    public void setDefensa(int defensa) {
+        this.defensa = defensa;
+    }
+
+    public int getCoste() {
+        return coste;
+    }
+
+    public void setCoste(int coste) {
+        this.coste = coste;
+    }
 }

@@ -15,10 +15,12 @@ public abstract class Modificador implements Serializable {
 
     private String name;
     private int valor;
+    private int tipo;
 
-    public void Modificador(String nombre, int val) {
+    public void Modificador(String nombre, int val, int tipo) {
         this.name = nombre;
         this.valor = val;
+        this.tipo = tipo;
     }
 
     public String getName() {
@@ -27,6 +29,14 @@ public abstract class Modificador implements Serializable {
 
     public int getValor() {
         return this.valor;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 
 }

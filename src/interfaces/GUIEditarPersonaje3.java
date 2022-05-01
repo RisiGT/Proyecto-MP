@@ -5,11 +5,9 @@
 package interfacesPersonalizacion;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
 import personajes.Personaje;
 import practicamp.BaseDatos;
 import practicamp.Usuario;
@@ -20,16 +18,19 @@ import practicamp.Usuario;
  */
 public class GUIEditarPersonaje3 extends javax.swing.JFrame {
 
-    private Usuario usuario;
-    private Personaje personaje;
-
     /**
      * Creates new form GUIEditarPersonaje3
      */
+    Usuario Usuario;
+    Personaje Personaje;
+
+    /**
+     * Creates new form GUIEditarPersonaje2
+     */
     public GUIEditarPersonaje3(Usuario u, Personaje p) {
         initComponents();
-        this.usuario = u;
-        this.personaje = p;
+        Usuario = u;
+        Personaje = p;
     }
 
     /**
@@ -139,10 +140,9 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    @SuppressWarnings("unchecked")
     private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
         BaseDatos b = new BaseDatos();
-        switch (personaje.getTipo()) {
+        switch (Personaje.getTipo()) {
             case 1: {
                 try {
                     b.DeserializePro("Disciplina");
@@ -183,12 +183,12 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                ArrayList<String> dlm = new ArrayList<String>();
+                DefaultListModel dlm = new DefaultListModel();
                 int i = b.getListaTalentos().size();
                 for (int j = 0; j < i; j++) {
-                    dlm.add(b.getListaTalentos().get(j).getName());
+                    dlm.addElement(b.getListaTalentos().get(j).getName());
                 }
-                ListaHabilidades.setModel((ListModel<String>) dlm);
+                ListaHabilidades.setModel(dlm);
                 break;
             }
         }
@@ -200,7 +200,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         BaseDatos b = new BaseDatos();
-        switch (personaje.getTipo()) {
+        switch (Personaje.getTipo()) {
             case 1: {
                 try {
                     b.DeserializePro("Disciplina");
@@ -209,7 +209,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                personaje.setHabilidadEspecial(b.getListaDisciplinas().get(ListaHabilidades.getSelectedIndex()));
+                Personaje.setHabilidadEspecial(b.getListaDisciplinas().get(ListaHabilidades.getSelectedIndex()));
             }
             case 2: {
                 try {
@@ -219,7 +219,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                personaje.setHabilidadEspecial(b.getListaDones().get(ListaHabilidades.getSelectedIndex()));
+                Personaje.setHabilidadEspecial(b.getListaDones().get(ListaHabilidades.getSelectedIndex()));
             }
             case 3: {
                 try {
@@ -229,17 +229,13 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                personaje.setHabilidadEspecial(b.getListaTalentos().get(ListaHabilidades.getSelectedIndex()));
+                Personaje.setHabilidadEspecial(b.getListaTalentos().get(ListaHabilidades.getSelectedIndex()));
             }
-            personaje.setSalud(Integer.valueOf(tfSalud.getText()));
-            personaje.setPoder(Integer.valueOf(tfPoder.getText()));
-            usuario.getPersonajes().remove(personaje);
-            usuario.getPersonajes().add(personaje);
-            b.actualizarUsuario(usuario);
-            
-           // GUIOperador i = new GUIOperador(b.getOperador(nombre));   pasarle el operador e iniciarlo   
-              //  i.setVisible(true);
-               // this.setVisible(false);
+            Personaje.setSalud(Integer.valueOf(tfSalud.getText()));
+            Personaje.setPoder(Integer.valueOf(tfPoder.getText()));
+            Usuario.getPersonajes().remove(Personaje);
+            Usuario.getPersonajes().add(Personaje);
+            b.actualizarUsuario(Usuario);
         }
     }//GEN-LAST:event_EditarActionPerformed
 
@@ -273,7 +269,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIEditarPersonaje3(usuario, personaje).setVisible(true);
+                new GUIEditarPersonaje3(Usuario, Personaje).setVisible(true);
             }
         });
     }

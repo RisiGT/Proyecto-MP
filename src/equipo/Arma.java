@@ -25,16 +25,38 @@ public class Arma extends Equipo implements Serializable {
         this.manos = manos;
     }
 
-    public int getManos() {
-        return this.manos;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getModAtaque() {
+        return modAtaque;
+    }
+
+    public void setModAtaque(int modAtaque) {
+        this.modAtaque = modAtaque;
     }
 
     public int getModDefensa() {
         return modDefensa;
     }
+
+    public void setModDefensa(int modDefensa) {
+        this.modDefensa = modDefensa;
+    }
+
+    public int getManos() {
+        return manos;
+    }
+
+    public void setManos(int manos) {
+        this.manos = manos;
+    }
+
+   
 
 }

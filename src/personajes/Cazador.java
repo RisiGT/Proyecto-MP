@@ -22,24 +22,24 @@ public class Cazador extends Personaje implements Serializable {
 
     private String nombre;
     private Talento habilidadEspecial;
-    List<Arma> armas = new ArrayList<>();
-    private Arma armasActivas[] = new Arma[2];
-    List<Armadura> armaduras = new ArrayList<>();
-    private Armadura armaduraActiva;
-    private Esbirro Esabirros[] = new Esbirro[50];//Esto hay que hacerlo con una lista
+    List<Arma> Armas = new ArrayList<>();
+    private Arma ArmasActivas[] = new Arma[2];
+    List<Armadura> Armaduras = new ArrayList<>();
+    private Armadura ArmaduraActiva;
+    ArrayList<Esbirro> Esbirros  = new ArrayList<Esbirro>();//Esto hay que hacerlo con una lista
     private int oro;
     private int salud;
     private int poder;
-    List<Debilidad> debilidades = new ArrayList<>();
-    List<Fortaleza> fortalezas = new ArrayList<>();
-    private int voluntad;
-
+    List<Debilidad> Debilidades = new ArrayList<>();
+    List<Fortaleza> Fortalezas = new ArrayList<>();
+    private int Voluntad;
+    
     public Cazador(String nombre, int salud, int poder, Arma arma, Armadura armadura, List<Debilidad> deb, List<Fortaleza> fort) {
         this.nombre = nombre;
-        this.armasActivas[1] = arma;
-        this.armaduraActiva = armadura;
-        this.debilidades = deb;
-        this.fortalezas = fort;
+        this.ArmasActivas[1] = arma;
+        this.ArmaduraActiva = armadura;
+        this.Debilidades = deb;
+        this.Fortalezas = fort;
         this.salud = salud;
         this.poder = poder;
     }
@@ -48,41 +48,117 @@ public class Cazador extends Personaje implements Serializable {
         this.habilidadEspecial = habilidadEspecial;
     }
 
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    public ArrayList<Esbirro> getEsbirros() {
+        return Esbirros;
+    }
+
+    public void setEsbirros(ArrayList<Esbirro> Esbirros) {
+        this.Esbirros = Esbirros;
+    }
+
+    public int getVoluntad() {
+        return Voluntad;
+    }
+
+    public void setVoluntad(int Voluntad) {
+        this.Voluntad = Voluntad;
+    }
+    
+
+    public Talento getHabilidadEspecial() {
+        return habilidadEspecial;
+    }
+
+    public Arma[] getArmasActivas() {
+        return ArmasActivas;
+    }
+
+    public Armadura getArmaduraActiva() {
+        return ArmaduraActiva;
+    }
+
+  
+
+    public int getOro() {
+        return oro;
+    }
+
+    public int getSalud() {
+        return salud;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setArmas(List<Arma> Armas) {
+        this.Armas = Armas;
+    }
+
+    public void setArmasActivas(Arma[] ArmasActivas) {
+        this.ArmasActivas = ArmasActivas;
+    }
+
+    public void setArmaduras(List<Armadura> Armaduras) {
+        this.Armaduras = Armaduras;
+    }
+
+    public void setArmaduraActiva(Armadura ArmaduraActiva) {
+        this.ArmaduraActiva = ArmaduraActiva;
+    }
+
+   
+
+    public void setOro(int oro) {
+        this.oro = oro;
+    }
+
+    public void setSalud(int salud) {
+        this.salud = salud;
+    }
+
+    public void setPoder(int poder) {
+        this.poder = poder;
+    }
+
+    public void setDebilidades(List<Debilidad> Debilidades) {
+        this.Debilidades = Debilidades;
+    }
+
+    public void setFortalezas(List<Fortaleza> Fortalezas) {
+        this.Fortalezas = Fortalezas;
+    }
+
+    public int getPoder() {
+        return poder;
+    }
+
     public List<Debilidad> getDebilidades() {
-        return debilidades;
+        return Debilidades;
     }
 
     public List<Fortaleza> getFortalezas() {
-        return fortalezas;
-    }
-
-    public void setArmasActivas(Arma armasActivas) {
-        this.armasActivas[1] = armasActivas;
-    }
-        public void setArmaduraActiva(Armadura ArmaduraActiva) {
-        this.armaduraActiva = ArmaduraActiva;
+        return Fortalezas;
     }
 
     @Override
     public List<Arma> getArmas() {
-        return armas;
+        return Armas;
     }
 
     @Override
     public List<Armadura> getArmaduras() {
-        return armaduras;
+        return Armaduras;
     }
 
     @Override
     public int getTipo() {
         return 3;
     }
-    @Override
-    public String getNombre() {
-        return nombre;
-    }
 
-    public int getVoluntad() {
-        return voluntad;
-    }
 }

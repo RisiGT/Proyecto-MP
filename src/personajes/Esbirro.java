@@ -22,11 +22,15 @@ public abstract class Esbirro {
         return salud;
     }
 
-    public abstract boolean esHumano();
+    public abstract int tipo();
 
-    public void setSalud(int i) {
-        this.salud = i;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public abstract int tipo();
+    public void setSalud(int salud) {
+        this.salud = salud;
+    }
+    
+    public abstract boolean esHumano();
 }

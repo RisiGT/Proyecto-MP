@@ -24,14 +24,28 @@ public abstract class Equipo implements Serializable {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
-    public int getAtaque() {
-        return this.modAtaque;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getDefensa() {
-        return this.modDefensa;
+    public int getModAtaque() {
+        return modAtaque;
     }
+
+    public void setModAtaque(int modAtaque) {
+        this.modAtaque = modAtaque;
+    }
+
+    public int getModDefensa() {
+        return modDefensa;
+    }
+
+    public void setModDefensa(int modDefensa) {
+        this.modDefensa = modDefensa;
+    }
+
+    
 }

@@ -28,22 +28,35 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Salir" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
-                  <Component id="Ranking" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
-                  <Component id="ConsultarOro" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="BorrarPersonaje" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
-                      <Component id="CrearPersonaje" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
-                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="Desafiar" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
-                          <Component id="ElegirEquipamiento" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="AceptarDesafio" min="-2" pref="163" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="CrearPersonaje" min="-2" max="-2" attributes="0"/>
+                              <Component id="BorrarPersonaje" min="-2" pref="119" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="ElegirEquipamiento" min="-2" pref="181" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                          <Component id="Desafiar" min="-2" pref="110" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="Ranking" max="32767" attributes="0"/>
+                              <Component id="ConsultarOro" alignment="0" pref="107" max="32767" attributes="0"/>
+                              <Component id="Salir" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <Component id="AceptarDesafio" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="432" max="32767" attributes="0"/>
+              <EmptySpace pref="410" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,6 +113,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Aceptar/Rechazar Desafio"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AceptarDesafioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Desafiar">
       <Properties>

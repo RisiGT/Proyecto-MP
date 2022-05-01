@@ -26,6 +26,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
     /**
      * Creates new form GUIDesafiar
      */
+    @SuppressWarnings("unchecked")
     public GUIDesafiar(Usuario usuario) {
         this.usuario = usuario;
         initComponents();
@@ -67,6 +68,11 @@ public class GUIDesafiar extends javax.swing.JFrame {
         });
 
         Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Usuario desafiado");
 
@@ -147,28 +153,32 @@ public class GUIDesafiar extends javax.swing.JFrame {
             Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
         }
         if ((b.pertenece(nombre))) {
-            if (!(Oro.getText() == null)) {
+            if (!(Oro.getText().equals(""))) {
                 if (usuario.getOro() >= Integer.valueOf(Oro.getText())) {
                     if (!(Lista.getSelectedValue() == (null))) {
-                        BaseDatos b2 = this.base;
-                        try {
-                            b2.DeserializePro("Desafio");
-                        } catch (IOException ex) {
-                            Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (ClassNotFoundException ex) {
-                            Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        if (!(b2.yaDesafiado(nombre))) {
-                            Desafio desafio = new Desafio(usuario, b.getUsuario(nombre), Integer.valueOf(Oro.getText()), usuario.getPersonaje(Lista.getSelectedValue()));
-                            b.getListadesafios().add(desafio);
+                        if ((!(usuario.getPersonaje(Lista.getSelectedValue()).getArmaActiva() == null)) && (!(usuario.getPersonaje(Lista.getSelectedValue()).getArmaduraActiva() == null))) {
+                            BaseDatos b2 = this.base;
                             try {
-                                b2.SerializePro("Desafio");
+                                b2.DeserializePro("Desafio");
                             } catch (IOException ex) {
                                 Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (ClassNotFoundException ex) {
+                                Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            GUIMenuUsuario i = new GUIMenuUsuario(usuario);
-                            i.setVisible(true);
-                            this.setVisible(false);
+                            if (!(b2.yaDesafiado(nombre))) {
+                                Desafio desafio = new Desafio(usuario, b.getUsuario(nombre), Integer.valueOf(Oro.getText()), usuario.getPersonaje(Lista.getSelectedValue()));
+                                b.getListadesafios().add(desafio);
+                                try {
+                                    b2.SerializePro("Desafio");
+                                } catch (IOException ex) {
+                                    Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                GUIMenuUsuario i = new GUIMenuUsuario(usuario);
+                                i.setVisible(true);
+                                this.setVisible(false);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "No tienes un arma y una armadura activa");
+                            }
                         } else {
                             JOptionPane.showMessageDialog(null, "Este usuario ya ha sido desafiado");
                         }
@@ -185,6 +195,12 @@ public class GUIDesafiar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Usuario no encontrado");
         }
     }//GEN-LAST:event_AceptarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        GUIMenuUsuario g3 = new GUIMenuUsuario(usuario);
+        g3.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments

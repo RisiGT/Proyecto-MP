@@ -82,7 +82,7 @@ public class GUIDesafiado extends javax.swing.JFrame {
             }
         });
 
-        MensajeOro.setText("Si cancelas perderas ");
+        MensajeOro.setText("Si cancelas perderas: ");
 
         jLabel2.setText("Seleccione su personaje");
 
@@ -121,10 +121,10 @@ public class GUIDesafiado extends javax.swing.JFrame {
                         .addGap(83, 83, 83)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Cancelar)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(MensajeOro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(MensajeOro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
@@ -165,13 +165,13 @@ public class GUIDesafiado extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Aceptar)
                             .addComponent(Cancelar))
-                        .addGap(35, 35, 35))
+                        .addGap(41, 41, 41)
+                        .addComponent(MensajeOro)
+                        .addGap(80, 80, 80))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(MostrarArmaduras)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(MensajeOro)
-                .addGap(86, 86, 86))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -283,7 +283,7 @@ public class GUIDesafiado extends javax.swing.JFrame {
         for (int j = 0; j < i; j++) {
             dlm1.addElement(usuario.getPersonajes().get(j).getNombre());
         }
-        ListaPersonajes.setModel(dlm1);
+        ListaPersonajes.setModel(dlm1);        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -317,6 +317,14 @@ public class GUIDesafiado extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GUIDesafiado(usuario, desafio).setVisible(true);
+                MensajeIni.setText("Has sido desafiado por " + desafio.getDesafiante());
+                MensajeOro.setText("Si cancelas perderas " + desafio.oroPorRechazar() + " de oro");
+                DefaultListModel dlm1 = new DefaultListModel();
+                int i = usuario.getPersonajes().size();
+                for (int j = 0; j < i; j++) {
+                    dlm1.addElement(usuario.getPersonajes().get(j).getNombre());
+                }
+                ListaPersonajes.setModel(dlm1);
             }
         });
     }
