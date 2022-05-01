@@ -17,12 +17,15 @@ public class Combate {
     ArrayList<Esbirro> listaEsbirrosPers1 = new ArrayList<Esbirro>(); //esbirros que han sobrevivido del desafiante
     ArrayList<Esbirro> listaEsbirrosPers2 = new ArrayList<Esbirro>(); //esbirros que han spbrevivido del desafiado
 
-    public Combate(boolean ganador) {
-        this.ganador = ganador;
+    public Combate() {
     }
 
-    public boolean isGanador() {
+    public boolean getGanador() {
         return ganador;
+    }
+    
+    public void setGanador(boolean gan){
+        this.ganador = ganador;
     }
 
     public ArrayList<Ronda> getListaRondas() {
