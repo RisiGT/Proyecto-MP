@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import practicamp.BaseDatos;
 import practicamp.Usuario;
 
@@ -24,10 +25,8 @@ import practicamp.Usuario;
  */
 public class GUISelectEquipamiento extends javax.swing.JFrame {
 
-   // int Tipo;//el tipo de personaje(vampiro etc)
+    // int Tipo;//el tipo de personaje(vampiro etc)
     Usuario usuario;
-    List<Fortaleza> Fortalezas = new ArrayList();
-    List<Debilidad> Debilidades = new ArrayList();
     BaseDatos b;
 
     /**
@@ -37,6 +36,7 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
         initComponents();
         //this.Tipo = tipo;
         this.usuario = u;
+        this.setLocationRelativeTo(null);
         //       b.DeserializePro("nombre");//todas
     }
 
@@ -49,34 +49,20 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Nombre = new javax.swing.JTextField();
         MostrarArmas = new javax.swing.JButton();
         MostrarArmaduras = new javax.swing.JButton();
-        MostrarFortalezas = new javax.swing.JButton();
-        Debilidad = new javax.swing.JButton();
         Aceptar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaArmas = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ListaDebilidades = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         ListaArmaduras = new javax.swing.JList<>();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        ListaFortalezas = new javax.swing.JList<>();
-        AñadirFort = new javax.swing.JButton();
-        AñadirDeb = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         listaPersonajes = new javax.swing.JList<>();
         MostrarPersonaje = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        Nombre.setText("Nombre");
-        Nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreActionPerformed(evt);
-            }
-        });
+        setUndecorated(true);
 
         MostrarArmas.setText("Mostrar Armas");
         MostrarArmas.addActionListener(new java.awt.event.ActionListener() {
@@ -92,20 +78,6 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
             }
         });
 
-        MostrarFortalezas.setText("Mostrar Fortalezas");
-        MostrarFortalezas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MostrarFortalezasActionPerformed(evt);
-            }
-        });
-
-        Debilidad.setText("Mostrar debilidades");
-        Debilidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DebilidadActionPerformed(evt);
-            }
-        });
-
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,25 +87,7 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(ListaArmas);
 
-        jScrollPane2.setViewportView(ListaDebilidades);
-
         jScrollPane3.setViewportView(ListaArmaduras);
-
-        jScrollPane4.setViewportView(ListaFortalezas);
-
-        AñadirFort.setText("Añadir Fortaleza");
-        AñadirFort.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AñadirFortActionPerformed(evt);
-            }
-        });
-
-        AñadirDeb.setText("Añadir Debilidad");
-        AñadirDeb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AñadirDebActionPerformed(evt);
-            }
-        });
 
         jScrollPane5.setViewportView(listaPersonajes);
 
@@ -144,120 +98,71 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
             }
         });
 
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Aceptar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(AñadirFort, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(MostrarFortalezas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(MostrarPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(MostrarArmas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(AñadirDeb, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Debilidad)
-                                    .addComponent(MostrarArmaduras))
-                                .addGap(36, 36, 36)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(57, 57, 57)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(119, 119, 119))
+                            .addComponent(MostrarPersonaje)
+                            .addComponent(MostrarArmas, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MostrarArmaduras))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(Cancelar)
+                        .addGap(85, 85, 85)
+                        .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(Aceptar)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(68, 68, 68)
-                                .addComponent(MostrarArmaduras))))
+                        .addGap(56, 56, 56)
+                        .addComponent(MostrarPersonaje))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(MostrarArmas))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(35, 35, 35)
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(MostrarFortalezas))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Debilidad)))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AñadirFort)
-                            .addComponent(AñadirDeb))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2)
-                            .addComponent(jScrollPane4))
-                        .addGap(13, 13, 13)))
-                .addGap(11, 11, 11)
+                        .addGap(52, 52, 52)
+                        .addComponent(MostrarArmas)))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(MostrarPersonaje)
-                        .addGap(53, 53, 53)))
-                .addGap(29, 29, 29))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addComponent(MostrarArmaduras)
+                        .addGap(72, 72, 72)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Cancelar)
+                            .addComponent(Aceptar))
+                        .addGap(31, 31, 31))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NombreActionPerformed
-
-    private void DebilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DebilidadActionPerformed
-        DefaultListModel dlm1 = new DefaultListModel();
-        BaseDatos b = new BaseDatos();
-        try {
-            b.DeserializePro("Debilidad");
-        } catch (IOException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int i = b.getListaDebilidades().size();
-        for (int j = 0; j < i; j++) {
-            dlm1.addElement(b.getListaDebilidades().get(j).getName());
-        }
-        ListaDebilidades.setModel(dlm1);
-    }//GEN-LAST:event_DebilidadActionPerformed
 
     private void MostrarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarArmasActionPerformed
         DefaultListModel dlm1 = new DefaultListModel();
@@ -293,149 +198,67 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
         ListaArmaduras.setModel(dlm1);
     }//GEN-LAST:event_MostrarArmadurasActionPerformed
 
-    private void MostrarFortalezasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarFortalezasActionPerformed
-        DefaultListModel dlm1 = new DefaultListModel();
-        BaseDatos b = new BaseDatos();
-        try {
-            b.DeserializePro("Fortaleza");
-        } catch (IOException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int i = b.getListaFortalezas().size();
-        for (int j = 0; j < i; j++) {
-            dlm1.addElement(b.getListaFortalezas().get(j).getName());
-        }
-        ListaFortalezas.setModel(dlm1);
-    }//GEN-LAST:event_MostrarFortalezasActionPerformed
-
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        BaseDatos b = new BaseDatos();
-        try {
-            b.DeserializePro("Arma");
-        } catch (IOException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            b.DeserializePro("Armadura");
-        } catch (IOException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String nombre = Nombre.getText();
-        //int salud = Integer.valueOf(Salud.getText());
-        //int poder = Integer.valueOf(Poder.getText());
-        int arma = ListaArmas.getSelectedIndex();
-        int armadura = ListaArmaduras.getSelectedIndex();
+        if (!(listaPersonajes.getSelectedValue() == null)) {
+            if (!(ListaArmas.getSelectedValue() == null) && !(ListaArmaduras.getSelectedValue() == null)) {
+                BaseDatos b = new BaseDatos();
+                try {
+                    b.DeserializePro("Arma");
+                } catch (IOException ex) {
+                    Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    b.DeserializePro("Armadura");
+                } catch (IOException ex) {
+                    Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+                }
+//        String nombre = Nombre.getText();
+                //int salud = Integer.valueOf(Salud.getText());
+                //int poder = Integer.valueOf(Poder.getText());
+                int arma = ListaArmas.getSelectedIndex();
+                int armadura = ListaArmaduras.getSelectedIndex();
 //        int debilidades = ListaDebilidades.getSelectedIndex();
-     
-        switch (usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).getTipo()) {
-            case 1:
-                {
-                    //Vampiro v;
-                   // v = new Vampiro(nombre, salud, poder, b.getListaArmas().get(arma), b.getListaArmaduras().get(armadura), this.Debilidades, this.Fortalezas);
-                   // Usuario u = this.usuario;
-                    usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmaduraActiva(b.getListaArmaduras().get(armadura));
-                    usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmasActivas(b.getListaArmas().get(arma));
-                    usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setDebilidades(Debilidades);
-                    usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setFortalezas(Fortalezas);
-                    GUISelectHabilidad g3 = new GUISelectHabilidad(1, usuario, usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()));
-                    g3.setVisible(true);
-                    this.setVisible(false);
-                    break;
+
+                switch (usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).getTipo()) {
+                    case 1: {
+                        //Vampiro v;
+                        // v = new Vampiro(nombre, salud, poder, b.getListaArmas().get(arma), b.getListaArmaduras().get(armadura), this.Debilidades, this.Fortalezas);
+                        // Usuario u = this.usuario;
+                        usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmaduraActiva(b.getListaArmaduras().get(armadura));
+                        usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmasActivas(b.getListaArmas().get(arma));
+                        GUISelectHabilidad g3 = new GUISelectHabilidad(1, usuario, usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()));
+                        g3.setVisible(true);
+                        this.setVisible(false);
+                        break;
+                    }
+                    case 2: {
+                        usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmaduraActiva(b.getListaArmaduras().get(armadura));
+                        usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmasActivas(b.getListaArmas().get(arma));
+                        GUISelectHabilidad g3 = new GUISelectHabilidad(2, usuario, usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()));
+                        g3.setVisible(true);
+                        this.setVisible(false);
+                        break;
+                    }
+                    default: {                      
+                        usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmaduraActiva(b.getListaArmaduras().get(armadura));
+                        usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmasActivas(b.getListaArmas().get(arma));
+                        GUISelectHabilidad g3 = new GUISelectHabilidad(3, usuario, usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()));
+                        g3.setVisible(true);
+                        this.setVisible(false);
+                        break;
+                    }
                 }
-            case 2:
-                {
-                     usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmaduraActiva(b.getListaArmaduras().get(armadura));
-                    usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmasActivas(b.getListaArmas().get(arma));
-                    usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setDebilidades(Debilidades);
-                    usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setFortalezas(Fortalezas);
-                    GUISelectHabilidad g3 = new GUISelectHabilidad(2, usuario, usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()));
-                    g3.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                }
-            default:
-                {
-                     usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmaduraActiva(b.getListaArmaduras().get(armadura));
-                    usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setArmasActivas(b.getListaArmas().get(arma));
-                    usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setDebilidades(Debilidades);
-                    usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()).setFortalezas(Fortalezas);
-                    GUISelectHabilidad g3 = new GUISelectHabilidad(3, usuario, usuario.getPersonajes().get(listaPersonajes.getSelectedIndex()));
-                    g3.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione arma y armadura");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un personaje");
         }
     }//GEN-LAST:event_AceptarActionPerformed
-
-    private void AñadirDebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirDebActionPerformed
-        BaseDatos b = new BaseDatos();
-        try {
-            b.DeserializePro("Debilidad");
-        } catch (IOException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int k = ListaDebilidades.getSelectedIndex();
-        Debilidades.add(b.getListaDebilidades().get(k));
-        DefaultListModel dlm1 = new DefaultListModel();
-
-        int i = b.getListaDebilidades().size();
-        boolean pertenece;
-        for (int j = 0; j < i; j++) {
-            pertenece = false;
-
-            for (Debilidad list : Debilidades) {
-                if (list.getName().equals(b.getListaDebilidades().get(j).getName())) {
-                    pertenece = true;
-                }
-
-                if (pertenece) {
-                    dlm1.addElement("");
-                } else {
-                    dlm1.addElement(b.getListaDebilidades().get(j).getName());
-                }
-            }
-            ListaDebilidades.setModel(dlm1);
-        }
-    }//GEN-LAST:event_AñadirDebActionPerformed
-
-    private void AñadirFortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirFortActionPerformed
-        BaseDatos b = new BaseDatos();
-        try {
-            b.DeserializePro("Fortaleza");
-        } catch (IOException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int k = ListaFortalezas.getSelectedIndex();
-        Fortalezas.add(b.getListaFortalezas().get(k));
-        DefaultListModel dlm1 = new DefaultListModel();
-        int i = b.getListaFortalezas().size();
-        boolean pertenece;
-        for (int j = 0; j < i; j++) {
-            pertenece = false;
-            for (Fortaleza list : Fortalezas) {
-                if (list.getName().equals(b.getListaFortalezas().get(j).getName())) {
-                    pertenece = true;
-                }
-
-                if (pertenece) {
-                    dlm1.addElement("");
-                } else {
-                    dlm1.addElement(b.getListaFortalezas().get(j).getName());
-                }
-            }
-            ListaFortalezas.setModel(dlm1);
-        }
-    }//GEN-LAST:event_AñadirFortActionPerformed
 
     @SuppressWarnings("unchecked")
     private void MostrarPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarPersonajeActionPerformed
@@ -448,9 +271,9 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUIEditarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         }
-   
+
         DefaultListModel dlm = new DefaultListModel();
-      
+
         int i = usuario.getPersonajes().size();
         for (int j = 0; j < i; j++) {
             System.out.println(usuario.getPersonajes().get(j).getNombre());
@@ -463,6 +286,12 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
             Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_MostrarPersonajeActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        GUIMenuUsuario i = new GUIMenuUsuario(usuario);
+        i.setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -496,7 +325,7 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new GUISelectEquipamiento( usuario).setVisible(true); //TIpo
+                    new GUISelectEquipamiento(usuario).setVisible(true); //TIpo
                 } catch (IOException ex) {
                     Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
@@ -508,22 +337,14 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
-    private javax.swing.JButton AñadirDeb;
-    private javax.swing.JButton AñadirFort;
-    private javax.swing.JButton Debilidad;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JList<String> ListaArmaduras;
     private javax.swing.JList<String> ListaArmas;
-    private javax.swing.JList<String> ListaDebilidades;
-    private javax.swing.JList<String> ListaFortalezas;
     private javax.swing.JButton MostrarArmaduras;
     private javax.swing.JButton MostrarArmas;
-    private javax.swing.JButton MostrarFortalezas;
     private javax.swing.JButton MostrarPersonaje;
-    private javax.swing.JTextField Nombre;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JList<String> listaPersonajes;
     // End of variables declaration//GEN-END:variables

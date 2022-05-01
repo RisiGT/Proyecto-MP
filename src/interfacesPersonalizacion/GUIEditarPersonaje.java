@@ -4,6 +4,8 @@
  */
 package interfacesPersonalizacion;
 
+import interfacesAdmin.GUIOperador;
+import interfacesAdmin.GUIOperadorAñadirAtributos;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 import personajes.Personaje;
 import practicamp.BaseDatos;
+import practicamp.Operador;
 import practicamp.Usuario;
 
 /**
@@ -20,14 +23,16 @@ import practicamp.Usuario;
  * @author PcCom
  */
 public class GUIEditarPersonaje extends javax.swing.JFrame {
-
-    Usuario Usuario;
+private Operador operador;
+private Usuario Usuario;
 
     /**
      * Creates new form GUIEditarPersonaje
      */
-    public GUIEditarPersonaje() {
+    public GUIEditarPersonaje(Operador operador) {
         initComponents();
+        this.operador = operador;
+                this.setLocationRelativeTo(null);
     }
 
     /**
@@ -46,8 +51,10 @@ public class GUIEditarPersonaje extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaPersonajes = new javax.swing.JList<>();
         Aceptar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jScrollPane1.setViewportView(ListaUsuarios);
 
@@ -74,6 +81,13 @@ public class GUIEditarPersonaje extends javax.swing.JFrame {
             }
         });
 
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,9 +103,14 @@ public class GUIEditarPersonaje extends javax.swing.JFrame {
                         .addComponent(MostrarUsuarios)
                         .addGap(38, 38, 38)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(Aceptar)
-                .addGap(20, 20, 20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Aceptar)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Cancelar)
+                        .addGap(16, 16, 16))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +133,9 @@ public class GUIEditarPersonaje extends javax.swing.JFrame {
                         .addGap(22, 22, 22))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Aceptar)
-                        .addGap(47, 47, 47))))
+                        .addGap(18, 18, 18)
+                        .addComponent(Cancelar)
+                        .addGap(34, 34, 34))))
         );
 
         pack();
@@ -132,12 +153,12 @@ public class GUIEditarPersonaje extends javax.swing.JFrame {
             Logger.getLogger(GUIEditarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         }
         Usuario = b.getListausuarios().get(numU);
-        ArrayList<String> dlm = new ArrayList<String>();
+        DefaultListModel dlm = new DefaultListModel();
         int i = Usuario.getPersonajes().size();
         for (int j = 0; j < i; j++) {
-            dlm.add(Usuario.getPersonajes().get(j).getNombre());
+            dlm.addElement(Usuario.getPersonajes().get(j).getNombre());
         }
-        ListaPersonajes.setModel((ListModel<String>) dlm);
+        ListaPersonajes.setModel(dlm);
 
     }//GEN-LAST:event_MostrarPersonajesActionPerformed
 
@@ -151,26 +172,32 @@ public class GUIEditarPersonaje extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUIEditarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ArrayList<String> dlm = new ArrayList<String>();
+        DefaultListModel dlm = new DefaultListModel();
         int i = b.getListausuarios().size();
         for (int j = 0; j < i; j++) {
-            dlm.add(b.getListausuarios().get(j).getNombre());
+            dlm.addElement(b.getListausuarios().get(j).getNombre());
         }
-        ListaUsuarios.setModel((ListModel<String>) dlm);
+        ListaUsuarios.setModel(dlm);
     }//GEN-LAST:event_MostrarUsuariosActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         int numP = ListaPersonajes.getSelectedIndex();
         Personaje p = Usuario.getPersonajes().get(numP);
-        GUIEditarPersonaje2 g = new GUIEditarPersonaje2(Usuario, p);
+        GUIEditarPersonaje2 g = new GUIEditarPersonaje2(Usuario, p, operador);
         g.setVisible(true);
 
     }//GEN-LAST:event_AceptarActionPerformed
 
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        GUIOperador i = new GUIOperador(operador);
+        i.setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_CancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -197,13 +224,14 @@ public class GUIEditarPersonaje extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIEditarPersonaje().setVisible(true);
+                new GUIEditarPersonaje(operador).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JList<String> ListaPersonajes;
     private javax.swing.JList<String> ListaUsuarios;
     private javax.swing.JButton MostrarPersonajes;

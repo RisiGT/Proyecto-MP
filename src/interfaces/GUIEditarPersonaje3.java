@@ -4,12 +4,14 @@
  */
 package interfacesPersonalizacion;
 
+import interfacesAdmin.GUIOperador;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import personajes.Personaje;
 import practicamp.BaseDatos;
+import practicamp.Operador;
 import practicamp.Usuario;
 
 /**
@@ -21,16 +23,18 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
     /**
      * Creates new form GUIEditarPersonaje3
      */
-    Usuario Usuario;
-    Personaje Personaje;
-
+ private   Usuario Usuario;
+ private   Personaje Personaje;
+ private Operador operador;
     /**
      * Creates new form GUIEditarPersonaje2
      */
-    public GUIEditarPersonaje3(Usuario u, Personaje p) {
+    public GUIEditarPersonaje3(Usuario u, Personaje p, Operador operador) {
         initComponents();
+        this.operador = operador;
         Usuario = u;
         Personaje = p;
+                this.setLocationRelativeTo(null);
     }
 
     /**
@@ -51,6 +55,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         tfSalud = new javax.swing.JTextField();
         tfPoder = new javax.swing.JTextField();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +90,13 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
 
         tfPoder.setText("1");
 
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,7 +116,10 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tfSalud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfPoder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tfPoder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(Cancelar)))
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -119,7 +134,9 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(Editar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Editar)
+                    .addComponent(Cancelar))
                 .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
@@ -236,8 +253,17 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
             Usuario.getPersonajes().remove(Personaje);
             Usuario.getPersonajes().add(Personaje);
             b.actualizarUsuario(Usuario);
+        GUIOperador i = new GUIOperador(operador);
+        i.setVisible(true);
+        this.setVisible(false);
         }
     }//GEN-LAST:event_EditarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        GUIOperador i = new GUIOperador(operador);
+        i.setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,12 +295,13 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIEditarPersonaje3(Usuario, Personaje).setVisible(true);
+                new GUIEditarPersonaje3(Usuario, Personaje, operador).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancelar;
     private javax.swing.JButton Editar;
     private javax.swing.JList<String> ListaHabilidades;
     private javax.swing.JButton Mostrar;

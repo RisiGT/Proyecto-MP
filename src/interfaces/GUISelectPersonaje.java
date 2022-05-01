@@ -25,6 +25,7 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
     public GUISelectPersonaje(Usuario u) {
         initComponents();
         this.Usuario = u;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -40,6 +41,7 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -71,6 +73,13 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel1.setText("Seleccione un personaje");
 
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,7 +95,10 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(139, 139, 139)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(Cancelar)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,7 +111,9 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addGap(114, 114, 114))
+                .addGap(66, 66, 66)
+                .addComponent(Cancelar)
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -128,6 +142,12 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+  GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+  i.setVisible(true);
+  this.setVisible(false);
+    }//GEN-LAST:event_CancelarActionPerformed
 
     public void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -163,6 +183,7 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancelar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

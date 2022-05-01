@@ -4,7 +4,12 @@
  */
 package interfacesPersonalizacion;
 
+import interfaces.GUIMenuUsuario;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import practicamp.BaseDatos;
 import practicamp.Usuario;
 
 /**
@@ -21,6 +26,7 @@ public class GUIEliminarPersonaje extends javax.swing.JFrame {
     public GUIEliminarPersonaje(Usuario u) {
         initComponents();
         Usuario = u;
+                this.setLocationRelativeTo(null);
     }
 
     /**
@@ -36,6 +42,7 @@ public class GUIEliminarPersonaje extends javax.swing.JFrame {
         Lista = new javax.swing.JList<>();
         Mostrar = new javax.swing.JButton();
         Borrar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +62,13 @@ public class GUIEliminarPersonaje extends javax.swing.JFrame {
             }
         });
 
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,7 +80,9 @@ public class GUIEliminarPersonaje extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(233, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(65, 65, 65)
+                .addComponent(Cancelar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Borrar)
                 .addGap(78, 78, 78))
         );
@@ -81,7 +97,9 @@ public class GUIEliminarPersonaje extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                .addComponent(Borrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Borrar)
+                    .addComponent(Cancelar))
                 .addGap(49, 49, 49))
         );
 
@@ -100,8 +118,34 @@ public class GUIEliminarPersonaje extends javax.swing.JFrame {
     private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
         int Personaje = Lista.getSelectedIndex();
         Usuario.getPersonajes().remove(Personaje);
-        //No se que desserializar ahora y luego hya que volver al menu
+        BaseDatos b = new BaseDatos();
+        try {
+            b.DeserializePro("Usuario");
+        } catch (IOException ex) {
+            Logger.getLogger(GUIEliminarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUIEliminarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (Usuario usuario : b.getListausuarios()){
+            if (Usuario.getNombre().equals(usuario.getNombre())){
+                usuario.getPersonajes().remove(Personaje);
+            }
+        }
+        try {
+            b.SerializePro("Usuario");
+        } catch (IOException ex) {
+            Logger.getLogger(GUIEliminarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+  i.setVisible(true);
+  this.setVisible(false); 
     }//GEN-LAST:event_BorrarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+  GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+  i.setVisible(true);
+  this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,6 +184,7 @@ public class GUIEliminarPersonaje extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Borrar;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JList<String> Lista;
     private javax.swing.JButton Mostrar;
     private javax.swing.JScrollPane jScrollPane1;

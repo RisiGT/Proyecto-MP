@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package interfaces;
-//pprueba
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;

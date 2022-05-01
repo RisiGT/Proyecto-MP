@@ -81,7 +81,15 @@ public class Usuario extends Persona implements Serializable {
         }
         return null;
     }
-
+    public void actualizarPersonaje(Personaje p) {
+        for (Personaje list : personajes) {
+            if ((list.getNombre().equals(p.getNombre()))) {
+                personajes.remove(list);
+                personajes.add(p);
+                break;
+            }
+        }
+    }
     public int getOro() {
         return oro;
     }

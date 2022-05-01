@@ -38,6 +38,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
         this.usuario = usuario;
         initComponents();
         this.base = new BaseDatos();
+                this.setLocationRelativeTo(null);
         DefaultListModel dlm1 = new DefaultListModel();
         int i = usuario.getPersonajes().size();
         for (int j = 0; j < i; j++) {
@@ -69,6 +70,10 @@ public class GUIDesafiar extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         seleccionEsbirro = new javax.swing.JList<>();
         añadirEsbirro = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +121,14 @@ public class GUIDesafiar extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("10");
+
+        jLabel6.setText("20");
+
+        jLabel7.setText("30");
+
+        jLabel8.setText("Precio");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,15 +158,24 @@ public class GUIDesafiar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nombreEsbirro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)
-                                .addComponent(añadirEsbirro)))))
+                            .addComponent(nombreEsbirro, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(añadirEsbirro)))
                 .addContainerGap(326, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -172,19 +194,27 @@ public class GUIDesafiar extends javax.swing.JFrame {
                             .addComponent(Oro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nombreEsbirro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(añadirEsbirro))
-                        .addGap(90, 90, 90))
+                            .addComponent(añadirEsbirro)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancelar)
                     .addComponent(Aceptar))
@@ -261,48 +291,46 @@ public class GUIDesafiar extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void añadirEsbirroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirEsbirroActionPerformed
-        switch (seleccionEsbirro.getSelectedIndex()) {
-            case 1:
-                if (usuario.getOro()>=10){
-                    Humano h = new Humano(nombreEsbirro.getText(),2,0);
-                    listaEsbirros.add(h);
-                    usuario.setOro(usuario.getOro()-10);
-                }
-                else {
-                    //oro insuficiente
-                }
-                break;
-            case 2:
-                if (usuario.getOro()>=10){
-                    Ghoul g = new Ghoul(nombreEsbirro.getText(),2,0);
-                    listaEsbirros.add(g);
-                    usuario.setOro(usuario.getOro()-10);
-                }
-                else {
-                    //oro insuficiente
-                }
-                break;
-            case 3:              
-                if (usuario.getOro()>=30){
-        Demonio d = new Demonio(nombreEsbirro.getText(),2,"Pacto del demonio "+nombreEsbirro.getText()+" con "+usuario.getNombre());
-        Random rand = new Random();
-        int j = rand.nextInt(3);
-        for (int i = 0; i<=j;i++){
-            String s = Integer.toString(i);
-            Ghoul g = new Ghoul("Esbirro del demonio "+nombreEsbirro.getText()+" número "+s,2,0);
-        }
-        listaEsbirros.add(d);
-        usuario.setOro(usuario.getOro()-30);
+        if (!(seleccionEsbirro.getSelectedValue() == null)) {
+            switch (seleccionEsbirro.getSelectedIndex()) {
+                case 1:
+                    if (usuario.getOro() >= 10) {
+                        Humano h = new Humano(nombreEsbirro.getText(), 2, 0);
+                        listaEsbirros.add(h);
+                        usuario.setOro(usuario.getOro() - 10);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Oro insuficiente");                //oro insuficiente
+                    }
+                    break;
+                case 2:
+                    if (usuario.getOro() >= 20) {
+                        Ghoul g = new Ghoul(nombreEsbirro.getText(), 2, 0);
+                        listaEsbirros.add(g);
+                        usuario.setOro(usuario.getOro() - 20);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Oro insuficiente");                //oro insuficiente
+                    }
+                    break;
+                case 3:
+                    if (usuario.getOro() >= 30) {
+                        Demonio d = new Demonio(nombreEsbirro.getText(), 2, "Pacto del demonio " + nombreEsbirro.getText() + " con " + usuario.getNombre());
+                        Random rand = new Random();
+                        int j = rand.nextInt(3);
+                        for (int i = 0; i <= j; i++) {
+                            String s = Integer.toString(i);
+                            Ghoul g = new Ghoul("Esbirro del demonio " + nombreEsbirro.getText() + " número " + s, 2, 0);
+                        }
+                        listaEsbirros.add(d);
+                        usuario.setOro(usuario.getOro() - 30);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Oro insuficiente");                //oro insuficiente
+                    }
+
+                    break;
             }
-            else {
-                //oro insuficiente
-                }
-       
-                break;
-        }
-       
-        
-        
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione el tipo de esbirro");
+        } 
     }//GEN-LAST:event_añadirEsbirroActionPerformed
 
     /**
@@ -351,6 +379,10 @@ public class GUIDesafiar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nombreEsbirro;

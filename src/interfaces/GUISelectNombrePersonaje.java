@@ -29,6 +29,7 @@ public class GUISelectNombrePersonaje extends javax.swing.JFrame {
         initComponents();
         this.usuario=usuario;
         this.nombre= nombre;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -43,6 +44,7 @@ public class GUISelectNombrePersonaje extends javax.swing.JFrame {
         Nombre = new javax.swing.JTextField();
         Aceptar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(3, 0));
@@ -62,12 +64,21 @@ public class GUISelectNombrePersonaje extends javax.swing.JFrame {
 
         jLabel1.setText("Introduzca el nombre de su personaje");
 
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(Cancelar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Aceptar)
                 .addGap(29, 29, 29))
             .addGroup(layout.createSequentialGroup()
@@ -85,7 +96,9 @@ public class GUISelectNombrePersonaje extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(Aceptar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Aceptar)
+                    .addComponent(Cancelar))
                 .addGap(30, 30, 30))
         );
 
@@ -129,6 +142,12 @@ public class GUISelectNombrePersonaje extends javax.swing.JFrame {
        this.setVisible(false);
     }//GEN-LAST:event_AceptarActionPerformed
 
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+  GUIMenuUsuario i = new GUIMenuUsuario(usuario);
+  i.setVisible(true);
+  this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_CancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -167,6 +186,7 @@ public class GUISelectNombrePersonaje extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JTextField Nombre;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

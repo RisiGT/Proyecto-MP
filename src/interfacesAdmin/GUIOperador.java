@@ -130,7 +130,7 @@ public class GUIOperador extends javax.swing.JFrame {
     }//GEN-LAST:event_Banear_DesbanearActionPerformed
 
     private void EditarPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarPersonajeActionPerformed
-        GUIEditarPersonaje i = new GUIEditarPersonaje();
+        GUIEditarPersonaje i = new GUIEditarPersonaje(operador);
         i.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_EditarPersonajeActionPerformed

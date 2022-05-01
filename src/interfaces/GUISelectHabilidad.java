@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import personajes.Cazador;
 import personajes.Licantropo;
 import personajes.Personaje;
@@ -33,6 +34,7 @@ public class GUISelectHabilidad extends javax.swing.JFrame {
         this.Opcion = opcion;
         this.Usuario = usuario;
         this.Pers = pers;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -47,12 +49,18 @@ public class GUISelectHabilidad extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Numero = new javax.swing.JTextField();
         Valor = new javax.swing.JLabel();
-        Mostrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Lista = new javax.swing.JList<>();
         Aceptar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setText("Habilidades");
 
@@ -64,19 +72,19 @@ public class GUISelectHabilidad extends javax.swing.JFrame {
 
         Valor.setText("Seleccione...");
 
-        Mostrar.setText("Mostrar");
-        Mostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MostrarActionPerformed(evt);
-            }
-        });
-
         jScrollPane1.setViewportView(Lista);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AceptarActionPerformed(evt);
+            }
+        });
+
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
             }
         });
 
@@ -87,55 +95,158 @@ public class GUISelectHabilidad extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(32, 32, 32)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Mostrar)
-                        .addGap(26, 26, 26)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(Cancelar)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Numero, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(98, 98, 98)
-                                .addComponent(Aceptar)))
+                            .addComponent(Valor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(62, 62, 62))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Valor)
+                        .addGap(79, 79, 79)
+                        .addComponent(Aceptar)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(73, 73, 73)
                                 .addComponent(Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Aceptar)
-                            .addComponent(Mostrar))
-                        .addContainerGap(44, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(jLabel1)))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Aceptar)
+                    .addComponent(Cancelar))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    @SuppressWarnings("unchecked")
-    private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
+    private void NumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NumeroActionPerformed
+
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+if (!(Lista.getSelectedValue()==null)){
+        int Habilidad = Lista.getSelectedIndex();
+        String a = Numero.getText();
+        if (Opcion == 1) {
+            Vampiro v = (Vampiro) Pers;
+            v.setEdad(Integer.valueOf(a));
+            BaseDatos b = new BaseDatos();
+            try {
+                b.DeserializePro("Disciplina");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            v.setHabilidadespecial(b.getListaDisciplinas().get(Habilidad));
+            Usuario.actualizarPersonaje(v);
+            try {
+                b.DeserializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            b.actualizarUsuario(Usuario);
+            try {
+                b.SerializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+            i.setVisible(true);
+            this.setVisible(false);
+        } else if (Opcion == 2) {
+            Licantropo l = (Licantropo) Pers;
+            l.setTamaño(Integer.valueOf(a));
+            BaseDatos b = new BaseDatos();
+            try {
+                b.DeserializePro("Don");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            l.setHabilidadespecial(b.getListaDones().get(Habilidad));
+            Usuario.actualizarPersonaje(l);
+            try {
+                b.DeserializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            b.actualizarUsuario(Usuario);
+            try {
+                b.SerializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+            i.setVisible(true);
+            this.setVisible(false);
+        } else {
+            Cazador c = (Cazador) Pers;
+            BaseDatos b = new BaseDatos();
+            try {
+                b.DeserializePro("Talento");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            c.setHabilidadEspecial(b.getListaTalentos().get(Habilidad));
+            Usuario.actualizarPersonaje(c);
+            try {
+                b.DeserializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            b.actualizarUsuario(Usuario);
+            try {
+                b.SerializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+            i.setVisible(true);
+            this.setVisible(false);
+        }
+} else {
+       JOptionPane.showMessageDialog(null, "Seleccione una habilidad");
+}
+    }//GEN-LAST:event_AceptarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+            i.setVisible(true);
+            this.setVisible(false);       // TODO add your handling code here:
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         if (this.Opcion == 1) {
             Valor.setText("Seleccione la edad");
             BaseDatos b = new BaseDatos();
@@ -186,106 +297,8 @@ public class GUISelectHabilidad extends javax.swing.JFrame {
                 dlm.addElement(b.getListaTalentos().get(j).getName());
             }
             Lista.setModel(dlm);
-        }
-    }//GEN-LAST:event_MostrarActionPerformed
-
-    private void NumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NumeroActionPerformed
-
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        int Habilidad = Lista.getSelectedIndex();
-        String a = Numero.getText();
-        if (Opcion == 1) {
-            Vampiro v = (Vampiro) Pers;
-            v.setEdad(Integer.valueOf(a));
-            BaseDatos b = new BaseDatos();
-            try {
-                b.DeserializePro("Disciplina");
-            } catch (IOException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            v.setHabilidadespecial(b.getListaDisciplinas().get(Habilidad));
-            Usuario.getPersonajes().add(v);
-            try {
-                b.DeserializePro("Usuario");
-            } catch (IOException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            b.actualizarUsuario(Usuario);
-            try {
-                b.SerializePro("Usuario");
-            } catch (IOException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
-            i.setVisible(true);
-            this.setVisible(false);
-        } else if (Opcion == 2) {
-            Licantropo l = (Licantropo) Pers;
-            l.setTamaño(Integer.valueOf(a));
-            BaseDatos b = new BaseDatos();
-            try {
-                b.DeserializePro("Don");
-            } catch (IOException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            l.setHabilidadespecial(b.getListaDones().get(Habilidad));
-            Usuario.getPersonajes().add(l);
-            try {
-                b.DeserializePro("Usuario");
-            } catch (IOException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            b.actualizarUsuario(Usuario);
-            try {
-                b.SerializePro("Usuario");
-            } catch (IOException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
-            i.setVisible(true);
-            this.setVisible(false);
-        } else {
-
-            Cazador c = (Cazador) Pers;
-            BaseDatos b = new BaseDatos();
-            try {
-                b.DeserializePro("Talento");
-            } catch (IOException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            c.setHabilidadEspecial(b.getListaTalentos().get(Habilidad));
-            Usuario.getPersonajes().add(c);
-            try {
-                b.DeserializePro("Usuario");
-            } catch (IOException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            b.actualizarUsuario(Usuario);
-            try {
-                b.SerializePro("Usuario");
-            } catch (IOException ex) {
-                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
-            i.setVisible(true);
-            this.setVisible(false);
-        }
-
-    }//GEN-LAST:event_AceptarActionPerformed
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -325,8 +338,8 @@ public class GUISelectHabilidad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JList<String> Lista;
-    private javax.swing.JButton Mostrar;
     private javax.swing.JTextField Numero;
     private javax.swing.JLabel Valor;
     private javax.swing.JLabel jLabel1;

@@ -38,6 +38,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
     public GUIValidarDesafios(Operador operador) {
         this.operador = operador;
         initComponents();
+                this.setLocationRelativeTo(null);
     }
 
     /**
