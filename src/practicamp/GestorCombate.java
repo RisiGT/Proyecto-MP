@@ -29,6 +29,7 @@ public class GestorCombate {
     ArrayList<Esbirro> listaEsbirrosPers1 = new ArrayList<Esbirro>();
     ArrayList<Esbirro> listaEsbirrosPers2 = new ArrayList<Esbirro>();
     ArrayList<Ronda> listaRondas = new ArrayList<Ronda>();
+    Combate combate;
     
 public GestorCombate(Personaje p1, Personaje p2){
     pers1=p1;
@@ -69,12 +70,17 @@ public GestorCombate(Personaje p1, Personaje p2){
  while((salud1!=0)||(salud2!=0)){
      listaRondas.add(this.nuevaRonda());
  }
+  Combate comb = new Combate();
  if (salud1!=0){
-    //gana el desafiante
+    comb.setGanador(true);
  }
  else if (salud2!=0){
-    //gana el desafiado
+    comb.setGanador(false);
  }
+comb.setListaRondas(listaRondas);
+comb.setListaEsbirrosPers1(listaEsbirrosPers1);
+comb.setListaEsbirrosPers2(listaEsbirrosPers2);
+this.combate=comb;
 }    
  public Ronda nuevaRonda(){ 
      Ronda ronda = new Ronda();
@@ -221,6 +227,9 @@ public GestorCombate(Personaje p1, Personaje p2){
         }   
     }
     return ronda;
+ }
+ public Combate getCombate(){
+     return this.combate;
  }
 }
 
