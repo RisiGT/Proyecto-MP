@@ -35,6 +35,7 @@ public class Licantropo extends Personaje implements Serializable {
     List<Debilidad> Debilidades = new ArrayList<>();
     List<Fortaleza> Fortalezas = new ArrayList<>();
     private int tamaño;
+    private int rabia;
 
     public void setTamaño(int tamaño) {
         this.tamaño = tamaño;
@@ -80,6 +81,14 @@ public class Licantropo extends Personaje implements Serializable {
 
     public void setHabilidadespecial(Don Habilidadespecial) {
         this.Habilidadespecial = Habilidadespecial;
+    }
+    
+    public int getRabia() {
+        return tamaño;
+    }
+    
+    public void setRabia(int rabia) {
+        this.rabia = rabia;
     }
 
     @Override

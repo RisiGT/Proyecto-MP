@@ -27,4 +27,8 @@ public class Armadura extends Equipo implements Serializable {
         return name;
     }
 
+    public int getModDefensa() {
+        return modDefensa;
+    }
+
 }

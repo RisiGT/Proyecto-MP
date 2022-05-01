@@ -23,6 +23,14 @@ public class Ghoul extends Esbirro implements Serializable {
         this.salud = salud;
         this.dependencia = dependencia;//valor inicial
     }
+    
+    public int getDependencia() {
+        return dependencia;
+    }
+
+    public void setDependencia(int dependencia) {
+        this.dependencia = dependencia;
+    }
 
     @Override
     public boolean esHumano() {
@@ -34,11 +42,8 @@ public class Ghoul extends Esbirro implements Serializable {
         return name;
     }
 
-    public int getDependencia() {
-        return dependencia;
-    }
-
-    public void setDependencia(int dependencia) {
-        this.dependencia = dependencia;
+    @Override
+    public int tipo() {
+        return 2;
     }
 }

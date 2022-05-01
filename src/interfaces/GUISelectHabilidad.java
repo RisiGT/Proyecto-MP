@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfacesAdmin;
+package interfaces;
 
-import interfaces.GUIMenuUsuario;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +19,7 @@ import practicamp.Usuario;
  *
  * @author PcCom
  */
-public class GUICrearPersonaje3 extends javax.swing.JFrame {
+public class GUISelectHabilidad extends javax.swing.JFrame {
 
     int Opcion;
     Usuario Usuario;
@@ -29,7 +28,7 @@ public class GUICrearPersonaje3 extends javax.swing.JFrame {
     /**
      * Creates new form GUICrearPersonaje3
      */
-    public GUICrearPersonaje3(int opcion, Usuario usuario, Personaje pers) {
+    public GUISelectHabilidad(int opcion, Usuario usuario, Personaje pers) {
         initComponents();
         this.Opcion = opcion;
         this.Usuario = usuario;
@@ -51,7 +50,7 @@ public class GUICrearPersonaje3 extends javax.swing.JFrame {
         Mostrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Lista = new javax.swing.JList<>();
-        Crear = new javax.swing.JButton();
+        Aceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,10 +73,10 @@ public class GUICrearPersonaje3 extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(Lista);
 
-        Crear.setText("Crear");
-        Crear.addActionListener(new java.awt.event.ActionListener() {
+        Aceptar.setText("Aceptar");
+        Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearActionPerformed(evt);
+                AceptarActionPerformed(evt);
             }
         });
 
@@ -102,7 +101,7 @@ public class GUICrearPersonaje3 extends javax.swing.JFrame {
                                 .addComponent(Mostrar)
                                 .addGap(8, 8, 8)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Crear)
+                        .addComponent(Aceptar)
                         .addGap(46, 46, 46))))
         );
         layout.setVerticalGroup(
@@ -123,13 +122,14 @@ public class GUICrearPersonaje3 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Mostrar)
-                    .addComponent(Crear))
+                    .addComponent(Aceptar))
                 .addGap(42, 42, 42))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("unchecked")
     private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
         if (this.Opcion == 1) {
             Valor.setText("Seleccione la edad");
@@ -137,9 +137,9 @@ public class GUICrearPersonaje3 extends javax.swing.JFrame {
             try {
                 b.DeserializePro("Disciplina");
             } catch (IOException ex) {
-                Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
             DefaultListModel dlm = new DefaultListModel();
             int i = b.getListaDisciplinas().size();
@@ -154,9 +154,9 @@ public class GUICrearPersonaje3 extends javax.swing.JFrame {
             try {
                 b.DeserializePro("Don");
             } catch (IOException ex) {
-                Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
             DefaultListModel dlm = new DefaultListModel();
             int i = b.getListaDones().size();
@@ -171,9 +171,9 @@ public class GUICrearPersonaje3 extends javax.swing.JFrame {
             try {
                 b.DeserializePro("Talento");
             } catch (IOException ex) {
-                Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
             DefaultListModel dlm = new DefaultListModel();
             int i = b.getListaTalentos().size();
@@ -188,96 +188,99 @@ public class GUICrearPersonaje3 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NumeroActionPerformed
 
-    private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         int Habilidad = Lista.getSelectedIndex();
         String a = Numero.getText();
-        switch (Opcion) {
-            case 1:
-                {
-                    Vampiro v = (Vampiro) Pers;
-                    v.setEdad(Integer.valueOf(a));
-                    BaseDatos b = new BaseDatos();
-                    try {
-                        b.DeserializePro("Disciplina");
-                    } catch (IOException ex) {
-                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                    }       v.setHabilidadespecial(b.getListaDisciplinas().get(Habilidad));
-                    Usuario.getPersonajes().add(v);
-                    try {
-                        b.DeserializePro("Usuario");
-                    } catch (IOException ex) {
-                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                    }       b.actualizarUsuario(Usuario);
-                    try {
-                        b.SerializePro("Usuario");
-                    } catch (IOException ex) {
-                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                    }       break;
-                }
-            case 2:
-                {
-                    Licantropo l = (Licantropo) Pers;
-                    l.setTamaño(Integer.valueOf(a));
-                    BaseDatos b = new BaseDatos();
-                    try {
-                        b.DeserializePro("Don");
-                    } catch (IOException ex) {
-                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                    }       l.setHabilidadespecial(b.getListaDones().get(Habilidad));
-                    Usuario.getPersonajes().add(l);
-                    try {
-                        b.DeserializePro("Usuario");
-                    } catch (IOException ex) {
-                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                    }       b.actualizarUsuario(Usuario);
-                    try {
-                        b.SerializePro("Usuario");
-                    } catch (IOException ex) {
-                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                    }       GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
-                    i.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                }
-            case 3:
-                {
-                        Cazador c = (Cazador) Pers;
-                        BaseDatos b = new BaseDatos();
-                        try {
-                                b.DeserializePro("Talento");
-                                } catch (IOException ex) {
-                                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                                        } catch (ClassNotFoundException ex) {
-                                                Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                                                }       c.setHabilidadespecial(b.getListaTalentos().get(Habilidad));
-                        Usuario.getPersonajes().add(c);
-                        try {
-                                b.DeserializePro("Usuario");
-                                } catch (IOException ex) {
-                                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                                        } catch (ClassNotFoundException ex) {
-                                                Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                                                }       b.actualizarUsuario(Usuario);
-                        try {
-                                b.SerializePro("Usuario");
-                                } catch (IOException ex) {
-                                        Logger.getLogger(GUICrearPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                                        }       break;
-                }
-        }
-        GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
-                        i.setVisible(true);
-                        this.setVisible(false);
+        if (Opcion == 1) {
+            Vampiro v = (Vampiro) Pers;
+            v.setEdad(Integer.valueOf(a));
+            BaseDatos b = new BaseDatos();
+            try {
+                b.DeserializePro("Disciplina");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            v.setHabilidadespecial(b.getListaDisciplinas().get(Habilidad));
+            Usuario.getPersonajes().add(v);
+            try {
+                b.DeserializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            b.actualizarUsuario(Usuario);
+            try {
+                b.SerializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+            i.setVisible(true);
+            this.setVisible(false);
+        } else if (Opcion == 2) {
+            Licantropo l = (Licantropo) Pers;
+            l.setTamaño(Integer.valueOf(a));
+            BaseDatos b = new BaseDatos();
+            try {
+                b.DeserializePro("Don");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            l.setHabilidadespecial(b.getListaDones().get(Habilidad));
+            Usuario.getPersonajes().add(l);
+            try {
+                b.DeserializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            b.actualizarUsuario(Usuario);
+            try {
+                b.SerializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+            i.setVisible(true);
+            this.setVisible(false);
+        } else {
 
-    }//GEN-LAST:event_CrearActionPerformed
+            Cazador c = (Cazador) Pers;
+            BaseDatos b = new BaseDatos();
+            try {
+                b.DeserializePro("Talento");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            c.setHabilidadEspecial(b.getListaTalentos().get(Habilidad));
+            Usuario.getPersonajes().add(c);
+            try {
+                b.DeserializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            b.actualizarUsuario(Usuario);
+            try {
+                b.SerializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+            i.setVisible(true);
+            this.setVisible(false);
+        }
+
+    }//GEN-LAST:event_AceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,26 +299,27 @@ public class GUICrearPersonaje3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUICrearPersonaje3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISelectHabilidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUICrearPersonaje3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISelectHabilidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUICrearPersonaje3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISelectHabilidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUICrearPersonaje3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISelectHabilidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUICrearPersonaje3(Opcion, Usuario, Pers).setVisible(true);
+                new GUISelectHabilidad(Opcion, Usuario, Pers).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Crear;
+    private javax.swing.JButton Aceptar;
     private javax.swing.JList<String> Lista;
     private javax.swing.JButton Mostrar;
     private javax.swing.JTextField Numero;

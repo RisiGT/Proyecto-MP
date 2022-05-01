@@ -89,4 +89,12 @@ public class Vampiro extends Personaje implements Serializable {
     public String getNombre() {
         return nombre;
     }
+
+    public int getPtosSangre() {
+         return ptosSangre;
+    }
+
+    public void setPtosSangre(int i) {
+        this.ptosSangre = ptosSangre;
+    }
 }

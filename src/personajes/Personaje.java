@@ -28,12 +28,16 @@ public abstract class Personaje implements Serializable {
     private Arma armaActiva;       // Pongo eso para que me funcione
     List<Armadura> armaduras = new ArrayList<>();
     private Armadura armaduraActiva;
-    private Esbirro esbirros[] = new Esbirro[50];//Esto hay que hacerlo con una lista
+    ArrayList<Esbirro> esbirros  = new ArrayList<Esbirro>();
     private int oro;
     private int salud;
     private int poder;
     List<Debilidad> debilidades = new ArrayList<>();
     List<Fortaleza> fortalezas = new ArrayList<>();
+    
+    public ArrayList<Esbirro> getEsbirros() {
+        return esbirros;
+    }
 
     public String getNombre() {
         return nombre;
@@ -82,6 +86,25 @@ public abstract class Personaje implements Serializable {
     public List<Fortaleza> getFortalezas() {
         return fortalezas;
     }
+    
+    public Habilidad getHabilidadespecial() {
+        return habilidadEspecial;
+    }
+    public Arma getArmaActiva() {
+        return armaActiva;
+    }
+    public Armadura getArmaduraActiva() {
+        return armaduraActiva;
+    }
+    public int getOro() {
+        return oro;
+    }
+    public int getSalud() {
+        return salud;
+    }
+    public int getPoder() {
+        return poder;
+    }
 
     public void setHabilidadEspecial(Habilidad habilidadEspecial) {
         this.habilidadEspecial = habilidadEspecial;
@@ -93,5 +116,13 @@ public abstract class Personaje implements Serializable {
 
     public void setPoder(int poder) {
         this.poder = poder;
+    }
+
+    public void setDebilidades(List<Debilidad> Debilidades) {
+        this.debilidades = debilidades;
+    }
+
+    public void setFortalezas(List<Fortaleza> Fortalezas) {
+        this.fortalezas = fortalezas;
     }
 }

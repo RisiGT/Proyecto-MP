@@ -21,55 +21,56 @@ import java.io.Serializable;
 public class Cazador extends Personaje implements Serializable {
 
     private String nombre;
-    private Talento Habilidadespecial;
-    List<Arma> Armas = new ArrayList<>();
-    private Arma ArmasActivas[] = new Arma[2];
-    List<Armadura> Armaduras = new ArrayList<>();
-    private Armadura ArmaduraActiva;
+    private Talento habilidadEspecial;
+    List<Arma> armas = new ArrayList<>();
+    private Arma armasActivas[] = new Arma[2];
+    List<Armadura> armaduras = new ArrayList<>();
+    private Armadura armaduraActiva;
     private Esbirro Esabirros[] = new Esbirro[50];//Esto hay que hacerlo con una lista
     private int oro;
     private int salud;
     private int poder;
-    List<Debilidad> Debilidades = new ArrayList<>();
-    List<Fortaleza> Fortalezas = new ArrayList<>();
+    List<Debilidad> debilidades = new ArrayList<>();
+    List<Fortaleza> fortalezas = new ArrayList<>();
+    private int voluntad;
 
     public Cazador(String nombre, int salud, int poder, Arma arma, Armadura armadura, List<Debilidad> deb, List<Fortaleza> fort) {
         this.nombre = nombre;
-        this.ArmasActivas[1] = arma;
-        this.ArmaduraActiva = armadura;
-        this.Debilidades = deb;
-        this.Fortalezas = fort;
+        this.armasActivas[1] = arma;
+        this.armaduraActiva = armadura;
+        this.debilidades = deb;
+        this.fortalezas = fort;
         this.salud = salud;
         this.poder = poder;
     }
 
-    public void setHabilidadespecial(Talento Habilidadespecial) {
-        this.Habilidadespecial = Habilidadespecial;
+    public void setHabilidadEspecial(Talento habilidadEspecial) {
+        this.habilidadEspecial = habilidadEspecial;
     }
 
     public List<Debilidad> getDebilidades() {
-        return Debilidades;
+        return debilidades;
     }
 
     public List<Fortaleza> getFortalezas() {
-        return Fortalezas;
+        return fortalezas;
     }
 
-    public void setArmasActivas(Arma ArmasActivas) {
-        this.ArmasActivas[1] = ArmasActivas;
+    public void setArmasActivas(Arma armasActivas) {
+        this.armasActivas[1] = armasActivas;
     }
         public void setArmaduraActiva(Armadura ArmaduraActiva) {
-        this.ArmaduraActiva = ArmaduraActiva;
+        this.armaduraActiva = ArmaduraActiva;
     }
 
     @Override
     public List<Arma> getArmas() {
-        return Armas;
+        return armas;
     }
 
     @Override
     public List<Armadura> getArmaduras() {
-        return Armaduras;
+        return armaduras;
     }
 
     @Override
@@ -81,4 +82,7 @@ public class Cazador extends Personaje implements Serializable {
         return nombre;
     }
 
+    public int getVoluntad() {
+        return voluntad;
+    }
 }

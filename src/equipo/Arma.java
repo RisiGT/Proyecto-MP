@@ -33,4 +33,8 @@ public class Arma extends Equipo implements Serializable {
         return name;
     }
 
+    public int getModDefensa() {
+        return modDefensa;
+    }
+
 }

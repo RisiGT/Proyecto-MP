@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interfacesAdmin;
+package interfaces;
 
+import interfaces.GUISelectNombrePersonaje;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,14 +15,14 @@ import practicamp.Usuario;
  *
  * @author pcris
  */
-public class GUICrearPersonaje extends javax.swing.JFrame {
+public class GUISelectPersonaje extends javax.swing.JFrame {
 
     Usuario Usuario;
 
     /**
      * Creates new form GUICrearPersonaje
      */
-    public GUICrearPersonaje(Usuario u) {
+    public GUISelectPersonaje(Usuario u) {
         initComponents();
         this.Usuario = u;
     }
@@ -91,50 +92,29 @@ public class GUICrearPersonaje extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        GUICrearPersonaje2 g = null;
-        try {
-            g = new GUICrearPersonaje2(3, Usuario);
-        } catch (IOException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        GUISelectNombrePersonaje g = null;
+        g = new GUISelectNombrePersonaje("Cazador", Usuario);
         g.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        GUICrearPersonaje2 g = null;
-        try {
-            g = new GUICrearPersonaje2(1, Usuario);
-        } catch (IOException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        GUISelectNombrePersonaje g = null;
+        g = new GUISelectNombrePersonaje("Vampiro", Usuario);
         g.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        GUICrearPersonaje2 g = null;
-        try {
-            g = new GUICrearPersonaje2(2, Usuario);
-        } catch (IOException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUICrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        GUISelectNombrePersonaje g = null;
+        g = new GUISelectNombrePersonaje("Licantropo", Usuario);
         g.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -149,20 +129,21 @@ public class GUICrearPersonaje extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUICrearPersonaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISelectPersonaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUICrearPersonaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISelectPersonaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUICrearPersonaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISelectPersonaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUICrearPersonaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUISelectPersonaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUICrearPersonaje(Usuario).setVisible(true);
+                new GUISelectPersonaje(Usuario).setVisible(true);
             }
         });
     }

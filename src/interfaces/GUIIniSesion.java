@@ -99,7 +99,7 @@ public class GUIIniSesion extends javax.swing.JFrame {
                 SignInActionPerformed(evt);
             }
         });
-        getContentPane().add(SignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, 120, 40));
+        getContentPane().add(SignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, 120, 40));
 
         Exit.setFont(new java.awt.Font("Viner Hand ITC", 0, 18)); // NOI18N
         Exit.setText("Salir");
@@ -204,8 +204,7 @@ public class GUIIniSesion extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_SignInActionPerformed
-                                   
-
+                                
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

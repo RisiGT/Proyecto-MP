@@ -23,4 +23,10 @@ public abstract class Esbirro {
     }
 
     public abstract boolean esHumano();
+
+    public void setSalud(int i) {
+        this.salud = i;
+    }
+
+    public abstract int tipo();
 }
