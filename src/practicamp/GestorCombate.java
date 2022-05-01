@@ -70,10 +70,10 @@ public GestorCombate(Personaje p1, Personaje p2){
      listaRondas.add(this.nuevaRonda());
  }
  if (salud1!=0){
-    //gana el desafiado 
+    //gana el desafiante
  }
  else if (salud2!=0){
-    //gana el desafiante
+    //gana el desafiado
  }
 }    
  public Ronda nuevaRonda(){ 

@@ -13,8 +13,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import personajes.Personaje;
 import practicamp.BaseDatos;
 import practicamp.Desafio;
+import practicamp.GestorCombate;
 import practicamp.Operador;
 
 /**
@@ -22,6 +24,7 @@ import practicamp.Operador;
  * @author pcris
  */
 public class GUIValidarDesafios extends javax.swing.JFrame {
+
     private Operador operador;
     List<Fortaleza> listaFortalezas1 = new ArrayList();
     List<Debilidad> listaDebilidades1 = new ArrayList();
@@ -414,10 +417,10 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        GUIOperador i = new GUIOperador (operador);
+        GUIOperador i = new GUIOperador(operador);
         i.setVisible(true);
         this.setVisible(false);
-              
+
     }//GEN-LAST:event_RechazarActionPerformed
 
     @SuppressWarnings("unchecked")
@@ -458,10 +461,15 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (Desafio desafio : b.getListadesafios()) {
-            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())){
+            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
                 desafio.getPersonajeDesafiante().getDebilidades().add(b.getListaDebilidades().get(k));
             }
-        }        // TODO add your handling code here:
+        }
+        try {
+            b.SerializePro("Desafio");
+        } catch (IOException ex) {
+            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AñadirDeb1ActionPerformed
 
     @SuppressWarnings("unchecked")
@@ -502,16 +510,16 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (Desafio desafio : b.getListadesafios()) {
-            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())){
+            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
                 desafio.getPersonajeDesafiante().getFortalezas().add(b.getListaFortalezas().get(k));
             }
         }
         try {
-            b.SerializePro("Desafio");           // TODO add your handling code here:
+            b.SerializePro("Desafio");         
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_AñadirFort1ActionPerformed
 
     @SuppressWarnings({"unchecked", "unchecked"})
@@ -552,12 +560,12 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (Desafio desafio : b.getListadesafios()) {
-            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())){
+            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
                 desafio.getPersonajeDesafiado().getFortalezas().add(b.getListaFortalezas().get(k));
             }
         }
         try {
-            b.SerializePro("Desafio");        // TODO add your handling code here:
+            b.SerializePro("Desafio");
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -601,17 +609,35 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (Desafio desafio : b.getListadesafios()) {
-            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())){
+            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
                 desafio.getPersonajeDesafiado().getDebilidades().add(b.getListaDebilidades().get(k));
             }
-        }          // TODO add your handling code here:
+        } 
+        try {
+            b.SerializePro("Desafio");
+        } catch (IOException ex) {
+            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AñadirDeb2ActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-    // GestorCombate gest = new GestorCombate(pers desafiante, pers desafiado);
-     //gest.GenerarCombate();
-     //gest.getCombate(); y vemos a quienes les tenemos q pasar este combate y donde lo tenemos que guardar
-      
+        BaseDatos b = new BaseDatos();
+        try {
+            b.DeserializePro("Desafio");
+        } catch (IOException ex) {
+            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (Desafio desafio : b.getListadesafios()) {
+            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
+                GestorCombate gest = new GestorCombate (desafio.getPersonajeDesafiante(),desafio.getPersonajeDesafiado());
+                gest.generarCombate();               
+            }
+            // GestorCombate gest = new GestorCombate(pers desafiante, pers desafiado);
+            //gest.GenerarCombate();
+            //gest.getCombate(); y vemos a quienes les tenemos q pasar este combate y donde lo tenemos que guardar
+        }
     }//GEN-LAST:event_AceptarActionPerformed
 
     /**
