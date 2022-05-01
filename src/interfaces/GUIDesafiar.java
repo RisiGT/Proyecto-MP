@@ -6,10 +6,17 @@
 package interfaces;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import personajes.Demonio;
+import personajes.Esbirro;
+import personajes.Ghoul;
+import personajes.Humano;
+import personajes.Personaje;
 import practicamp.BaseDatos;
 import practicamp.Desafio;
 import practicamp.Usuario;
@@ -22,7 +29,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
 
     private Usuario usuario;
     private BaseDatos base;
-
+    private ArrayList<Esbirro> listaEsbirros = new ArrayList<Esbirro>();
     /**
      * Creates new form GUIDesafiar
      */
@@ -57,6 +64,11 @@ public class GUIDesafiar extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Lista = new javax.swing.JList<>();
+        nombreEsbirro = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        seleccionEsbirro = new javax.swing.JList<>();
+        añadirEsbirro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,28 +100,60 @@ public class GUIDesafiar extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(Lista);
 
+        jLabel4.setText("Nombre");
+
+        seleccionEsbirro.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Humano", "Ghoul", "Demonio" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(seleccionEsbirro);
+
+        añadirEsbirro.setText("Añadir");
+        añadirEsbirro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                añadirEsbirroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(Cancelar)
+                .addGap(280, 280, 280))
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Oro)
-                            .addComponent(Desafiado)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addGap(46, 46, 46)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Oro, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                                    .addComponent(Desafiado)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(290, 290, 290)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(290, 290, 290)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(131, 131, 131)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nombreEsbirro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64)
+                                .addComponent(añadirEsbirro)))))
                 .addContainerGap(326, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -128,11 +172,23 @@ public class GUIDesafiar extends javax.swing.JFrame {
                             .addComponent(Oro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addComponent(Aceptar)
-                .addGap(28, 28, 28)
-                .addComponent(Cancelar)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nombreEsbirro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(añadirEsbirro))
+                        .addGap(90, 90, 90))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Cancelar)
+                    .addComponent(Aceptar))
+                .addGap(76, 76, 76))
         );
 
         pack();
@@ -166,7 +222,9 @@ public class GUIDesafiar extends javax.swing.JFrame {
                                 Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             if (!(b2.yaDesafiado(nombre))) {
-                                Desafio desafio = new Desafio(usuario, b.getUsuario(nombre), Integer.valueOf(Oro.getText()), usuario.getPersonaje(Lista.getSelectedValue()));
+                                Personaje p = usuario.getPersonaje(Lista.getSelectedValue());
+                                p.setEsbirros(listaEsbirros);
+                                Desafio desafio = new Desafio(usuario, b.getUsuario(nombre), Integer.valueOf(Oro.getText()), p);
                                 b.getListadesafios().add(desafio);
                                 try {
                                     b2.SerializePro("Desafio");
@@ -201,6 +259,51 @@ public class GUIDesafiar extends javax.swing.JFrame {
         g3.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_CancelarActionPerformed
+
+    private void añadirEsbirroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirEsbirroActionPerformed
+        switch (seleccionEsbirro.getSelectedIndex()) {
+            case 1:
+                if (usuario.getOro()>=10){
+                    Humano h = new Humano(nombreEsbirro.getText(),2,0);
+                    listaEsbirros.add(h);
+                    usuario.setOro(usuario.getOro()-10);
+                }
+                else {
+                    //oro insuficiente
+                }
+                break;
+            case 2:
+                if (usuario.getOro()>=10){
+                    Ghoul g = new Ghoul(nombreEsbirro.getText(),2,0);
+                    listaEsbirros.add(g);
+                    usuario.setOro(usuario.getOro()-10);
+                }
+                else {
+                    //oro insuficiente
+                }
+                break;
+            case 3:              
+                if (usuario.getOro()>=30){
+        Demonio d = new Demonio(nombreEsbirro.getText(),2,"Pacto del demonio "+nombreEsbirro.getText()+" con "+usuario.getNombre());
+        Random rand = new Random();
+        int j = rand.nextInt(3);
+        for (int i = 0; i<=j;i++){
+            String s = Integer.toString(i);
+            Ghoul g = new Ghoul("Esbirro del demonio "+nombreEsbirro.getText()+" número "+s,2,0);
+        }
+        listaEsbirros.add(d);
+        usuario.setOro(usuario.getOro()-30);
+            }
+            else {
+                //oro insuficiente
+                }
+       
+                break;
+        }
+       
+        
+        
+    }//GEN-LAST:event_añadirEsbirroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,9 +346,14 @@ public class GUIDesafiar extends javax.swing.JFrame {
     private javax.swing.JTextField Desafiado;
     private javax.swing.JList<String> Lista;
     private javax.swing.JTextField Oro;
+    private javax.swing.JButton añadirEsbirro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField nombreEsbirro;
+    private javax.swing.JList<String> seleccionEsbirro;
     // End of variables declaration//GEN-END:variables
 }
