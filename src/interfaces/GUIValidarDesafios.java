@@ -608,7 +608,10 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
     }//GEN-LAST:event_AñadirDeb2ActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-
+    // GestorCombate gest = new GestorCombate(pers desafiante, pers desafiado);
+     //gest.GenerarCombate();
+     //gest.getCombate(); y vemos a quienes les tenemos q pasar este combate y donde lo tenemos que guardar
+      
     }//GEN-LAST:event_AceptarActionPerformed
 
     /**
