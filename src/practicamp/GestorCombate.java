@@ -206,7 +206,20 @@ public GestorCombate(Personaje p1, Personaje p2){
         listaEsbirrosPers1.remove(0);
     } 
     }
-    
+    if (valorAtaque1==1){
+        if (pers1.getTipo()==1){
+            Vampiro v = (Vampiro) pers1; 
+            v.setPtosSangre(4+v.getPtosSangre());
+            pers1=v;
+        }
+    }
+    if (valorAtaque2==1){
+        if (pers2.getTipo()==1){
+            Vampiro v = (Vampiro) pers2; 
+            v.setPtosSangre(4+v.getPtosSangre());
+            pers2=v;
+        }   
+    }
     return ronda;
  }
 }
