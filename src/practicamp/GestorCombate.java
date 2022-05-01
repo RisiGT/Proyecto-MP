@@ -5,6 +5,7 @@
 package practicamp;
 
 import java.util.ArrayList;
+import java.util.Random;
 import personajes.Cazador;
 import personajes.Demonio;
 import personajes.Esbirro;
@@ -77,6 +78,14 @@ public GestorCombate(Personaje p1, Personaje p2){
 }    
  public Ronda nuevaRonda(){ 
      Ronda ronda = new Ronda();
+    int valorAtaque1;
+    int valorAtaque2;
+    int valorDefensa1;
+    int valorDefensa2;
+    valorAtaque1=0;
+    valorDefensa1=0;
+    valorAtaque2=0;
+    valorDefensa2=0;
      poder1=pers1.getPoder()+pers1.getArmaActiva().getModAtaque()+pers1.getArmaduraActiva().getModAtaque()-pers1.getDebilidades().get(1).getValor()+pers1.getFortalezas().get(1).getValor();
         if (pers1.getTipo()==1){//es un vampiro
             Vampiro v = (Vampiro) pers1;
@@ -121,31 +130,64 @@ public GestorCombate(Personaje p1, Personaje p2){
                  poder2=poder2+c.getHabilidadespecial().getAtaque();
                  pers2=c;
              }  
-    if (poder1>defensa2){
-        poder1=poder1-defensa2;
-    }      
-    else{
-        poder1=0;
+    //Conseguimos el valor de ataque con la mecanica de dados
+    for  (int i=0; i<poder1; i++){
+        Random rand = new Random();
+        int j = rand.nextInt(5)+1;
+        if (j>4){
+            valorAtaque1=valorAtaque1++;
+            
+        }
+        
     }
-    if (poder2>defensa1){
-        poder2=poder2-defensa1;
+    for  (int i=0; i<poder2; i++){
+        Random rand = new Random();
+        int j = rand.nextInt(5)+1;
+        if (j>4){
+            valorAtaque2=valorAtaque2++;
+            
+        }
+        
+    }
+    for  (int i=0; i<defensa1; i++){
+        Random rand = new Random();
+        int j = rand.nextInt(5)+1;
+        if (j>4){
+            valorDefensa1=valorDefensa1++;
+            
+        }
+        
+    }
+    for  (int i=0; i<defensa2; i++){
+        Random rand = new Random();
+        int j = rand.nextInt(5)+1;
+        if (j>4){
+            valorDefensa2=valorDefensa2++;
+            
+        }
+        
+    }
+    
+    if (valorAtaque1>=valorDefensa2){
+        valorAtaque1=1;
     }      
     else{
-        poder2=0;
+        valorAtaque1=0;
+    }
+    if (valorAtaque2>=valorDefensa1){
+        valorAtaque2=1;
+    }      
+    else{
+        valorAtaque2=0;
     }
     
     
     if (listaEsbirrosPers2.isEmpty()){
-        if (poder1>salud2){
-            salud2=0;
-    }    
-    else{
-       salud2=salud2-poder1; 
-    }
+        salud2=salud2-valorAtaque1;
     }
     else{
-    if (poder1<listaEsbirrosPers2.get(0).getSalud()){
-        listaEsbirrosPers2.get(0).setSalud(listaEsbirrosPers2.get(0).getSalud()-poder1);
+    if (1<=listaEsbirrosPers2.get(0).getSalud()-valorAtaque1){
+        listaEsbirrosPers2.get(0).setSalud(listaEsbirrosPers2.get(0).getSalud()-valorAtaque1);
     }
     else {
         ronda.setEsbirro2(listaEsbirrosPers2.get(0));
@@ -153,22 +195,18 @@ public GestorCombate(Personaje p1, Personaje p2){
     }
     }
     if (listaEsbirrosPers1.isEmpty()){
-    if (poder2>salud1){
-            salud1=0;
-    }    
-    else{
-       salud1=salud1-poder2; 
-    }    
+    salud1=salud1-valorAtaque2;    
     }
     else{
-    if (poder2<listaEsbirrosPers1.get(0).getSalud()){
-        listaEsbirrosPers1.get(0).setSalud(listaEsbirrosPers1.get(0).getSalud()-poder2);
+    if (1<=listaEsbirrosPers1.get(0).getSalud()-valorAtaque2){
+        listaEsbirrosPers1.get(0).setSalud(listaEsbirrosPers1.get(0).getSalud()-valorAtaque2);
     }
     else{
         ronda.setEsbirro(listaEsbirrosPers1.get(0));
         listaEsbirrosPers1.remove(0);
     } 
     }
+    
     return ronda;
  }
 }
