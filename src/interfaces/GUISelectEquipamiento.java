@@ -15,10 +15,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import personajes.Cazador;
-import personajes.Licantropo;
-import personajes.Personaje;
-import personajes.Vampiro;
 import practicamp.BaseDatos;
 import practicamp.Usuario;
 
