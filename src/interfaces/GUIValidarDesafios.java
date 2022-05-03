@@ -20,6 +20,7 @@ import practicamp.Combate;
 import practicamp.Desafio;
 import practicamp.GestorCombate;
 import practicamp.Operador;
+import practicamp.ResultadosCombate;
 
 /**
  *
@@ -635,15 +636,23 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 GestorCombate gest = new GestorCombate (desafio.getPersonajeDesafiante(),desafio.getPersonajeDesafiado());
                 gest.generarCombate();  
                 Combate comb = gest.getCombate();
-                if (comb.getGanador()==false){ //ha ganado el desafiante, le sumamos el oro
-                    
+                ResultadosCombate res = new ResultadosCombate("Nombre desafiante+Nombre desafiado+fecha y hora",comb);
+                if (comb.getGanador()==false){ //ha ganado el desafiante
+                    res.setGanador("usuario desafiante");
+                    //usuarioDesafiante.añadirCombate(res);
+                    //usuarioDesafiado.añadirCombate(res);
+                    //usuarioDesafiante.setOro(Desafio.getOro());
                 }
-                else{ // gana el desafiado y le sumamos el oro
-                    
+                else{ // gana el desafiado
+                    res.setGanador("usuario desafiado");
+                    //usuarioDesafiado.añadirCombate(res);
+                    //usuarioDesafiante.añadirCombate(res);
+                    //usuarioDesafiado.setOro(Desafio.getOro());
+                }
                 }
             }
-            
-        }
+     
+        
     }//GEN-LAST:event_AceptarActionPerformed
 
     /**
