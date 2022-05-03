@@ -31,7 +31,7 @@
               <Component id="Ok" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="130" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -40,11 +40,11 @@
                   <Component id="lblOperatorCode" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Nick" alignment="1" min="-2" pref="79" max="-2" attributes="0"/>
-                  <Component id="OperatorCode" alignment="1" min="-2" pref="79" max="-2" attributes="0"/>
-                  <Component id="Password" alignment="1" min="-2" pref="79" max="-2" attributes="0"/>
-                  <Component id="Name" alignment="1" min="-2" pref="79" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="OperatorCode" alignment="1" pref="90" max="32767" attributes="0"/>
+                  <Component id="Nick" alignment="1" max="32767" attributes="0"/>
+                  <Component id="Password" alignment="1" max="32767" attributes="0"/>
+                  <Component id="Name" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
           </Group>
@@ -60,8 +60,8 @@
               </Group>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Password" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Password" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -73,7 +73,7 @@
                   <Component id="lblOperatorCode" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="OperatorCode" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Exit" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Ok" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -109,7 +109,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NickActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="Password">
+    <Component class="javax.swing.JPasswordField" name="Password">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasswordActionPerformed"/>
       </Events>
@@ -137,7 +137,7 @@
         <Property name="text" type="java.lang.String" value="Opcional (C&#xf3;digo de operador)"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="OperatorCode">
+    <Component class="javax.swing.JPasswordField" name="OperatorCode">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OperatorCodeActionPerformed"/>
       </Events>

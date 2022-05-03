@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package interfaces;
+import java.awt.HeadlessException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -21,11 +22,11 @@ import practicamp.Usuario;
 public class GUIRegistrarse extends javax.swing.JFrame {
 
     private BaseDatos base;
-    private GUIMenuIni mi;
-
-    public GUIMenuIni getMi() {
-        return mi;
-    }
+    private GUIMenuIni mi;    
+    private String name;
+    private String pass;
+    private String nick;
+    private static final String code = "123";
 
     public void setMi(GUIMenuIni mi) {
         this.mi = mi;
@@ -54,11 +55,11 @@ public class GUIRegistrarse extends javax.swing.JFrame {
         lblNick = new javax.swing.JLabel();
         Name = new javax.swing.JTextField();
         Nick = new javax.swing.JTextField();
-        Password = new javax.swing.JTextField();
+        Password = new javax.swing.JPasswordField();
         Ok = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
         lblOperatorCode = new javax.swing.JLabel();
-        OperatorCode = new javax.swing.JTextField();
+        OperatorCode = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -129,7 +130,7 @@ public class GUIRegistrarse extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(Ok)
                 .addContainerGap(130, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblName)
@@ -137,11 +138,11 @@ public class GUIRegistrarse extends javax.swing.JFrame {
                     .addComponent(lblNick)
                     .addComponent(lblOperatorCode))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Nick, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(OperatorCode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(OperatorCode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(Nick, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Password, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Name, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(79, 79, 79))
         );
         layout.setVerticalGroup(
@@ -153,8 +154,8 @@ public class GUIRegistrarse extends javax.swing.JFrame {
                     .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword))
+                    .addComponent(lblPassword)
+                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Nick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,7 +164,7 @@ public class GUIRegistrarse extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOperatorCode, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(OperatorCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Exit)
                     .addComponent(Ok))
@@ -181,61 +182,68 @@ public class GUIRegistrarse extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NickActionPerformed
 
-    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PasswordActionPerformed
-
     private void OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkActionPerformed
-        String name = Name.getText();
-        String pass = Password.getText();
-        String nick = Nick.getText();
+        this.name = Name.getText();
+        this.pass = Password.getText();
+        this.nick = Nick.getText();
         
-        try {
-            this.base.DeserializePro("Operator");
-        } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(GUIRegistrarse.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        try {
-            this.base.DeserializePro("Usuario");
-        } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(GUIRegistrarse.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        BaseDatos b = this.base;
-        
-        if((b.perteneceOperador(name)) || (b.pertenece(name))){
-            JOptionPane.showMessageDialog(null, "Nombre ya registrado");            
-        }
-        else {
-            if (OperatorCode.getText().equals("123")) {
-                Operador o = new Operador(name, pass, nick);
-                b.getListaoperadores().add(o);
-                try {
-                    b.SerializePro("Operator");
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIRegistrarse.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                System.out.println("Operador " + name + " registrado");
-            }
-            else {
-                Usuario u = new Usuario(name, pass, nick);
-                b.getListausuarios().add(u);
-                try {
-                    b.SerializePro("Usuario");
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIRegistrarse.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                System.out.println("Usuario " + name + " alias " + nick + " registrado");
-            }
-                
-            GUIMenuIni i = new GUIMenuIni();
-            i.setVisible(true);
-            this.setVisible(false);
-        }
-
+        algo(base);
     }//GEN-LAST:event_OkActionPerformed
 
+    private void algo(BaseDatos b) throws HeadlessException {
+        deserialize(b, "Operator");
+        deserialize(b, "Usuario");
+        
+        if((b.perteneceOperador(name)) || (b.pertenece(name))){
+            errorUser("Nombre ya registrado");
+        }
+        else {
+            if (OperatorCode.getText().equals(code)) {
+                signUpAdmin(b);
+            }
+            else {
+                signUpUser(b);
+            }
+            returnStart();
+        }
+    }
+
+    private void signUpUser(BaseDatos b) {
+        Usuario u = new Usuario(name, pass, nick);
+        b.getListausuarios().add(u);
+        serialize(b, "Usuario");
+        
+        System.out.println("Usuario " + name + " alias " + nick + " registrado");
+    }
+
+    private void signUpAdmin(BaseDatos b) {
+        Operador o = new Operador(name, pass, nick);
+        b.getListaoperadores().add(o);
+        serialize(b, "Operator");
+        
+        System.out.println("Operador " + name + " registrado");
+    }
+    
+    private void errorUser(String reason) throws HeadlessException {
+        JOptionPane.showMessageDialog(null, reason);
+    }
+
+    private void deserialize(BaseDatos b, String thing) {
+        try {
+            b.deserializePro(thing);
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(GUIRegistrarse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void serialize(BaseDatos b, String thing) {
+        try {
+            b.serializePro(thing);
+        } catch (IOException ex) {
+            Logger.getLogger(GUIRegistrarse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void OkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OkMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_OkMouseClicked
@@ -245,10 +253,17 @@ public class GUIRegistrarse extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitMouseClicked
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-        GUIMenuIni m = this.mi;
-        m.setVisible(true);
-        this.dispose();
+        returnStart();
     }//GEN-LAST:event_ExitActionPerformed
+
+    private void returnStart() {
+        mi.setVisible(true);
+        this.dispose();
+    }
+    
+    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordActionPerformed
 
     private void OperatorCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OperatorCodeActionPerformed
         // TODO add your handling code here:
@@ -291,8 +306,8 @@ public class GUIRegistrarse extends javax.swing.JFrame {
     private javax.swing.JTextField Name;
     private javax.swing.JTextField Nick;
     private javax.swing.JButton Ok;
-    private javax.swing.JTextField OperatorCode;
-    private javax.swing.JTextField Password;
+    private javax.swing.JPasswordField OperatorCode;
+    private javax.swing.JPasswordField Password;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNick;
     private javax.swing.JLabel lblOperatorCode;
