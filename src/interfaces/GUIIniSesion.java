@@ -6,6 +6,7 @@
 package interfaces;
 
 import interfacesAdmin.GUIOperador;
+import java.awt.HeadlessException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -141,8 +142,7 @@ public class GUIIniSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitMouseClicked
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-        GUIMenuIni m = this.mi;
-        m.setVisible(true);
+        mi.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ExitActionPerformed
 
@@ -151,59 +151,68 @@ public class GUIIniSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordActionPerformed
 
     private void SignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInActionPerformed
-        //this.Password= new String(Arrays.toString(Password.getPassword()));
         this.name = new String(User.getText());
         this.password = new String(Password.getText());
         
         BaseDatos b = this.base;
         
+        SignIn(b);
+    }//GEN-LAST:event_SignInActionPerformed
+
+    private void SignIn(BaseDatos b) throws HeadlessException {
+        desearialize(b, "Operator");
+        
+        if (b.perteneceOperador(name)) {
+            adminCheck(b);    
+        
+        } else if (b.pertenece(name)){
+            desearialize(b, "Usuario");
+            desearialize(b, "Ban");
+            
+            if (!(b.perteneceBaneado(name))) {
+                userCheck(b);    
+                
+            } else {
+                errorUser("Cuenta baneada");
+            }
+        
+        } else {
+            errorUser("Usuario inexistente");
+        }
+    }
+
+    private void userCheck(BaseDatos b) throws HeadlessException {
+        if (b.okIni(name, password)) {
+            GUIMenuUsuario i = new GUIMenuUsuario(b.getUsuario(name));
+            i.setVisible(true);
+            this.dispose();
+        } else {
+            errorUser("Usuario o contraseña incorrectos");
+        }
+    }
+
+    private void adminCheck(BaseDatos b) throws HeadlessException {
+        if (b.okIniOperador(name, password)) {
+            GUIOperador i = new GUIOperador(b.getOperador(name));
+            i.setVisible(true);
+            this.dispose();
+            
+        } else {
+            errorUser("Usuario o contraseña incorrectos");
+        }
+    }
+
+    private void errorUser(String reason) throws HeadlessException {
+        JOptionPane.showMessageDialog(null, reason);
+    }
+    
+    private void desearialize(BaseDatos b, String thing) {
         try {
-            b.DeserializePro("Operator");
+            b.deserializePro(thing);
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(GUIIniSesion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        if (b.perteneceOperador(name)) {
-            if (b.okIniOperador(name, password)) {
-                GUIOperador i = new GUIOperador(b.getOperador(name));
-                i.setVisible(true);
-                this.setVisible(false);
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
-            }
-            
-        } else {
-            
-            try {
-                b.DeserializePro("Usuario");
-            } catch (IOException | ClassNotFoundException ex) {
-                Logger.getLogger(GUIIniSesion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            try {
-                b.DeserializePro("Ban");
-            } catch (IOException | ClassNotFoundException ex) {
-                Logger.getLogger(GUIIniSesion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            if (!(b.perteneceBaneado(name))) {
-                if (b.pertenece(name)) {
-                    if (b.okIni(name, password)) {
-                        GUIMenuUsuario i = new GUIMenuUsuario(b.getUsuario(name));
-                        i.setVisible(true);
-                        this.setVisible(false);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Usuario no existente");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Cuenta baneada");
-            }
-        }
-    }//GEN-LAST:event_SignInActionPerformed
+    }
                                 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
