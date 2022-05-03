@@ -154,34 +154,39 @@ public class GUIIniSesion extends javax.swing.JFrame {
         this.name = new String(User.getText());
         this.password = new String(Password.getText());
         
-        BaseDatos b = this.base;
-        
-        SignIn(b);
+        SignIn(base);
     }//GEN-LAST:event_SignInActionPerformed
 
     private void SignIn(BaseDatos b) throws HeadlessException {
-        desearialize(b, "Operator");
+        deserialize(b, "Operator");
         
         if (b.perteneceOperador(name)) {
             adminCheck(b);    
         
-        } else if (b.pertenece(name)){
-            desearialize(b, "Usuario");
-            desearialize(b, "Ban");
-            
-            if (!(b.perteneceBaneado(name))) {
-                userCheck(b);    
-                
-            } else {
-                errorUser("Cuenta baneada");
-            }
-        
         } else {
-            errorUser("Usuario inexistente");
+            deserialize(b, "Usuario");
+            
+            if (b.pertenece(name)){   
+                userCheck(b);                
+
+            } else {
+                errorUser("Usuario inexistente");
+            }
         }
     }
 
     private void userCheck(BaseDatos b) throws HeadlessException {
+        deserialize(b, "Ban");
+       
+        if (!(b.perteneceBaneado(name))) {
+            userCheckNotBanned(b);   
+
+        } else {
+            errorUser("Cuenta baneada");
+        }
+    }
+
+    private void userCheckNotBanned(BaseDatos b) throws HeadlessException {
         if (b.okIni(name, password)) {
             GUIMenuUsuario i = new GUIMenuUsuario(b.getUsuario(name));
             i.setVisible(true);
@@ -206,7 +211,7 @@ public class GUIIniSesion extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, reason);
     }
     
-    private void desearialize(BaseDatos b, String thing) {
+    private void deserialize(BaseDatos b, String thing) {
         try {
             b.deserializePro(thing);
         } catch (IOException | ClassNotFoundException ex) {
