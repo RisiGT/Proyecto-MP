@@ -17,6 +17,7 @@ public class Desafio implements Serializable {
     private Usuario desafiante;
     private Usuario desafiado;
     private int oro;
+    private int oroDesafiado;
     private Personaje personajeDesafiante;
     private Personaje personajeDesafiado;
     private int estado; //0 si el desafio esta enviado, 1 si lo ha aceptado el otro, 2 si lo ha validado el operador
@@ -27,6 +28,14 @@ public class Desafio implements Serializable {
         this.oro = oro;
         this.personajeDesafiante = personajeDesafiante;
         estado = 0;
+    }
+
+    public void setOroDesafiado(int oroDesafiado) {
+        this.oroDesafiado = oroDesafiado;
+    }
+
+    public int getOroDesafiado() {
+        return oroDesafiado;
     }
 
     public int oroPorRechazar() {

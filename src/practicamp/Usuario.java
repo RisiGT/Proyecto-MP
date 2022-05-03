@@ -61,6 +61,14 @@ public class Usuario extends Persona implements Serializable {
         return code;
     }
 
+    public ArrayList<ResultadosCombate> getResultadosCombates() {
+        return resultadosCombates;
+    }
+
+    public void setResultadosCombates(ArrayList<ResultadosCombate> resultadosCombates) {
+        this.resultadosCombates = resultadosCombates;
+    }
+
     public void setOro(int oro) {
         this.oro = oro;
     }

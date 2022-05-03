@@ -147,6 +147,7 @@ public class GUIBanear extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ese usuario no existe");
             }
         } else if ("Desbanear".equals(Lista.getSelectedValue())){
+            if (base.perteneceBaneados(nombre)) {
             base.getListabaneados().remove(nombre);
             JOptionPane.showMessageDialog(null, "'" + nombre + "'" + " ha sido desbaneado");
             try {
@@ -154,8 +155,10 @@ public class GUIBanear extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(GUIBanear.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }else {
+                JOptionPane.showMessageDialog(null, "Ese usuario no esta baneado");                
+            }
         }
-
     }//GEN-LAST:event_AceptarActionPerformed
 
     /**

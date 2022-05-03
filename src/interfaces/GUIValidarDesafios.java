@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import personajes.Personaje;
 import practicamp.BaseDatos;
 import practicamp.Combate;
@@ -29,10 +30,10 @@ import practicamp.ResultadosCombate;
 public class GUIValidarDesafios extends javax.swing.JFrame {
 
     private Operador operador;
-    List<Fortaleza> listaFortalezas1 = new ArrayList();
-    List<Debilidad> listaDebilidades1 = new ArrayList();
-    List<Fortaleza> listaFortalezas2 = new ArrayList();
-    List<Debilidad> listaDebilidades2 = new ArrayList();
+    List<Fortaleza> listaFortalezas1 = new ArrayList<>();
+    List<Debilidad> listaDebilidades1 = new ArrayList<>();
+    List<Fortaleza> listaFortalezas2 = new ArrayList<>();
+    List<Debilidad> listaDebilidades2 = new ArrayList<>();
 
     /**
      * Creates new form GUIValidarDesafios
@@ -40,7 +41,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
     public GUIValidarDesafios(Operador operador) {
         this.operador = operador;
         initComponents();
-                this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -73,6 +74,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
         AñadirFort1 = new javax.swing.JButton();
         AñadirDeb2 = new javax.swing.JButton();
         AñadirFort2 = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(728, 474));
@@ -91,6 +93,11 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             }
         });
 
+        ListaDesafios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListaDesafiosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(ListaDesafios);
 
         MostrarDeb1.setText("Debilidades del desafiante");
@@ -164,21 +171,32 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             }
         });
 
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(MostrarDeb1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(MostrarDesafios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(51, 51, 51)
+                            .addComponent(AñadirDeb1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(MostrarDeb1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(MostrarDesafios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(AñadirDeb1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(23, 23, 23)
+                        .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,7 +261,8 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Rechazar)
-                    .addComponent(Aceptar))
+                    .addComponent(Aceptar)
+                    .addComponent(Cancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -262,12 +281,22 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         }
         int i = b.getListadesafios().size();
-        for (int j = 0; j < i; j++) {
-            if (b.getListadesafios().get(j).getEstado() == 1) {
-                dlm1.addElement(b.getListadesafios().get(j).getDesafiado().getNombre());
+        if (!(i == 0)) {
+            boolean encontrado = false;
+            for (int j = 0; j < i; j++) {
+                if (b.getListadesafios().get(j).getEstado() == 1) {
+                    dlm1.addElement(b.getListadesafios().get(j).getDesafiado().getNombre());
+                    encontrado = true;
+                }
             }
+            if (encontrado) {
+                ListaDesafios.setModel(dlm1);
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay desafios para validar");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay desafios");
         }
-        ListaDesafios.setModel(dlm1);
     }//GEN-LAST:event_MostrarDesafiosActionPerformed
 
     @SuppressWarnings("unchecked")
@@ -417,212 +446,229 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 b.RechazarDesafio(ListaDesafios.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+            }       
         GUIOperador i = new GUIOperador(operador);
         i.setVisible(true);
         this.setVisible(false);
-
+    }else{
+                                    JOptionPane.showMessageDialog(null, "Seleccione un desafío");
+                }
     }//GEN-LAST:event_RechazarActionPerformed
 
     @SuppressWarnings("unchecked")
     private void AñadirDeb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirDeb1ActionPerformed
-        BaseDatos b = new BaseDatos();
-        try {
-            b.DeserializePro("Debilidad");
-        } catch (IOException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int k = ListaDeb1.getSelectedIndex();
-        listaDebilidades1.add(b.getListaDebilidades().get(k));
-        DefaultListModel dlm1 = new DefaultListModel();
-        int i = b.getListaFortalezas().size();
-        boolean pertenece;
-        for (int j = 0; j < i; j++) {
-            pertenece = false;
-            for (Debilidad list : listaDebilidades1) {
-                if (list.getName().equals(b.getListaDebilidades().get(j).getName())) {
-                    pertenece = true;
-                }
+        if (!(ListaDeb1.getSelectedValue() == null)) {
+            BaseDatos b = new BaseDatos();
+            try {
+                b.DeserializePro("Debilidad");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int k = ListaDeb1.getSelectedIndex();
+            listaDebilidades1.add(b.getListaDebilidades().get(k));
+            DefaultListModel dlm1 = new DefaultListModel();
+            int i = b.getListaFortalezas().size();
+            boolean pertenece;
+            for (int j = 0; j < i; j++) {
+                pertenece = false;
+                for (Debilidad list : listaDebilidades1) {
+                    if (list.getName().equals(b.getListaDebilidades().get(j).getName())) {
+                        pertenece = true;
+                    }
 
-                if (pertenece) {
-                    dlm1.addElement("");
-                } else {
-                    dlm1.addElement(b.getListaDebilidades().get(j).getName());
+                    if (pertenece) {
+                        dlm1.addElement("");
+                    } else {
+                        dlm1.addElement(b.getListaDebilidades().get(j).getName());
+                    }
+                }
+                ListaDeb1.setModel(dlm1);
+            }
+            try {
+                b.DeserializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (Desafio desafio : b.getListadesafios()) {
+                if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
+                    desafio.getPersonajeDesafiante().getDebilidades().add(b.getListaDebilidades().get(k));
                 }
             }
-            ListaDeb1.setModel(dlm1);
-        }
-        try {
-            b.DeserializePro("Desafio");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        for (Desafio desafio : b.getListadesafios()) {
-            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
-                desafio.getPersonajeDesafiante().getDebilidades().add(b.getListaDebilidades().get(k));
+            try {
+                b.SerializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        try {
-            b.SerializePro("Desafio");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una debilidad");
         }
     }//GEN-LAST:event_AñadirDeb1ActionPerformed
 
     @SuppressWarnings("unchecked")
     private void AñadirFort1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirFort1ActionPerformed
-        BaseDatos b = new BaseDatos();
-        try {
-            b.DeserializePro("Fortaleza");
-        } catch (IOException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int k = ListaFort1.getSelectedIndex();
-        listaFortalezas1.add(b.getListaFortalezas().get(k));
-        DefaultListModel dlm1 = new DefaultListModel();
-        int i = b.getListaFortalezas().size();
-        boolean pertenece;
-        for (int j = 0; j < i; j++) {
-            pertenece = false;
-            for (Fortaleza list : listaFortalezas1) {
-                if (list.getName().equals(b.getListaFortalezas().get(j).getName())) {
-                    pertenece = true;
-                }
+        if (!(ListaFort1.getSelectedValue() == null)) {
+            BaseDatos b = new BaseDatos();
+            try {
+                b.DeserializePro("Fortaleza");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int k = ListaFort1.getSelectedIndex();
+            listaFortalezas1.add(b.getListaFortalezas().get(k));
+            DefaultListModel dlm1 = new DefaultListModel();
+            int i = b.getListaFortalezas().size();
+            boolean pertenece;
+            for (int j = 0; j < i; j++) {
+                pertenece = false;
+                for (Fortaleza list : listaFortalezas1) {
+                    if (list.getName().equals(b.getListaFortalezas().get(j).getName())) {
+                        pertenece = true;
+                    }
 
-                if (pertenece) {
-                    dlm1.addElement("");
-                } else {
-                    dlm1.addElement(b.getListaFortalezas().get(j).getName());
+                    if (pertenece) {
+                        dlm1.addElement("");
+                    } else {
+                        dlm1.addElement(b.getListaFortalezas().get(j).getName());
+                    }
+                }
+                ListaFort1.setModel(dlm1);
+            }
+            try {
+                b.DeserializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (Desafio desafio : b.getListadesafios()) {
+                if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
+                    desafio.getPersonajeDesafiante().getFortalezas().add(b.getListaFortalezas().get(k));
                 }
             }
-            ListaFort1.setModel(dlm1);
-        }
-        try {
-            b.DeserializePro("Desafio");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        for (Desafio desafio : b.getListadesafios()) {
-            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
-                desafio.getPersonajeDesafiante().getFortalezas().add(b.getListaFortalezas().get(k));
+            try {
+                b.SerializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fortaleza");
         }
-        try {
-            b.SerializePro("Desafio");         
-        } catch (IOException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }//GEN-LAST:event_AñadirFort1ActionPerformed
 
     @SuppressWarnings({"unchecked", "unchecked"})
     private void AñadirFort2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirFort2ActionPerformed
-        BaseDatos b = new BaseDatos();
-        try {
-            b.DeserializePro("Fortaleza");
-        } catch (IOException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int k = ListaFort2.getSelectedIndex();
-        listaFortalezas2.add(b.getListaFortalezas().get(k));
-        DefaultListModel dlm1 = new DefaultListModel();
-        int i = b.getListaFortalezas().size();
-        boolean pertenece;
-        for (int j = 0; j < i; j++) {
-            pertenece = false;
-            for (Fortaleza list : listaFortalezas2) {
-                if (list.getName().equals(b.getListaFortalezas().get(j).getName())) {
-                    pertenece = true;
-                }
+        if (!(ListaFort2.getSelectedValue() == null)) {
+            BaseDatos b = new BaseDatos();
+            try {
+                b.DeserializePro("Fortaleza");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int k = ListaFort2.getSelectedIndex();
+            listaFortalezas2.add(b.getListaFortalezas().get(k));
+            DefaultListModel dlm1 = new DefaultListModel();
+            int i = b.getListaFortalezas().size();
+            boolean pertenece;
+            for (int j = 0; j < i; j++) {
+                pertenece = false;
+                for (Fortaleza list : listaFortalezas2) {
+                    if (list.getName().equals(b.getListaFortalezas().get(j).getName())) {
+                        pertenece = true;
+                    }
 
-                if (pertenece) {
-                    dlm1.addElement("");
-                } else {
-                    dlm1.addElement(b.getListaFortalezas().get(j).getName());
+                    if (pertenece) {
+                        dlm1.addElement("");
+                    } else {
+                        dlm1.addElement(b.getListaFortalezas().get(j).getName());
+                    }
+                }
+                ListaFort2.setModel(dlm1);
+            }
+            try {
+                b.DeserializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (Desafio desafio : b.getListadesafios()) {
+                if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
+                    desafio.getPersonajeDesafiado().getFortalezas().add(b.getListaFortalezas().get(k));
                 }
             }
-            ListaFort2.setModel(dlm1);
-        }
-        try {
-            b.DeserializePro("Desafio");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        for (Desafio desafio : b.getListadesafios()) {
-            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
-                desafio.getPersonajeDesafiado().getFortalezas().add(b.getListaFortalezas().get(k));
+            try {
+                b.SerializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        try {
-            b.SerializePro("Desafio");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fortaleza");
         }
     }//GEN-LAST:event_AñadirFort2ActionPerformed
 
     @SuppressWarnings("unchecked")
     private void AñadirDeb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirDeb2ActionPerformed
-        BaseDatos b = new BaseDatos();
-        try {
-            b.DeserializePro("Debilidad");
-        } catch (IOException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int k = ListaDeb2.getSelectedIndex();
-        listaDebilidades2.add(b.getListaDebilidades().get(k));
-        DefaultListModel dlm1 = new DefaultListModel();
-        int i = b.getListaFortalezas().size();
-        boolean pertenece;
-        for (int j = 0; j < i; j++) {
-            pertenece = false;
-            for (Debilidad list : listaDebilidades2) {
-                if (list.getName().equals(b.getListaDebilidades().get(j).getName())) {
-                    pertenece = true;
-                }
+        if (!(ListaDeb2.getSelectedValue() == null)) {
+            BaseDatos b = new BaseDatos();
+            try {
+                b.DeserializePro("Debilidad");
+            } catch (IOException ex) {
+                Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int k = ListaDeb2.getSelectedIndex();
+            listaDebilidades2.add(b.getListaDebilidades().get(k));
+            DefaultListModel dlm1 = new DefaultListModel();
+            int i = b.getListaFortalezas().size();
+            boolean pertenece;
+            for (int j = 0; j < i; j++) {
+                pertenece = false;
+                for (Debilidad list : listaDebilidades2) {
+                    if (list.getName().equals(b.getListaDebilidades().get(j).getName())) {
+                        pertenece = true;
+                    }
 
-                if (pertenece) {
-                    dlm1.addElement("");
-                } else {
-                    dlm1.addElement(b.getListaDebilidades().get(j).getName());
+                    if (pertenece) {
+                        dlm1.addElement("");
+                    } else {
+                        dlm1.addElement(b.getListaDebilidades().get(j).getName());
+                    }
+                }
+                ListaDeb2.setModel(dlm1);
+            }
+            try {
+                b.DeserializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (Desafio desafio : b.getListadesafios()) {
+                if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
+                    desafio.getPersonajeDesafiado().getDebilidades().add(b.getListaDebilidades().get(k));
                 }
             }
-            ListaDeb2.setModel(dlm1);
-        }
-        try {
-            b.DeserializePro("Desafio");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        for (Desafio desafio : b.getListadesafios()) {
-            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
-                desafio.getPersonajeDesafiado().getDebilidades().add(b.getListaDebilidades().get(k));
+            try {
+                b.SerializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } 
-        try {
-            b.SerializePro("Desafio");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una debilidad");
         }
     }//GEN-LAST:event_AñadirDeb2ActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+if (!(ListaDesafios.getSelectedValue()==null)){
         BaseDatos b = new BaseDatos();
         try {
             b.DeserializePro("Desafio");
@@ -633,31 +679,47 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
         }
         for (Desafio desafio : b.getListadesafios()) {
             if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
-                GestorCombate gest = new GestorCombate (desafio.getPersonajeDesafiante(),desafio.getPersonajeDesafiado());
-                gest.generarCombate();  
+                GestorCombate gest = new GestorCombate(desafio.getPersonajeDesafiante(), desafio.getPersonajeDesafiado(), desafio.getOro(), desafio.getOroDesafiado(), desafio.getDesafiante().getNombre(), desafio.getDesafiado().getNombre());
+                gest.generarCombate();
                 Combate comb = gest.getCombate();
-                ResultadosCombate res = new ResultadosCombate("Nombre desafiante+Nombre desafiado+fecha y hora",comb);
-                if (comb.getGanador()==false){ //ha ganado el desafiante
-                    res.setGanador("usuario desafiante");
-                    //usuarioDesafiante.añadirCombate(res);
-                    //usuarioDesafiado.añadirCombate(res);
-                    //usuarioDesafiante.setOro(Desafio.getOro());
-                }
-                else{ // gana el desafiado
-                    res.setGanador("usuario desafiado");
-                    //usuarioDesafiado.añadirCombate(res);
-                    //usuarioDesafiante.añadirCombate(res);
-                    //usuarioDesafiado.setOro(Desafio.getOro());
-                }
-                }
+                //              ResultadosCombate res = new ResultadosCombate("Nombre desafiante+Nombre desafiado+fecha y hora",comb);
+                //              if (comb.getGanador()==false){ //ha ganado el desafiante
+                //                   res.setGanador("usuario desafiante");
+                //usuarioDesafiante.añadirCombate(res);
+                //usuarioDesafiado.añadirCombate(res);
+                //usuarioDesafiante.setOro(Desafio.getOro());
+                //              }
+                //              else{ // gana el desafiado
+                //                  res.setGanador("usuario desafiado");
+                //usuarioDesafiado.añadirCombate(res);
+                //usuarioDesafiante.añadirCombate(res);
+                //usuarioDesafiado.setOro(Desafio.getOro());
             }
-     
-        
+        }
+        //  }
+}else{
+                                    JOptionPane.showMessageDialog(null, "Seleccione un desafío");
+                }
+
     }//GEN-LAST:event_AceptarActionPerformed
 
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        GUIOperador i = new GUIOperador(operador);
+        i.setVisible(true);
+        this.setVisible(false);// TODO add your handling code here:
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void ListaDesafiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaDesafiosMouseClicked
+     DefaultListModel dlm= new DefaultListModel();
+     ListaFort1.setModel(dlm);
+     ListaFort2.setModel(dlm);
+     ListaDeb1.setModel(dlm);
+     ListaDeb2.setModel(dlm);
+    }//GEN-LAST:event_ListaDesafiosMouseClicked
+
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -696,6 +758,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
     private javax.swing.JButton AñadirDeb2;
     private javax.swing.JButton AñadirFort1;
     private javax.swing.JButton AñadirFort2;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JList<String> ListaDeb1;
     private javax.swing.JList<String> ListaDeb2;
     private javax.swing.JList<String> ListaDesafios;

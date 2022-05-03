@@ -183,60 +183,79 @@ public class GUIArmas_Armaduras extends javax.swing.JFrame {
     }//GEN-LAST:event_NombreActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        String nombre = new String(Nombre.getText());
-        int ataque = Integer.valueOf(Ataque.getText());
-        int defensa = Integer.valueOf(Defensa.getText());
-        if (Lista.getSelectedValue().equals("Arma")) {/////////////////////////Si es un arma
+        if (!(Lista.getSelectedValue() == null)) {
+            if (!(Nombre.getText().equals(""))) {
+                if (!(Ataque.getText().equals(""))) {
+                    if (!(Defensa.getText().equals(""))) {
+                        if (!(ManosOcupadas.getText().equals(""))) {
+                            String nombre = new String(Nombre.getText());
+                            int ataque = Integer.valueOf(Ataque.getText());
+                            int defensa = Integer.valueOf(Defensa.getText());
+                            if (Lista.getSelectedValue().equals("Arma")) {/////////////////////////Si es un arma
 
-            try {
-                this.base.DeserializePro(Lista.getSelectedValue());
-            } catch (IOException ex) {
-                Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            BaseDatos b = this.base;
-            int manos = Integer.valueOf(ManosOcupadas.getText());
-            Arma arma = new Arma(nombre, ataque, defensa, manos);
+                                try {
+                                    this.base.DeserializePro(Lista.getSelectedValue());
+                                } catch (IOException ex) {
+                                    Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
+                                } catch (ClassNotFoundException ex) {
+                                    Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                BaseDatos b = this.base;
+                                int manos = Integer.valueOf(ManosOcupadas.getText());
+                                Arma arma = new Arma(nombre, ataque, defensa, manos);
 
-            if (!(b.perteneceArma(nombre))) {
+                                if (!(b.perteneceArma(nombre))) {
 
-                b.getListaArmas().add(arma);
-                try {
-                    b.SerializePro(Lista.getSelectedValue());
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
+                                    b.getListaArmas().add(arma);
+                                    try {
+                                        b.SerializePro(Lista.getSelectedValue());
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Ese nombre del arma ya esta en uso");
+                                }
+
+                            } else {      /////////////////Si es una armadura
+                                try {
+                                    this.base.DeserializePro(Lista.getSelectedValue());
+                                } catch (IOException ex) {
+                                    Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
+                                } catch (ClassNotFoundException ex) {
+                                    Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                BaseDatos b = this.base;
+                                Armadura armadura = new Armadura(nombre, ataque, defensa);
+
+                                if (!(b.perteneceArmadura(nombre))) {
+                                    b.getListaArmaduras().add(armadura);
+                                    try {
+                                        b.SerializePro(Lista.getSelectedValue());
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Ese nombre de armadura ya esta en uso");
+                                }
+                            }
+                            GUIOperador i = new GUIOperador(operador);
+                            i.setVisible(true);
+                            this.setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Introduzca las manos ocupadas");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Introduzca defensa");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Introduzca ataque");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Ese nombre del arma ya esta en uso");
+                JOptionPane.showMessageDialog(null, "Introduzca un nombre");
             }
-
-        } else {      /////////////////Si es una armadura
-            try {
-                this.base.DeserializePro(Lista.getSelectedValue());
-            } catch (IOException ex) {
-                Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            BaseDatos b = this.base;
-            Armadura armadura = new Armadura(nombre, ataque, defensa);
-
-            if (!(b.perteneceArmadura(nombre))) {
-                b.getListaArmaduras().add(armadura);
-                try {
-                    b.SerializePro(Lista.getSelectedValue());
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Ese nombre de armadura ya esta en uso");
-            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione Arma o Armadura");
         }
-        GUIOperador i = new GUIOperador(operador);
-        i.setVisible(true);
-        this.setVisible(false);
-
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed

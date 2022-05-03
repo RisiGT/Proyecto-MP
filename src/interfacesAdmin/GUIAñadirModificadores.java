@@ -105,7 +105,7 @@ public class GUIAñadirModificadores extends javax.swing.JFrame {
                         .addGap(156, 156, 156)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
-                            .addComponent(Aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                            .addComponent(Aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
                         .addGap(207, 207, 207))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
@@ -122,11 +122,11 @@ public class GUIAñadirModificadores extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Valor)
+                    .addComponent(Valor, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                     .addComponent(Nombre))
-                .addGap(153, 153, 153))
+                .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,6 +161,10 @@ public class GUIAñadirModificadores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+if (!(Lista.getSelectedValue()==null)){
+    if (!(ListaPersonajes.getSelectedValue()==null)){
+        if (!(Nombre.getText().equals(""))){
+            if (!(Valor.getText().equals(""))){
         String nombre = Nombre.getText();
         int valor = Integer.valueOf(Valor.getText());
         int tipo = 1;
@@ -214,7 +218,19 @@ public class GUIAñadirModificadores extends javax.swing.JFrame {
         }
         GUIOperador i = new GUIOperador(operador);
         i.setVisible(true);
-        this.setVisible(false);        // TODO add your handling code here:
+        this.setVisible(false); 
+            }else{
+                                JOptionPane.showMessageDialog(null, "Introduzca un valor");
+            }
+        }else{
+                            JOptionPane.showMessageDialog(null, "Introduzca un nombre");
+        }
+    }else{
+                        JOptionPane.showMessageDialog(null, "Seleccione un personaje");
+    }
+}else{
+                JOptionPane.showMessageDialog(null, "Seleccione un modificador");
+}
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

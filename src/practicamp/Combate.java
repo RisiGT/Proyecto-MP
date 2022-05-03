@@ -12,19 +12,55 @@ import personajes.Esbirro;
  * @author PcCom
  */
 public class Combate {
-    boolean ganador; //false si gana el desafiante true si gana el desafiado
-    ArrayList<Ronda> listaRondas = new ArrayList<Ronda>();
-    ArrayList<Esbirro> listaEsbirrosPers1 = new ArrayList<Esbirro>(); //esbirros que han sobrevivido del desafiante
-    ArrayList<Esbirro> listaEsbirrosPers2 = new ArrayList<Esbirro>(); //esbirros que han spbrevivido del desafiado
+private     String ganador; //false si gana el desafiante true si gana el desafiado
+private     ArrayList<Ronda> listaRondas = new ArrayList<Ronda>();
+private     ArrayList<Esbirro> listaEsbirrosPers1 = new ArrayList<Esbirro>(); //esbirros que han sobrevivido del desafiante
+private     ArrayList<Esbirro> listaEsbirrosPers2 = new ArrayList<Esbirro>(); //esbirros que han spbrevivido del desafiado
+private int oroApostado;
+private int oroDesafiado;
+private String desafiante;
+private String desafiado;
 
     public Combate() {
     }
 
-    public boolean getGanador() {
+    public void setOroApostado(int oroApostado) {
+        this.oroApostado = oroApostado;
+    }
+
+    public void setOroDesafiado(int oroDesafiado) {
+        this.oroDesafiado = oroDesafiado;
+    }
+
+    public int getOroApostado() {
+        return oroApostado;
+    }
+
+    public int getOroDesafiado() {
+        return oroDesafiado;
+    }
+
+    public String getGanador() {
         return ganador;
     }
+
+    public String getDesafiante() {
+        return desafiante;
+    }
+
+    public void setDesafiante(String desafiante) {
+        this.desafiante = desafiante;
+    }
+
+    public String getDesafiado() {
+        return desafiado;
+    }
+
+    public void setDesafiado(String desafiado) {
+        this.desafiado = desafiado;
+    }
     
-    public void setGanador(boolean gan){
+    public void setGanador(String ganador){
         this.ganador = ganador;
     }
 

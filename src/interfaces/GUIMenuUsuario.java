@@ -47,7 +47,6 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
         CrearPersonaje = new javax.swing.JButton();
         BorrarPersonaje = new javax.swing.JButton();
         ElegirEquipamiento = new javax.swing.JButton();
-        AceptarDesafio = new javax.swing.JButton();
         Desafiar = new javax.swing.JButton();
         ConsultarOro = new javax.swing.JButton();
         Ranking = new javax.swing.JButton();
@@ -82,13 +81,6 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
             }
         });
 
-        AceptarDesafio.setText("Aceptar/Rechazar Desafio");
-        AceptarDesafio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarDesafioActionPerformed(evt);
-            }
-        });
-
         Desafiar.setText("Desafiar");
         Desafiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +89,11 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
         });
 
         ConsultarOro.setText("Consultar oro");
+        ConsultarOro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultarOroActionPerformed(evt);
+            }
+        });
 
         Ranking.setText("Ranking");
         Ranking.addActionListener(new java.awt.event.ActionListener() {
@@ -124,20 +121,17 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
                             .addComponent(CrearPersonaje)
                             .addComponent(BorrarPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(Desafiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(83, 83, 83)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Desafiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Ranking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ConsultarOro, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                .addComponent(Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Ranking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ConsultarOro, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                            .addComponent(Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AceptarDesafio, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ElegirEquipamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(385, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
+                        .addComponent(ElegirEquipamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,13 +140,11 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
                 .addComponent(CrearPersonaje)
                 .addGap(18, 18, 18)
                 .addComponent(BorrarPersonaje)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(ElegirEquipamiento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Desafiar)
                 .addGap(18, 18, 18)
-                .addComponent(AceptarDesafio)
-                .addGap(14, 14, 14)
+                .addComponent(Desafiar)
+                .addGap(34, 34, 34)
                 .addComponent(ConsultarOro)
                 .addGap(18, 18, 18)
                 .addComponent(Ranking)
@@ -201,10 +193,6 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
       this.setVisible(false);
     }//GEN-LAST:event_ElegirEquipamientoActionPerformed
 
-    private void AceptarDesafioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarDesafioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AceptarDesafioActionPerformed
-
     private void BorrarPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarPersonajeActionPerformed
         GUIEliminarPersonaje i = new GUIEliminarPersonaje(usuario);
         i.setVisible(true);
@@ -228,6 +216,12 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
             }
         }          // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
+
+    private void ConsultarOroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarOroActionPerformed
+GUIOroBatallas i = new GUIOroBatallas(usuario);
+i.setVisible(true);
+this.setVisible(false);// TODO add your handling code here:
+    }//GEN-LAST:event_ConsultarOroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,7 +274,6 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AceptarDesafio;
     private javax.swing.JButton BorrarPersonaje;
     private javax.swing.JButton ConsultarOro;
     private javax.swing.JButton CrearPersonaje;

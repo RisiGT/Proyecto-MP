@@ -157,6 +157,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ @SuppressWarnings("unchecked")
     private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
         BaseDatos b = new BaseDatos();
         switch (Personaje.getTipo()) {

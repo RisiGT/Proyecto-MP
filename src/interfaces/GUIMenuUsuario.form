@@ -27,7 +27,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
@@ -37,26 +37,22 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                      <Component id="Desafiar" min="-2" pref="110" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="Ranking" max="32767" attributes="0"/>
-                          <Component id="ConsultarOro" alignment="0" pref="107" max="32767" attributes="0"/>
-                          <Component id="Salir" alignment="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="Desafiar" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="Ranking" max="32767" attributes="0"/>
+                              <Component id="ConsultarOro" alignment="0" pref="107" max="32767" attributes="0"/>
+                              <Component id="Salir" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="AceptarDesafio" min="-2" pref="206" max="-2" attributes="0"/>
-                          <Component id="ElegirEquipamiento" min="-2" pref="181" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="ElegirEquipamiento" min="-2" pref="181" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="385" max="32767" attributes="0"/>
+              <EmptySpace pref="409" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,13 +63,11 @@
               <Component id="CrearPersonaje" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="BorrarPersonaje" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="ElegirEquipamiento" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="Desafiar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="AceptarDesafio" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Component id="Desafiar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Component id="ConsultarOro" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Ranking" min="-2" max="-2" attributes="0"/>
@@ -109,14 +103,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ElegirEquipamientoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="AceptarDesafio">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Aceptar/Rechazar Desafio"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AceptarDesafioActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="Desafiar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Desafiar"/>
@@ -129,6 +115,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar oro"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConsultarOroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Ranking">
       <Properties>
