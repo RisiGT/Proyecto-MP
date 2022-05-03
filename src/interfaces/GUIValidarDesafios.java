@@ -16,9 +16,11 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import personajes.Personaje;
 import practicamp.BaseDatos;
+import practicamp.Combate;
 import practicamp.Desafio;
 import practicamp.GestorCombate;
 import practicamp.Operador;
+import practicamp.ResultadosCombate;
 
 /**
  *
@@ -632,12 +634,25 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
         for (Desafio desafio : b.getListadesafios()) {
             if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
                 GestorCombate gest = new GestorCombate (desafio.getPersonajeDesafiante(),desafio.getPersonajeDesafiado());
-                gest.generarCombate();               
+                gest.generarCombate();  
+                Combate comb = gest.getCombate();
+                ResultadosCombate res = new ResultadosCombate("Nombre desafiante+Nombre desafiado+fecha y hora",comb);
+                if (comb.getGanador()==false){ //ha ganado el desafiante
+                    res.setGanador("usuario desafiante");
+                    //usuarioDesafiante.añadirCombate(res);
+                    //usuarioDesafiado.añadirCombate(res);
+                    //usuarioDesafiante.setOro(Desafio.getOro());
+                }
+                else{ // gana el desafiado
+                    res.setGanador("usuario desafiado");
+                    //usuarioDesafiado.añadirCombate(res);
+                    //usuarioDesafiante.añadirCombate(res);
+                    //usuarioDesafiado.setOro(Desafio.getOro());
+                }
+                }
             }
-            // GestorCombate gest = new GestorCombate(pers desafiante, pers desafiado);
-            //gest.GenerarCombate();
-            //gest.getCombate(); y vemos a quienes les tenemos q pasar este combate y donde lo tenemos que guardar
-        }
+     
+        
     }//GEN-LAST:event_AceptarActionPerformed
 
     /**

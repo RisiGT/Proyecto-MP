@@ -297,6 +297,15 @@ public class GUIDesafiado extends javax.swing.JFrame {
                         if (desafio.getDesafiado().getNombre().equals(usuario.getNombre())) {
                             desafio.setPersonajeDesafiado(personaje);
                             desafio.setEstado(1);
+                            int oro = desafio.getOro();
+                            if(usuario.getOro()<oro){
+                                desafio.setOro(desafio.getOro()+usuario.getOro());
+                                usuario.setOro(0);                               
+                            }
+                            else{
+                                usuario.setOro(usuario.getOro()-desafio.getOro());
+                                desafio.setOro(desafio.getOro()*2);
+                            }
                         }
                     }
                     try {

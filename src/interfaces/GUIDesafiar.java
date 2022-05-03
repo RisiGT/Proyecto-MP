@@ -255,6 +255,13 @@ public class GUIDesafiar extends javax.swing.JFrame {
                                 Personaje p = usuario.getPersonaje(Lista.getSelectedValue());
                                 p.setEsbirros(listaEsbirros);
                                 Desafio desafio = new Desafio(usuario, b.getUsuario(nombre), Integer.valueOf(Oro.getText()), p);
+                                usuario.setOro(usuario.getOro()-Integer.valueOf(Oro.getText()));
+                                b.actualizarUsuario(usuario);
+                                try {
+                                    b.SerializePro("Usuario");
+                                } catch (IOException ex) {
+                                    Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                                 b.getListadesafios().add(desafio);
                                 try {
                                     b2.SerializePro("Desafio");

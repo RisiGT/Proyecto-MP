@@ -34,6 +34,14 @@ public class Desafio implements Serializable {
         return oroPorRechazar;
     }
 
+    public int getOro() {
+        return oro;
+    }
+
+    public void setOro(int oro) {
+        this.oro = oro;
+    }
+
     public Usuario getDesafiante() {
         return desafiante;
     }

@@ -15,6 +15,7 @@ public class Usuario extends Persona implements Serializable {
     private List<Personaje> personajes = new ArrayList<>();
     private int oro;
     private boolean estado; //true baneado, false normal
+    private ArrayList<ResultadosCombate> resultadosCombates = new ArrayList<ResultadosCombate>();
 
     public Usuario(String nombre, String pass, String nick) {
         this.LNNLL = this.CrearLNNLL();
@@ -24,6 +25,9 @@ public class Usuario extends Persona implements Serializable {
         this.nick = nick;
         this.oro = 1000;//oro inicial
         this.personajes = new ArrayList<>();
+    }
+    public void añadirCombate(ResultadosCombate c){
+        this.resultadosCombates.add(c);
     }
 
     public void RestarOro(int oroPerdido) {
