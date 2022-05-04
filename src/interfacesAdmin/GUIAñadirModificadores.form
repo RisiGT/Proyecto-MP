@@ -30,7 +30,7 @@
                       <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                          <Component id="Aceptar" alignment="0" pref="155" max="32767" attributes="0"/>
+                          <Component id="Aceptar" alignment="0" pref="147" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
                   </Group>
@@ -55,12 +55,12 @@
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="Valor" alignment="0" max="32767" attributes="0"/>
-                  <Component id="Nombre" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Valor" pref="90" max="32767" attributes="0"/>
+                  <Component id="Nombre" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

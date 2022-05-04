@@ -179,76 +179,110 @@ public class GUIAñadirHabilidadEspecial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        String nombre = Nombre.getText();
-        int ataque = Integer.valueOf(Ataque.getText());
-        int defensa = Integer.valueOf(Defensa.getText());
-        if (Lista.getSelectedValue().equals("Disciplina")) {
-            try {
-                this.base.deserializePro(Lista.getSelectedValue());
-            } catch (IOException ex) {
-                Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            BaseDatos b = this.base;
-            int coste = Integer.valueOf(Coste.getText());
-            Disciplina disciplina = new Disciplina(nombre, ataque, defensa, coste);
-            if (!(b.perteneceDisciplina(nombre))) {
-                b.getListaDisciplinas().add(disciplina);
-                try {
-                    b.serializePro(Lista.getSelectedValue());
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
+        if (!(Nombre.getText().equals(""))) {
+            if (!(Lista.getSelectedValue() == (null))) {
+                if (!(Ataque.getText().equals(""))) {
+                    if (!(Defensa.getText().equals(""))) {
+                        String nombre = Nombre.getText();
+                        int ataque = Integer.valueOf(Ataque.getText());
+                        int defensa = Integer.valueOf(Defensa.getText());
+                        if (Lista.getSelectedValue().equals("Disciplina")) {
+                            if (!(Coste.getText().equals(""))) {
+                                try {
+                                    this.base.deserializePro(Lista.getSelectedValue());
+                                } catch (IOException ex) {
+                                    Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
+                                } catch (ClassNotFoundException ex) {
+                                    Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                BaseDatos b = this.base;
+                                int coste = Integer.valueOf(Coste.getText());
+                                Disciplina disciplina = new Disciplina(nombre, ataque, defensa, coste);
+                                if (!(b.perteneceDisciplina(nombre))) {
+                                    b.getListaDisciplinas().add(disciplina);
+                                    try {
+                                        b.serializePro(Lista.getSelectedValue());
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    GUIOperador i = new GUIOperador(operador);
+                                    i.setVisible(true);
+                                    this.setVisible(false);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Disciplina ya existente");
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Introduzca el coste");
+                            }
+                        } else if (Lista.getSelectedValue().equals("Don")) {
+                            if (!(Minimo.getText().equals(""))) {
+                                try {
+                                    this.base.deserializePro(Lista.getSelectedValue());
+                                } catch (IOException ex) {
+                                    Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
+                                } catch (ClassNotFoundException ex) {
+                                    Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                BaseDatos b = this.base;
+                                int minimo = Integer.valueOf(Minimo.getText());
+                                Don don = new Don(nombre, ataque, defensa, minimo);
+                                if (!(b.perteneceDon(nombre))) {
+                                    b.getListaDones().add(don);
+                                    try {
+                                        b.serializePro(Lista.getSelectedValue());
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    GUIOperador i = new GUIOperador(operador);
+                                    i.setVisible(true);
+                                    this.setVisible(false);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Don ya existente");
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Introduzca un mínimo");
+                            }
+                        } else if (Lista.getSelectedValue().equals("Talento")) {
+                            if (!(Edad.getText().equals(""))) {
+                                try {
+                                    this.base.deserializePro(Lista.getSelectedValue());
+                                } catch (IOException ex) {
+                                    Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
+                                } catch (ClassNotFoundException ex) {
+                                    Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                BaseDatos b = this.base;
+                                int edad = Integer.valueOf(Edad.getText());
+                                Talento talento = new Talento(nombre, ataque, defensa, edad);
+                                if (!(b.perteneceTalento(nombre))) {
+                                    b.getListaTalentos().add(talento);
+                                    try {
+                                        b.serializePro(Lista.getSelectedValue());
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    GUIOperador i = new GUIOperador(operador);
+                                    i.setVisible(true);
+                                    this.setVisible(false);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Talento ya existente");
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Introduzca una edad");
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Introduzca defensa");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Introduzca ataque");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Disciplina ya existente");
+                JOptionPane.showMessageDialog(null, "Seleccione una habilidad");
             }
-        } else if (Lista.getSelectedValue().equals("Don")) {
-            try {
-                this.base.deserializePro(Lista.getSelectedValue());
-            } catch (IOException ex) {
-                Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            BaseDatos b = this.base;
-            int minimo = Integer.valueOf(Minimo.getText());
-            Don don = new Don(nombre, ataque, defensa, minimo);
-            if (!(b.perteneceDon(nombre))) {
-                b.getListaDones().add(don);
-                try {
-                    b.serializePro(Lista.getSelectedValue());
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Don ya existente");
-            }
-        } else if (Lista.getSelectedValue().equals("Talento")) {
-            try {
-                this.base.deserializePro(Lista.getSelectedValue());
-            } catch (IOException ex) {
-                Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            BaseDatos b = this.base;
-            int edad = Integer.valueOf(Edad.getText());
-            Talento talento = new Talento(nombre, ataque, defensa, edad);
-            if (!(b.perteneceTalento(nombre))) {
-                b.getListaTalentos().add(talento);
-                try {
-                    b.serializePro(Lista.getSelectedValue());
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Talento ya existente");
-            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Introduzca un nombre");
         }
-        GUIOperador i = new GUIOperador(operador);
-        i.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void AtaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtaqueActionPerformed

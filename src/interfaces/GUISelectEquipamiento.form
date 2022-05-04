@@ -44,7 +44,7 @@
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                      <Component id="Aceptar" min="-2" pref="73" max="-2" attributes="0"/>
+                      <Component id="Aceptar" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="30" max="32767" attributes="0"/>

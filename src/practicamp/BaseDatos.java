@@ -347,6 +347,18 @@ public class BaseDatos implements Serializable {
         }
         return false;
     }
+    
+    public boolean perteneceBaneados(String nombre) {
+        if (this.listabaneados == null) {
+        } else {
+            for (String list : listabaneados) {
+                if (list.equals(nombre)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }    
 
     public boolean perteneceArma(String nombre) {
         if (this.listaArmas == null) {

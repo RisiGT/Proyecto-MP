@@ -126,7 +126,7 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addComponent(Cancelar)
                         .addGap(85, 85, 85)
-                        .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

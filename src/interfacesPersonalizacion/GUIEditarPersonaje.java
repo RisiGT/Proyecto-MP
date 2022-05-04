@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import personajes.Personaje;
 import practicamp.BaseDatos;
@@ -23,9 +24,9 @@ import practicamp.Usuario;
  * @author PcCom
  */
 public class GUIEditarPersonaje extends javax.swing.JFrame {
-    
+
     private Operador operador;
-    private Usuario usuario;
+    private Usuario Usuario;
 
     /**
      * Creates new form GUIEditarPersonaje
@@ -144,23 +145,26 @@ public class GUIEditarPersonaje extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     private void MostrarPersonajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarPersonajesActionPerformed
-        int numU = ListaUsuarios.getSelectedIndex();
-        BaseDatos b = new BaseDatos();
-        try {
-            b.deserializePro("Usuario");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIEditarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUIEditarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
+        if (!(ListaUsuarios.getSelectedValue() == null)) {
+            int numU = ListaUsuarios.getSelectedIndex();
+            BaseDatos b = new BaseDatos();
+            try {
+                b.deserializePro("Usuario");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIEditarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUIEditarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Usuario = b.getListausuarios().get(numU);
+            DefaultListModel dlm = new DefaultListModel();
+            int i = Usuario.getPersonajes().size();
+            for (int j = 0; j < i; j++) {
+                dlm.addElement(Usuario.getPersonajes().get(j).getNombre());
+            }
+            ListaPersonajes.setModel(dlm);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un usuario");
         }
-        usuario = b.getListausuarios().get(numU);
-        DefaultListModel dlm = new DefaultListModel();
-        int i = usuario.getPersonajes().size();
-        for (int j = 0; j < i; j++) {
-            dlm.addElement(usuario.getPersonajes().get(j).getNombre());
-        }
-        ListaPersonajes.setModel(dlm);
-
     }//GEN-LAST:event_MostrarPersonajesActionPerformed
 
     @SuppressWarnings("unchecked")
@@ -182,11 +186,18 @@ public class GUIEditarPersonaje extends javax.swing.JFrame {
     }//GEN-LAST:event_MostrarUsuariosActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        int numP = ListaPersonajes.getSelectedIndex();
-        Personaje p = usuario.getPersonajes().get(numP);
-        GUIEditarPersonaje2 g = new GUIEditarPersonaje2(usuario, p, operador);
-        g.setVisible(true);
-
+        if (!(ListaUsuarios.getSelectedValue() == null)) {
+            if (!(ListaPersonajes.getSelectedValue() == null)) {
+                int numP = ListaPersonajes.getSelectedIndex();
+                Personaje p = Usuario.getPersonajes().get(numP);
+                GUIEditarPersonaje2 g = new GUIEditarPersonaje2(Usuario, p, operador);
+                g.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un personaje");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un usuario");
+        }
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
