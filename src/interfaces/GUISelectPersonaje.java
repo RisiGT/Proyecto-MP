@@ -17,14 +17,14 @@ import practicamp.Usuario;
  */
 public class GUISelectPersonaje extends javax.swing.JFrame {
 
-    Usuario Usuario;
+    private Usuario usuario;
 
     /**
      * Creates new form GUICrearPersonaje
      */
     public GUISelectPersonaje(Usuario u) {
         initComponents();
-        this.Usuario = u;
+        this.usuario = u;
         this.setLocationRelativeTo(null);
     }
 
@@ -37,36 +37,36 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        Vampiro = new javax.swing.JButton();
+        Licantropo = new javax.swing.JButton();
+        Cazador = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jButton1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
-        jButton1.setText("Vampiro");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Vampiro.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        Vampiro.setText("Vampiro");
+        Vampiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                VampiroActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
-        jButton2.setText("Licántropo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Licantropo.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        Licantropo.setText("Licántropo");
+        Licantropo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                LicantropoActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
-        jButton3.setText("Cazador");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Cazador.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        Cazador.setText("Cazador");
+        Cazador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                CazadorActionPerformed(evt);
             }
         });
 
@@ -88,11 +88,11 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Vampiro, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
-                        .addComponent(jButton2)
+                        .addComponent(Licantropo)
                         .addGap(49, 49, 49)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Cazador, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(139, 139, 139)
                         .addComponent(jLabel1))
@@ -108,9 +108,9 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(Vampiro)
+                    .addComponent(Licantropo)
+                    .addComponent(Cazador))
                 .addGap(66, 66, 66)
                 .addComponent(Cancelar)
                 .addGap(27, 27, 27))
@@ -119,34 +119,28 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        GUISelectNombrePersonaje g = null;
-        g = new GUISelectNombrePersonaje("Cazador", Usuario);
+    private void CazadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CazadorActionPerformed
+        GUISelectNombrePersonaje g = new GUISelectNombrePersonaje("Cazador", usuario);
         g.setVisible(true);
         this.setVisible(false);
+    }//GEN-LAST:event_CazadorActionPerformed
 
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        GUISelectNombrePersonaje g = null;
-        g = new GUISelectNombrePersonaje("Vampiro", Usuario);
+    private void VampiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VampiroActionPerformed
+        GUISelectNombrePersonaje g = new GUISelectNombrePersonaje("Vampiro", usuario);
         g.setVisible(true);
         this.setVisible(false);
+    }//GEN-LAST:event_VampiroActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        GUISelectNombrePersonaje g = null;
-        g = new GUISelectNombrePersonaje("Licantropo", Usuario);
+    private void LicantropoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LicantropoActionPerformed
+        GUISelectNombrePersonaje g = new GUISelectNombrePersonaje("Licantropo", usuario);
         g.setVisible(true);
         this.setVisible(false);
-
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_LicantropoActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-  GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
-  i.setVisible(true);
-  this.setVisible(false);
+        GUIMenuUsuario g = new GUIMenuUsuario(usuario);
+        g.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
 
     public void main(String args[]) {
@@ -177,16 +171,16 @@ public class GUISelectPersonaje extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUISelectPersonaje(Usuario).setVisible(true);
+                new GUISelectPersonaje(usuario).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton Cazador;
+    private javax.swing.JButton Licantropo;
+    private javax.swing.JButton Vampiro;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

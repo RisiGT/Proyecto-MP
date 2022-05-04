@@ -63,7 +63,7 @@ public class BaseDatos implements Serializable {
         listadesafios = new ArrayList<Desafio>();
     }
 
-    public void SerializePro(String nombre) throws FileNotFoundException, IOException {
+    public void serializePro(String nombre) throws FileNotFoundException, IOException {
         String fic = nombre + "s.txt"; //MODIFICAR RUTA
         ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(fic));
         switch (nombre) {
@@ -128,7 +128,7 @@ public class BaseDatos implements Serializable {
     }
 
     @SuppressWarnings({"unchecked", "unchecked"})
-    public void DeserializePro(String nombre) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public void deserializePro(String nombre) throws FileNotFoundException, IOException, ClassNotFoundException {
         String fic = nombre + "s.txt"; //MODIFICAR RUTA
         ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(fic));
 
@@ -448,13 +448,13 @@ public class BaseDatos implements Serializable {
         }
     }
 
-    public void RechazarDesafio(String desafiado) throws IOException {
+    public void rechazarDesafio(String desafiado) throws IOException {
         for (Desafio list : listadesafios) {
             if ((list.getDesafiado().getNombre().equals(desafiado))) {
                 listausuarios.remove(list);
             }
         }
-        SerializePro("Desafio");
+        serializePro("Desafio");
     }
 
 }

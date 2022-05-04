@@ -23,16 +23,16 @@ import practicamp.Usuario;
  */
 public class GUIRanking extends javax.swing.JFrame {
 
-    BaseDatos base;
-    Usuario usuario;
+    private BaseDatos base;
+    private Usuario usuario;
 
     /**
      * Creates new form GUIRanking
      */
     public GUIRanking(Usuario usuario) {
-        base = new BaseDatos();
-        this.usuario = usuario;
         initComponents();
+        this.base = new BaseDatos();
+        this.usuario = usuario;
         this.setLocationRelativeTo(null);
     }
 
@@ -97,7 +97,7 @@ public class GUIRanking extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         try {
-            base.DeserializePro("Usuario");
+            base.deserializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUIMenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -115,7 +115,7 @@ public class GUIRanking extends javax.swing.JFrame {
         }
         ListaRanking.setModel(dlm);
         try {
-            base.SerializePro("Usuario");
+            base.serializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUIRanking.class.getName()).log(Level.SEVERE, null, ex);
         }        // TODO add your handling code here:

@@ -28,9 +28,9 @@ public class GUIAñadirHabilidadEspecial extends javax.swing.JFrame {
      * Creates new form GUIAñadirHabilidadEspecial
      */
     public GUIAñadirHabilidadEspecial(Operador operador) {
+        initComponents();
         this.operador = operador;
         this.base = new BaseDatos();
-        initComponents();
         this.setLocationRelativeTo(null);
     }
 
@@ -184,7 +184,7 @@ public class GUIAñadirHabilidadEspecial extends javax.swing.JFrame {
         int defensa = Integer.valueOf(Defensa.getText());
         if (Lista.getSelectedValue().equals("Disciplina")) {
             try {
-                this.base.DeserializePro(Lista.getSelectedValue());
+                this.base.deserializePro(Lista.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -196,7 +196,7 @@ public class GUIAñadirHabilidadEspecial extends javax.swing.JFrame {
             if (!(b.perteneceDisciplina(nombre))) {
                 b.getListaDisciplinas().add(disciplina);
                 try {
-                    b.SerializePro(Lista.getSelectedValue());
+                    b.serializePro(Lista.getSelectedValue());
                 } catch (IOException ex) {
                     Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -205,7 +205,7 @@ public class GUIAñadirHabilidadEspecial extends javax.swing.JFrame {
             }
         } else if (Lista.getSelectedValue().equals("Don")) {
             try {
-                this.base.DeserializePro(Lista.getSelectedValue());
+                this.base.deserializePro(Lista.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -217,7 +217,7 @@ public class GUIAñadirHabilidadEspecial extends javax.swing.JFrame {
             if (!(b.perteneceDon(nombre))) {
                 b.getListaDones().add(don);
                 try {
-                    b.SerializePro(Lista.getSelectedValue());
+                    b.serializePro(Lista.getSelectedValue());
                 } catch (IOException ex) {
                     Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -226,7 +226,7 @@ public class GUIAñadirHabilidadEspecial extends javax.swing.JFrame {
             }
         } else if (Lista.getSelectedValue().equals("Talento")) {
             try {
-                this.base.DeserializePro(Lista.getSelectedValue());
+                this.base.deserializePro(Lista.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -238,7 +238,7 @@ public class GUIAñadirHabilidadEspecial extends javax.swing.JFrame {
             if (!(b.perteneceTalento(nombre))) {
                 b.getListaTalentos().add(talento);
                 try {
-                    b.SerializePro(Lista.getSelectedValue());
+                    b.serializePro(Lista.getSelectedValue());
                 } catch (IOException ex) {
                     Logger.getLogger(GUIAñadirHabilidadEspecial.class.getName()).log(Level.SEVERE, null, ex);
                 }

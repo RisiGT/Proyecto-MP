@@ -29,8 +29,8 @@ public class GUIArmas_Armaduras extends javax.swing.JFrame {
      * Creates new form GUIArmas_Armaduras
      */
     public GUIArmas_Armaduras(Operador operador) {
-        this.operador = operador;
         initComponents();
+        this.operador = operador;
         this.base = new BaseDatos();
         this.setLocationRelativeTo(null);
     }
@@ -189,7 +189,7 @@ public class GUIArmas_Armaduras extends javax.swing.JFrame {
         if (Lista.getSelectedValue().equals("Arma")) {/////////////////////////Si es un arma
 
             try {
-                this.base.DeserializePro(Lista.getSelectedValue());
+                this.base.deserializePro(Lista.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -203,7 +203,7 @@ public class GUIArmas_Armaduras extends javax.swing.JFrame {
 
                 b.getListaArmas().add(arma);
                 try {
-                    b.SerializePro(Lista.getSelectedValue());
+                    b.serializePro(Lista.getSelectedValue());
                 } catch (IOException ex) {
                     Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -213,7 +213,7 @@ public class GUIArmas_Armaduras extends javax.swing.JFrame {
 
         } else {      /////////////////Si es una armadura
             try {
-                this.base.DeserializePro(Lista.getSelectedValue());
+                this.base.deserializePro(Lista.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -225,7 +225,7 @@ public class GUIArmas_Armaduras extends javax.swing.JFrame {
             if (!(b.perteneceArmadura(nombre))) {
                 b.getListaArmaduras().add(armadura);
                 try {
-                    b.SerializePro(Lista.getSelectedValue());
+                    b.serializePro(Lista.getSelectedValue());
                 } catch (IOException ex) {
                     Logger.getLogger(GUIArmas_Armaduras.class.getName()).log(Level.SEVERE, null, ex);
                 }

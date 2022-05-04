@@ -25,9 +25,9 @@ public class GUIBanear extends javax.swing.JFrame {
      * Creates new form GUIBanear
      */
     public GUIBanear(Operador operador) {
+        initComponents();
         this.base = new BaseDatos(); //Antes ponía this.base=base pero creo q hay q crear la basa
         this.operador = operador;
-        initComponents();
         this.setLocationRelativeTo(null);
     }
 
@@ -117,14 +117,14 @@ public class GUIBanear extends javax.swing.JFrame {
         String nombre = Nombre.getText();
 
         try {
-            this.base.DeserializePro("Ban");
+            this.base.deserializePro("Ban");
         } catch (IOException ex) {
             Logger.getLogger(GUIBanear.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUIBanear.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            this.base.DeserializePro("Usuario");
+            this.base.deserializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUIBanear.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -136,7 +136,7 @@ public class GUIBanear extends javax.swing.JFrame {
                     base.getListabaneados().add(nombre);
                     JOptionPane.showMessageDialog(null, "'" + nombre + "'" + " ha sido baneado");
                     try {
-                        base.SerializePro(Lista.getSelectedValue());
+                        base.serializePro(Lista.getSelectedValue());
                     } catch (IOException ex) {
                         Logger.getLogger(GUIBanear.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -150,7 +150,7 @@ public class GUIBanear extends javax.swing.JFrame {
             base.getListabaneados().remove(nombre);
             JOptionPane.showMessageDialog(null, "'" + nombre + "'" + " ha sido desbaneado");
             try {
-                base.SerializePro("Ban");
+                base.serializePro("Ban");
             } catch (IOException ex) {
                 Logger.getLogger(GUIBanear.class.getName()).log(Level.SEVERE, null, ex);
             }

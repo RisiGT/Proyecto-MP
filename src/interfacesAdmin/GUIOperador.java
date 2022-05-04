@@ -5,6 +5,7 @@
  */
 package interfacesAdmin;
 
+import interfaces.GUIMenuIni;
 import interfacesPersonalizacion.GUIEditarPersonaje;
 import interfaces.GUIValidarDesafios;
 import interfacesAdmin.GUIBanear;
@@ -22,8 +23,8 @@ public class GUIOperador extends javax.swing.JFrame {
      * Creates new form GUIOperador
      */
     public GUIOperador(Operador operador) {
-        this.operador = operador;
         initComponents();
+        this.operador = operador;
         this.setLocationRelativeTo(null);
     }
 
@@ -114,7 +115,9 @@ public class GUIOperador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        System.exit(0);
+        GUIMenuIni g = new GUIMenuIni();
+        g.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
     private void AñadirAtributosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirAtributosActionPerformed

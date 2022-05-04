@@ -18,15 +18,15 @@ import practicamp.Usuario;
  */
 public class GUIEliminarPersonaje extends javax.swing.JFrame {
 
-    Usuario Usuario;
+    private Usuario usuario;
 
     /**
      * Creates new form GUIEliminarPersonaje
      */
     public GUIEliminarPersonaje(Usuario u) {
         initComponents();
-        Usuario = u;
-                this.setLocationRelativeTo(null);
+        this.usuario = u;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -108,43 +108,44 @@ public class GUIEliminarPersonaje extends javax.swing.JFrame {
 
     private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
         DefaultListModel dlm1 = new DefaultListModel();
-        int i = Usuario.getPersonajes().size();
+        int i = usuario.getPersonajes().size();
         for (int j = 0; j < i; j++) {
-            dlm1.addElement(Usuario.getPersonajes().get(j).getNombre());
+            dlm1.addElement(usuario.getPersonajes().get(j).getNombre());
         }
         Lista.setModel(dlm1);
     }//GEN-LAST:event_MostrarActionPerformed
 
     private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
         int Personaje = Lista.getSelectedIndex();
-        Usuario.getPersonajes().remove(Personaje);
+        usuario.getPersonajes().remove(Personaje);
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Usuario");
+            b.deserializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUIEliminarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUIEliminarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (Usuario usuario : b.getListausuarios()){
-            if (Usuario.getNombre().equals(usuario.getNombre())){
+            if (this.usuario.getNombre().equals(usuario.getNombre())){
                 usuario.getPersonajes().remove(Personaje);
             }
         }
         try {
-            b.SerializePro("Usuario");
+            b.serializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUIEliminarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         }
-   GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
-  i.setVisible(true);
-  this.setVisible(false); 
+        
+        GUIMenuUsuario i = new GUIMenuUsuario(usuario);
+        i.setVisible(true);
+        this.setVisible(false); 
     }//GEN-LAST:event_BorrarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-  GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
-  i.setVisible(true);
-  this.setVisible(false);        // TODO add your handling code here:
+        GUIMenuUsuario i = new GUIMenuUsuario(usuario);
+        i.setVisible(true);
+        this.dispose();        
     }//GEN-LAST:event_CancelarActionPerformed
 
     /**
@@ -177,7 +178,7 @@ public class GUIEliminarPersonaje extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIEliminarPersonaje(Usuario).setVisible(true);
+                new GUIEliminarPersonaje(usuario).setVisible(true);
             }
         });
     }

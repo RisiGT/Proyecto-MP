@@ -23,8 +23,8 @@ public class GUIOperadorAñadirAtributos extends javax.swing.JFrame {
      * Creates new form GUIOperadorAñadirAtributos
      */
     public GUIOperadorAñadirAtributos(Operador operador) {
-        this.operador = operador;
         initComponents();
+        this.operador = operador;
         this.setLocationRelativeTo(null);
     }
 

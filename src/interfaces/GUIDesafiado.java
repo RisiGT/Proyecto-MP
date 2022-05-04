@@ -37,11 +37,11 @@ public class GUIDesafiado extends javax.swing.JFrame {
      * Creates new form GUIDesafiado
      */
     public GUIDesafiado(Usuario usuario, Desafio desafio) {
+        initComponents();
         this.usuario = usuario;
         this.desafio = desafio;
-        initComponents();
         this.base = new BaseDatos();
-                this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -264,7 +264,7 @@ public class GUIDesafiado extends javax.swing.JFrame {
         DefaultListModel dlm1 = new DefaultListModel();
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Arma");
+            b.deserializePro("Arma");
         } catch (IOException ex) {
             Logger.getLogger(GUIDesafiado.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -287,7 +287,7 @@ public class GUIDesafiado extends javax.swing.JFrame {
                     personaje.setArmasActivas(personaje.getArma(ListaArmas.getSelectedValue()));
                     personaje.setArmaduraActiva(personaje.getArmadura(ListaArmaduras.getSelectedValue()));
                     try {
-                        b.DeserializePro("Desafio");
+                        b.deserializePro("Desafio");
                     } catch (IOException ex) {
                         Logger.getLogger(GUIDesafiado.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
@@ -309,7 +309,7 @@ public class GUIDesafiado extends javax.swing.JFrame {
                         }
                     }
                     try {
-                        b.SerializePro("Desafio");
+                        b.serializePro("Desafio");
                     } catch (IOException ex) {
                         Logger.getLogger(GUIDesafiado.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -331,7 +331,7 @@ public class GUIDesafiado extends javax.swing.JFrame {
         DefaultListModel dlm1 = new DefaultListModel();
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Armadura");
+            b.deserializePro("Armadura");
         } catch (IOException ex) {
             Logger.getLogger(GUIDesafiado.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -347,7 +347,7 @@ public class GUIDesafiado extends javax.swing.JFrame {
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         BaseDatos b = this.base;
         try {
-            b.DeserializePro("Usuario");
+            b.deserializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUIDesafiado.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -359,7 +359,7 @@ public class GUIDesafiado extends javax.swing.JFrame {
             }
         }
         try {
-            b.SerializePro("Usuario");
+            b.serializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUIDesafiado.class.getName()).log(Level.SEVERE, null, ex);
         }

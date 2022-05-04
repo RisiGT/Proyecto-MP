@@ -35,10 +35,14 @@ public class GUIDesafiar extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     public GUIDesafiar(Usuario usuario) {
-        this.usuario = usuario;
         initComponents();
+        this.usuario = usuario;
         this.base = new BaseDatos();
-                this.setLocationRelativeTo(null);
+        initializeLista(usuario);
+        this.setLocationRelativeTo(null);
+    }
+
+    private void initializeLista(Usuario usuario) {
         DefaultListModel dlm1 = new DefaultListModel();
         int i = usuario.getPersonajes().size();
         for (int j = 0; j < i; j++) {
@@ -232,7 +236,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
         String nombre = Desafiado.getText();
         BaseDatos b = this.base;
         try {
-            b.DeserializePro("Usuario");
+            b.deserializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -245,7 +249,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
                         if ((!(usuario.getPersonaje(Lista.getSelectedValue()).getArmaActiva() == null)) && (!(usuario.getPersonaje(Lista.getSelectedValue()).getArmaduraActiva() == null))) {
                             BaseDatos b2 = this.base;
                             try {
-                                b2.DeserializePro("Desafio");
+                                b2.deserializePro("Desafio");
                             } catch (IOException ex) {
                                 Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
                             } catch (ClassNotFoundException ex) {
@@ -258,13 +262,13 @@ public class GUIDesafiar extends javax.swing.JFrame {
                                 usuario.setOro(usuario.getOro()-Integer.valueOf(Oro.getText()));
                                 b.actualizarUsuario(usuario);
                                 try {
-                                    b.SerializePro("Usuario");
+                                    b.serializePro("Usuario");
                                 } catch (IOException ex) {
                                     Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                                 b.getListadesafios().add(desafio);
                                 try {
-                                    b2.SerializePro("Desafio");
+                                    b2.serializePro("Desafio");
                                 } catch (IOException ex) {
                                     Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
                                 }

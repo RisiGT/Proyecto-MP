@@ -23,8 +23,9 @@ import practicamp.Usuario;
  * @author PcCom
  */
 public class GUIEditarPersonaje extends javax.swing.JFrame {
-private Operador operador;
-private Usuario Usuario;
+    
+    private Operador operador;
+    private Usuario usuario;
 
     /**
      * Creates new form GUIEditarPersonaje
@@ -32,7 +33,7 @@ private Usuario Usuario;
     public GUIEditarPersonaje(Operador operador) {
         initComponents();
         this.operador = operador;
-                this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -146,17 +147,17 @@ private Usuario Usuario;
         int numU = ListaUsuarios.getSelectedIndex();
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Usuario");
+            b.deserializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUIEditarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUIEditarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Usuario = b.getListausuarios().get(numU);
+        usuario = b.getListausuarios().get(numU);
         DefaultListModel dlm = new DefaultListModel();
-        int i = Usuario.getPersonajes().size();
+        int i = usuario.getPersonajes().size();
         for (int j = 0; j < i; j++) {
-            dlm.addElement(Usuario.getPersonajes().get(j).getNombre());
+            dlm.addElement(usuario.getPersonajes().get(j).getNombre());
         }
         ListaPersonajes.setModel(dlm);
 
@@ -166,7 +167,7 @@ private Usuario Usuario;
     private void MostrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarUsuariosActionPerformed
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Usuario");
+            b.deserializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUIEditarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -182,8 +183,8 @@ private Usuario Usuario;
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         int numP = ListaPersonajes.getSelectedIndex();
-        Personaje p = Usuario.getPersonajes().get(numP);
-        GUIEditarPersonaje2 g = new GUIEditarPersonaje2(Usuario, p, operador);
+        Personaje p = usuario.getPersonajes().get(numP);
+        GUIEditarPersonaje2 g = new GUIEditarPersonaje2(usuario, p, operador);
         g.setVisible(true);
 
     }//GEN-LAST:event_AceptarActionPerformed

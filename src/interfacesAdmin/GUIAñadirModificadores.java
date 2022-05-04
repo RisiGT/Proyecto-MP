@@ -20,17 +20,17 @@ import practicamp.Operador;
  * @author pcris
  */
 public class GUIAñadirModificadores extends javax.swing.JFrame {
-
-    private BaseDatos base;
+    
     private Operador operador;
+    private BaseDatos base;
 
     /**
      * Creates new form GUIAñadirModificadores
      */
     public GUIAñadirModificadores(Operador operador) {
+        initComponents();
         this.operador = operador;
         this.base = new BaseDatos();
-        initComponents();
         this.setLocationRelativeTo(null);
     }
 
@@ -173,7 +173,7 @@ public class GUIAñadirModificadores extends javax.swing.JFrame {
         }
         if (Lista.getSelectedValue().equals("Fortaleza")) {
             try {
-                this.base.DeserializePro(Lista.getSelectedValue());
+                this.base.deserializePro(Lista.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIAñadirModificadores.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -184,7 +184,7 @@ public class GUIAñadirModificadores extends javax.swing.JFrame {
             if (!(b.perteneceFortalezas(nombre))) {
                 b.getListaFortalezas().add(fortaleza);
                 try {
-                    b.SerializePro(Lista.getSelectedValue());
+                    b.serializePro(Lista.getSelectedValue());
                 } catch (IOException ex) {
                     Logger.getLogger(GUIAñadirModificadores.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -193,7 +193,7 @@ public class GUIAñadirModificadores extends javax.swing.JFrame {
             }
         } else if (Lista.getSelectedValue().equals("Debilidad")) {
             try {
-                this.base.DeserializePro(Lista.getSelectedValue());
+                this.base.deserializePro(Lista.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIAñadirModificadores.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -204,7 +204,7 @@ public class GUIAñadirModificadores extends javax.swing.JFrame {
             if (!(b.perteneceDebilidades(nombre))) {
                 b.getListaDebilidades().add(debilidad);
                 try {
-                    b.SerializePro(Lista.getSelectedValue());
+                    b.serializePro(Lista.getSelectedValue());
                 } catch (IOException ex) {
                     Logger.getLogger(GUIAñadirModificadores.class.getName()).log(Level.SEVERE, null, ex);
                 }

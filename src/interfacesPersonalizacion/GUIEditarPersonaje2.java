@@ -19,9 +19,10 @@ import practicamp.Usuario;
  * @author PcCom
  */
 public class GUIEditarPersonaje2 extends javax.swing.JFrame {
-private Operador operador;
-private    Usuario Usuario;
-private    Personaje Personaje;
+    
+    private Operador operador;
+    private Usuario usuario;
+    private Personaje personaje;
 
     /**
      * Creates new form GUIEditarPersonaje2
@@ -29,9 +30,9 @@ private    Personaje Personaje;
     public GUIEditarPersonaje2(Usuario u, Personaje p, Operador operador) {
         initComponents();
         this.operador = operador;
-        Usuario = u;
-        Personaje = p;
-                this.setLocationRelativeTo(null);
+        this.usuario = u;
+        this.personaje = p;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -244,7 +245,7 @@ private    Personaje Personaje;
     private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Debilidad");
+            b.deserializePro("Debilidad");
         } catch (IOException ex) {
             Logger.getLogger(GUIEditarPersonaje2.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -253,7 +254,7 @@ private    Personaje Personaje;
         DefaultListModel dlm1 = new DefaultListModel();
         int i = b.getListaDebilidades().size();
         for (int j = 0; j < i; j++) {
-            if (Personaje.getDebilidades().contains(b.getListaDebilidades().get(j))) {
+            if (personaje.getDebilidades().contains(b.getListaDebilidades().get(j))) {
                 dlm1.addElement(" ");
             } else {
                 dlm1.addElement(b.getListaDebilidades().get(j).getName());
@@ -261,9 +262,9 @@ private    Personaje Personaje;
         }
         ListaDebilidades.setModel(dlm1);
         DefaultListModel dlm2 = new DefaultListModel();
-        int k = Personaje.getDebilidades().size();
+        int k = personaje.getDebilidades().size();
         for (int j = 0; j < k; j++) {
-            dlm2.addElement(Personaje.getDebilidades().get(j).getName());
+            dlm2.addElement(personaje.getDebilidades().get(j).getName());
         }
         LDebilidadesPers.setModel(dlm2);
 
@@ -273,26 +274,26 @@ private    Personaje Personaje;
         int numH = ListaDebilidades.getSelectedIndex();
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Debilidad");
+            b.deserializePro("Debilidad");
         } catch (IOException ex) {
             Logger.getLogger(GUIEditarPersonaje2.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUIEditarPersonaje2.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Personaje.getDebilidades().add(b.getListaDebilidades().get(numH));
+        personaje.getDebilidades().add(b.getListaDebilidades().get(numH));
         Mostrar.doClick();
     }//GEN-LAST:event_AñadirDebilidadActionPerformed
 
     private void QuitarDebilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarDebilidadActionPerformed
         int numH = LDebilidadesPers.getSelectedIndex();
-        Personaje.getDebilidades().remove(numH);
+        personaje.getDebilidades().remove(numH);
         Mostrar.doClick();
     }//GEN-LAST:event_QuitarDebilidadActionPerformed
 
     private void Mostrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mostrar2ActionPerformed
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Fortaleza");
+            b.deserializePro("Fortaleza");
         } catch (IOException ex) {
             Logger.getLogger(GUIEditarPersonaje2.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -301,7 +302,7 @@ private    Personaje Personaje;
         DefaultListModel dlm1 = new DefaultListModel();
         int i = b.getListaFortalezas().size();
         for (int j = 0; j < i; j++) {
-            if (Personaje.getFortalezas().contains(b.getListaFortalezas().get(j))) {
+            if (personaje.getFortalezas().contains(b.getListaFortalezas().get(j))) {
                 dlm1.addElement(" ");
             } else {
                 dlm1.addElement(b.getListaFortalezas().get(j).getName());
@@ -309,9 +310,9 @@ private    Personaje Personaje;
         }
         ListaFortalezas.setModel(dlm1);
         DefaultListModel dlm2 = new DefaultListModel();
-        int k = Personaje.getFortalezas().size();
+        int k = personaje.getFortalezas().size();
         for (int j = 0; j < k; j++) {
-            dlm2.addElement(Personaje.getFortalezas().get(j).getName());
+            dlm2.addElement(personaje.getFortalezas().get(j).getName());
         }
         LFortalezasPers.setModel(dlm2);
 
@@ -319,7 +320,7 @@ private    Personaje Personaje;
 
     private void QuitarFortalezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarFortalezaActionPerformed
         int numF = LFortalezasPers.getSelectedIndex();
-        Personaje.getFortalezas().remove(numF);
+        personaje.getFortalezas().remove(numF);
         Mostrar2.doClick();
     }//GEN-LAST:event_QuitarFortalezaActionPerformed
 
@@ -327,18 +328,18 @@ private    Personaje Personaje;
         int numH = ListaFortalezas.getSelectedIndex();
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Fortaleza");
+            b.deserializePro("Fortaleza");
         } catch (IOException ex) {
             Logger.getLogger(GUIEditarPersonaje2.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUIEditarPersonaje2.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Personaje.getFortalezas().add(b.getListaFortalezas().get(numH));
+        personaje.getFortalezas().add(b.getListaFortalezas().get(numH));
         Mostrar2.doClick();
     }//GEN-LAST:event_AñadirFortalezaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        GUIEditarPersonaje3 g = new GUIEditarPersonaje3(Usuario, Personaje, operador);
+        GUIEditarPersonaje3 g = new GUIEditarPersonaje3(usuario, personaje, operador);
         g.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -379,7 +380,7 @@ private    Personaje Personaje;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIEditarPersonaje2(Usuario, Personaje, operador).setVisible(true);
+                new GUIEditarPersonaje2(usuario, personaje, operador).setVisible(true);
             }
         });
     }

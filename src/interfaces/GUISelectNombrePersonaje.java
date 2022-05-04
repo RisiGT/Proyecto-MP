@@ -20,8 +20,8 @@ import practicamp.Usuario;
  * @author Rubén
  */
 public class GUISelectNombrePersonaje extends javax.swing.JFrame {
-  public Usuario usuario;
-  String nombre;
+    private Usuario usuario;
+    private String nombre;
     /**
      * Creates new form GUINombrePersonaje
      */
@@ -111,41 +111,41 @@ public class GUISelectNombrePersonaje extends javax.swing.JFrame {
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         String nombrePersonaje= Nombre.getText();
-       if (nombre.equals("Vampiro")){
-           Vampiro e = new Vampiro(nombrePersonaje, 5, 5, null, null, null, null);
-           usuario.getPersonajes().add(e);
-       } else if (nombre.equals("Licantropo")){
-           Licantropo e = new Licantropo(nombrePersonaje, 5, 5, null, null, null, null);
-           usuario.getPersonajes().add(e);
-       } else if (nombre.equals("Cazador")){
-           Cazador e = new Cazador(nombrePersonaje, 5, 5, null, null, null, null);
-           usuario.getPersonajes().add(e);
- 
-       }
+        if (nombre.equals("Vampiro")){
+            Vampiro e = new Vampiro(nombrePersonaje, 5, 5, null, null, null, null);
+            usuario.getPersonajes().add(e);
+        } else if (nombre.equals("Licantropo")){
+            Licantropo e = new Licantropo(nombrePersonaje, 5, 5, null, null, null, null);
+            usuario.getPersonajes().add(e);
+        } else if (nombre.equals("Cazador")){
+            Cazador e = new Cazador(nombrePersonaje, 5, 5, null, null, null, null);
+            usuario.getPersonajes().add(e);
+
+        }
      
        BaseDatos  b = new BaseDatos();
-      try {
-          b.DeserializePro("Usuario");
-      } catch (IOException ex) {
-          Logger.getLogger(GUISelectNombrePersonaje.class.getName()).log(Level.SEVERE, null, ex);
-      } catch (ClassNotFoundException ex) {
-          Logger.getLogger(GUISelectNombrePersonaje.class.getName()).log(Level.SEVERE, null, ex);
-      }
-       b.actualizarUsuario(usuario);
-      try {
-          b.SerializePro("Usuario");
-      } catch (IOException ex) {
-          Logger.getLogger(GUISelectNombrePersonaje.class.getName()).log(Level.SEVERE, null, ex);
-      }
-      GUIMenuUsuario g = new GUIMenuUsuario(usuario);
-       g.setVisible(true);
-       this.setVisible(false);
+        try {
+            b.deserializePro("Usuario");
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(GUISelectNombrePersonaje.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        b.actualizarUsuario(usuario);
+        
+        try {
+            b.serializePro("Usuario");
+        } catch (IOException ex) {
+            Logger.getLogger(GUISelectNombrePersonaje.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            GUIMenuUsuario g = new GUIMenuUsuario(usuario);
+            g.setVisible(true);
+            this.setVisible(false);
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-  GUIMenuUsuario i = new GUIMenuUsuario(usuario);
-  i.setVisible(true);
-  this.setVisible(false);        // TODO add your handling code here:
+        GUIMenuUsuario i = new GUIMenuUsuario(usuario);
+        i.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_CancelarActionPerformed
 
     /**

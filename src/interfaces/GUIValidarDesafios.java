@@ -29,18 +29,18 @@ import practicamp.ResultadosCombate;
 public class GUIValidarDesafios extends javax.swing.JFrame {
 
     private Operador operador;
-    List<Fortaleza> listaFortalezas1 = new ArrayList();
-    List<Debilidad> listaDebilidades1 = new ArrayList();
-    List<Fortaleza> listaFortalezas2 = new ArrayList();
-    List<Debilidad> listaDebilidades2 = new ArrayList();
+    private List<Fortaleza> listaFortalezas1 = new ArrayList();
+    private List<Debilidad> listaDebilidades1 = new ArrayList();
+    private List<Fortaleza> listaFortalezas2 = new ArrayList();
+    private List<Debilidad> listaDebilidades2 = new ArrayList();
 
     /**
      * Creates new form GUIValidarDesafios
      */
     public GUIValidarDesafios(Operador operador) {
-        this.operador = operador;
         initComponents();
-                this.setLocationRelativeTo(null);
+        this.operador = operador;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -255,7 +255,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
         BaseDatos b = new BaseDatos();
         DefaultListModel dlm1 = new DefaultListModel();
         try {
-            b.DeserializePro("Desafio");
+            b.deserializePro("Desafio");
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -276,7 +276,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             DefaultListModel dlm1 = new DefaultListModel();
             BaseDatos b = new BaseDatos();
             try {
-                b.DeserializePro("Desafio");
+                b.deserializePro("Desafio");
             } catch (IOException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -286,7 +286,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 if ((desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
                     int tipo = desafio.getPersonajeDesafiado().getTipo();
                     try {
-                        b.DeserializePro("Fortaleza");
+                        b.deserializePro("Fortaleza");
                     } catch (IOException ex) {
                         Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
@@ -309,7 +309,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             DefaultListModel dlm1 = new DefaultListModel();
             BaseDatos b = new BaseDatos();
             try {
-                b.DeserializePro("Desafio");
+                b.deserializePro("Desafio");
             } catch (IOException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -319,7 +319,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 if ((desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
                     int tipo = desafio.getPersonajeDesafiante().getTipo();
                     try {
-                        b.DeserializePro("Debilidad");
+                        b.deserializePro("Debilidad");
                     } catch (IOException ex) {
                         Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
@@ -342,7 +342,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             DefaultListModel dlm1 = new DefaultListModel();
             BaseDatos b = new BaseDatos();
             try {
-                b.DeserializePro("Desafio");
+                b.deserializePro("Desafio");
             } catch (IOException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -352,7 +352,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 if ((desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
                     int tipo = desafio.getPersonajeDesafiante().getTipo();
                     try {
-                        b.DeserializePro("Fortaleza");
+                        b.deserializePro("Fortaleza");
                     } catch (IOException ex) {
                         Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
@@ -375,7 +375,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             DefaultListModel dlm1 = new DefaultListModel();
             BaseDatos b = new BaseDatos();
             try {
-                b.DeserializePro("Desafio");
+                b.deserializePro("Desafio");
             } catch (IOException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -385,7 +385,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 if ((desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
                     int tipo = desafio.getPersonajeDesafiado().getTipo();
                     try {
-                        b.DeserializePro("Debilidad");
+                        b.deserializePro("Debilidad");
                     } catch (IOException ex) {
                         Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
@@ -407,14 +407,14 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
         if (!(ListaDesafios.getSelectedValue() == null)) {
             BaseDatos b = new BaseDatos();
             try {
-                b.DeserializePro("Desafio");
+                b.deserializePro("Desafio");
             } catch (IOException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
-                b.RechazarDesafio(ListaDesafios.getSelectedValue());
+                b.rechazarDesafio(ListaDesafios.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -429,7 +429,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
     private void AñadirDeb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirDeb1ActionPerformed
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Debilidad");
+            b.deserializePro("Debilidad");
         } catch (IOException ex) {
             Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -456,7 +456,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             ListaDeb1.setModel(dlm1);
         }
         try {
-            b.DeserializePro("Desafio");
+            b.deserializePro("Desafio");
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -468,7 +468,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             }
         }
         try {
-            b.SerializePro("Desafio");
+            b.serializePro("Desafio");
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -478,7 +478,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
     private void AñadirFort1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirFort1ActionPerformed
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Fortaleza");
+            b.deserializePro("Fortaleza");
         } catch (IOException ex) {
             Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -505,7 +505,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             ListaFort1.setModel(dlm1);
         }
         try {
-            b.DeserializePro("Desafio");
+            b.deserializePro("Desafio");
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -517,7 +517,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             }
         }
         try {
-            b.SerializePro("Desafio");         
+            b.serializePro("Desafio");         
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -528,7 +528,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
     private void AñadirFort2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirFort2ActionPerformed
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Fortaleza");
+            b.deserializePro("Fortaleza");
         } catch (IOException ex) {
             Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -555,7 +555,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             ListaFort2.setModel(dlm1);
         }
         try {
-            b.DeserializePro("Desafio");
+            b.deserializePro("Desafio");
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -567,7 +567,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             }
         }
         try {
-            b.SerializePro("Desafio");
+            b.serializePro("Desafio");
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -577,7 +577,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
     private void AñadirDeb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirDeb2ActionPerformed
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Debilidad");
+            b.deserializePro("Debilidad");
         } catch (IOException ex) {
             Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -604,7 +604,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             ListaDeb2.setModel(dlm1);
         }
         try {
-            b.DeserializePro("Desafio");
+            b.deserializePro("Desafio");
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -616,7 +616,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             }
         } 
         try {
-            b.SerializePro("Desafio");
+            b.serializePro("Desafio");
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -625,7 +625,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Desafio");
+            b.deserializePro("Desafio");
         } catch (IOException ex) {
             Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

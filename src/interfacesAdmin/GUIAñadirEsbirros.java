@@ -32,8 +32,8 @@ public class GUIAñadirEsbirros extends javax.swing.JFrame {
      * Creates new form GUIAñadirEsbirros
      */
     public GUIAñadirEsbirros(Operador operador) {
-        this.operador = operador;
         initComponents();
+        this.operador = operador;
         this.base = new BaseDatos();
         this.setLocationRelativeTo(null);
     }
@@ -181,7 +181,7 @@ public class GUIAñadirEsbirros extends javax.swing.JFrame {
         int salud = Integer.valueOf(Salud.getText());
         if (Lista.getSelectedValue().equals("Humano")) {
             try {
-                this.base.DeserializePro(Lista.getSelectedValue());
+                this.base.deserializePro(Lista.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIAñadirEsbirros.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -193,7 +193,7 @@ public class GUIAñadirEsbirros extends javax.swing.JFrame {
             if (!(b.perteneceHumano(nombre))) {
                 b.getListahumanos().add(humano);
                 try {
-                    b.SerializePro(Lista.getSelectedValue());
+                    b.serializePro(Lista.getSelectedValue());
                 } catch (IOException ex) {
                     Logger.getLogger(GUIAñadirEsbirros.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -202,7 +202,7 @@ public class GUIAñadirEsbirros extends javax.swing.JFrame {
             }
         } else if (Lista.getSelectedValue().equals("Ghoul")) {
             try {
-                this.base.DeserializePro(Lista.getSelectedValue());
+                this.base.deserializePro(Lista.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIAñadirEsbirros.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -214,7 +214,7 @@ public class GUIAñadirEsbirros extends javax.swing.JFrame {
             if (!(b.perteneceGhoul(nombre))) {
                 b.getListaghouls().add(ghoul);
                 try {
-                    b.SerializePro(Lista.getSelectedValue());
+                    b.serializePro(Lista.getSelectedValue());
                 } catch (IOException ex) {
                     Logger.getLogger(GUIAñadirEsbirros.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -223,7 +223,7 @@ public class GUIAñadirEsbirros extends javax.swing.JFrame {
             }
         } else if (Lista.getSelectedValue().equals("Demonio")) {
             try {
-                this.base.DeserializePro(Lista.getSelectedValue());
+                this.base.deserializePro(Lista.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIAñadirEsbirros.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -235,7 +235,7 @@ public class GUIAñadirEsbirros extends javax.swing.JFrame {
             if (!(b.perteneceDemonio(nombre))) {
                 b.getListademonios().add(demonio);
                 try {
-                    b.SerializePro(Lista.getSelectedValue());
+                    b.serializePro(Lista.getSelectedValue());
                 } catch (IOException ex) {
                     Logger.getLogger(GUIAñadirEsbirros.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -22,18 +22,18 @@ import practicamp.Usuario;
  */
 public class GUISelectHabilidad extends javax.swing.JFrame {
 
-    int Opcion;
-    Usuario Usuario;
-    Personaje Pers;
+    private int option;
+    private Usuario user;
+    private Personaje character;
 
     /**
      * Creates new form GUICrearPersonaje3
      */
     public GUISelectHabilidad(int opcion, Usuario usuario, Personaje pers) {
         initComponents();
-        this.Opcion = opcion;
-        this.Usuario = usuario;
-        this.Pers = pers;
+        this.option = opcion;
+        this.user = usuario;
+        this.character = pers;
         this.setLocationRelativeTo(null);
     }
 
@@ -148,90 +148,90 @@ public class GUISelectHabilidad extends javax.swing.JFrame {
 if (!(Lista.getSelectedValue()==null)){
         int Habilidad = Lista.getSelectedIndex();
         String a = Numero.getText();
-        if (Opcion == 1) {
-            Vampiro v = (Vampiro) Pers;
+        if (option == 1) {
+            Vampiro v = (Vampiro) character;
             v.setEdad(Integer.valueOf(a));
             BaseDatos b = new BaseDatos();
             try {
-                b.DeserializePro("Disciplina");
+                b.deserializePro("Disciplina");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
             v.setHabilidadespecial(b.getListaDisciplinas().get(Habilidad));
-            Usuario.actualizarPersonaje(v);
+            user.actualizarPersonaje(v);
             try {
-                b.DeserializePro("Usuario");
+                b.deserializePro("Usuario");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
-            b.actualizarUsuario(Usuario);
+            b.actualizarUsuario(user);
             try {
-                b.SerializePro("Usuario");
+                b.serializePro("Usuario");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
-            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+            GUIMenuUsuario i = new GUIMenuUsuario(user);
             i.setVisible(true);
             this.setVisible(false);
-        } else if (Opcion == 2) {
-            Licantropo l = (Licantropo) Pers;
+        } else if (option == 2) {
+            Licantropo l = (Licantropo) character;
             l.setTamaño(Integer.valueOf(a));
             BaseDatos b = new BaseDatos();
             try {
-                b.DeserializePro("Don");
+                b.deserializePro("Don");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
             l.setHabilidadespecial(b.getListaDones().get(Habilidad));
-            Usuario.actualizarPersonaje(l);
+            user.actualizarPersonaje(l);
             try {
-                b.DeserializePro("Usuario");
+                b.deserializePro("Usuario");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
-            b.actualizarUsuario(Usuario);
+            b.actualizarUsuario(user);
             try {
-                b.SerializePro("Usuario");
+                b.serializePro("Usuario");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
-            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+            GUIMenuUsuario i = new GUIMenuUsuario(user);
             i.setVisible(true);
             this.setVisible(false);
         } else {
-            Cazador c = (Cazador) Pers;
+            Cazador c = (Cazador) character;
             BaseDatos b = new BaseDatos();
             try {
-                b.DeserializePro("Talento");
+                b.deserializePro("Talento");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
             c.setHabilidadEspecial(b.getListaTalentos().get(Habilidad));
-            Usuario.actualizarPersonaje(c);
+            user.actualizarPersonaje(c);
             try {
-                b.DeserializePro("Usuario");
+                b.deserializePro("Usuario");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
-            b.actualizarUsuario(Usuario);
+            b.actualizarUsuario(user);
             try {
-                b.SerializePro("Usuario");
+                b.serializePro("Usuario");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             }
-            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+            GUIMenuUsuario i = new GUIMenuUsuario(user);
             i.setVisible(true);
             this.setVisible(false);
         }
@@ -241,17 +241,17 @@ if (!(Lista.getSelectedValue()==null)){
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-            GUIMenuUsuario i = new GUIMenuUsuario(Usuario);
+            GUIMenuUsuario i = new GUIMenuUsuario(user);
             i.setVisible(true);
             this.setVisible(false);       // TODO add your handling code here:
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if (this.Opcion == 1) {
+        if (this.option == 1) {
             Valor.setText("Seleccione la edad");
             BaseDatos b = new BaseDatos();
             try {
-                b.DeserializePro("Disciplina");
+                b.deserializePro("Disciplina");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -264,11 +264,11 @@ if (!(Lista.getSelectedValue()==null)){
             }
             Lista.setModel(dlm);
         }
-        if (this.Opcion == 2) {
+        if (this.option == 2) {
             Valor.setText("Seleccione la altura (entre 50 y 100)");
             BaseDatos b = new BaseDatos();
             try {
-                b.DeserializePro("Don");
+                b.deserializePro("Don");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -285,7 +285,7 @@ if (!(Lista.getSelectedValue()==null)){
             Numero.hide();
             BaseDatos b = new BaseDatos();
             try {
-                b.DeserializePro("Talento");
+                b.deserializePro("Talento");
             } catch (IOException ex) {
                 Logger.getLogger(GUISelectHabilidad.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -331,7 +331,7 @@ if (!(Lista.getSelectedValue()==null)){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUISelectHabilidad(Opcion, Usuario, Pers).setVisible(true);
+                new GUISelectHabilidad(option, user, character).setVisible(true);
             }
         });
     }

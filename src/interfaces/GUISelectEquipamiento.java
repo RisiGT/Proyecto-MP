@@ -26,8 +26,8 @@ import practicamp.Usuario;
 public class GUISelectEquipamiento extends javax.swing.JFrame {
 
     // int Tipo;//el tipo de personaje(vampiro etc)
-    Usuario usuario;
-    BaseDatos b;
+    private Usuario usuario;
+    private BaseDatos b;
 
     /**
      * Creates new form GUICrearPersonaje2
@@ -168,7 +168,7 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
         DefaultListModel dlm1 = new DefaultListModel();
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Arma");
+            b.deserializePro("Arma");
         } catch (IOException ex) {
             Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -185,7 +185,7 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
         DefaultListModel dlm1 = new DefaultListModel();
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Armadura");
+            b.deserializePro("Armadura");
         } catch (IOException ex) {
             Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -203,14 +203,14 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
             if (!(ListaArmas.getSelectedValue() == null) && !(ListaArmaduras.getSelectedValue() == null)) {
                 BaseDatos b = new BaseDatos();
                 try {
-                    b.DeserializePro("Arma");
+                    b.deserializePro("Arma");
                 } catch (IOException ex) {
                     Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 try {
-                    b.DeserializePro("Armadura");
+                    b.deserializePro("Armadura");
                 } catch (IOException ex) {
                     Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
@@ -265,7 +265,7 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
 
         BaseDatos b = new BaseDatos();
         try {
-            b.DeserializePro("Usuario");
+            b.deserializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUIEditarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -281,7 +281,7 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
         }
         listaPersonajes.setModel(dlm);
         try {
-            b.SerializePro("Usuario");
+            b.serializePro("Usuario");
         } catch (IOException ex) {
             Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
         }
