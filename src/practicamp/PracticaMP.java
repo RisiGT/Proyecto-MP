@@ -14,7 +14,7 @@ public class PracticaMP {
 
     public static void main(String[] args) {
         Multiplexor mult = new Multiplexor();
-        mult.run();
+        mult.start();
     }
 
 }

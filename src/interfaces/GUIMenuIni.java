@@ -108,8 +108,7 @@ public class GUIMenuIni extends javax.swing.JFrame {
     }//GEN-LAST:event_SignUpMouseClicked
 
     private void SignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpActionPerformed
-        GUIRegistrarse m = new GUIRegistrarse(); 
-        m.setMi(this);
+        GUIRegistrarse m = new GUIRegistrarse(this);
         m.setVisible(true); 
         this.setVisible(false); 
     }//GEN-LAST:event_SignUpActionPerformed
@@ -123,8 +122,7 @@ public class GUIMenuIni extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitActionPerformed
 
     private void SignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInActionPerformed
-        GUIIniSesion m = new GUIIniSesion();
-        m.setMi(this);
+        GUIIniSesion m = new GUIIniSesion(this);
         m.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_SignInActionPerformed

@@ -20,34 +20,19 @@ import practicamp.BaseDatos;
  * @author PcCom
  */
 public class GUIIniSesion extends javax.swing.JFrame {
-
+    
+    private BaseDatos base;
+    private GUIMenuIni menuPrevio;
     private String name;
     private String password;
-    private BaseDatos base;
-    private GUIMenuIni mi;
-
-    public GUIMenuIni getMi() {
-        return mi;
-    }
-
-    public void setMi(GUIMenuIni mi) {
-        this.mi = mi;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 
     /**
      * Creates new form GUIIniSesion
      */
-    public GUIIniSesion() {
+    public GUIIniSesion(GUIMenuIni menu) {
         initComponents();
         this.base = new BaseDatos();
+        this.menuPrevio = menu;
         this.setLocationRelativeTo(null);
     }
 
@@ -79,12 +64,12 @@ public class GUIIniSesion extends javax.swing.JFrame {
         getContentPane().add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 910, 120));
 
         lblUser.setFont(new java.awt.Font("Viner Hand ITC", 0, 24)); // NOI18N
-        lblUser.setText("Usuario");
-        getContentPane().add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 120, 30));
+        lblUser.setText("Nombre de usuario");
+        getContentPane().add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, 210, 30));
 
         lblPassword.setFont(new java.awt.Font("Viner Hand ITC", 0, 24)); // NOI18N
         lblPassword.setText("Contraseña");
-        getContentPane().add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 130, 30));
+        getContentPane().add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 140, 30));
 
         User.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +127,7 @@ public class GUIIniSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitMouseClicked
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-        mi.setVisible(true);
+        menuPrevio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ExitActionPerformed
 
@@ -219,7 +204,7 @@ public class GUIIniSesion extends javax.swing.JFrame {
         }
     }
                                 
-    public static void main(String args[]) {
+    public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -246,7 +231,7 @@ public class GUIIniSesion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIIniSesion().setVisible(true);
+                new GUIIniSesion(menuPrevio).setVisible(true);
             }
         });
     }

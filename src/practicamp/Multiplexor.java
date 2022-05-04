@@ -5,24 +5,21 @@
  */
 package practicamp;
 
+import interfaces.GUIMenuIni;
+import inutil.MenuIni;
+
 /**
  *
  * @author PcCom
  */
 public class Multiplexor {
 
-    public void run() {
-        Menuini menuinicial = new Menuini();
-        menuinicial.doOperation();
-        /*  
-        if (menuinicial.getOpcion()==1){
-            IniciarSesion inises=new IniciarSesion();
-            inises.doOperation();
-        }
-        else{
-            Registrarse reg=new Registrarse();
-            reg.doOperation();
-        }
-         */
+    public void start() {
+        /*
+        MenuIni menuInicial = new MenuIni();
+        menuInicial.doOperation();
+        */
+        GUIMenuIni m = new GUIMenuIni();
+        m.setVisible(true);
     }
 }

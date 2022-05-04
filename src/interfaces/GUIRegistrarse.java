@@ -22,22 +22,20 @@ import practicamp.Usuario;
 public class GUIRegistrarse extends javax.swing.JFrame {
 
     private BaseDatos base;
-    private GUIMenuIni mi;    
+    private GUIMenuIni menuPrevio;    
     private String name;
     private String pass;
     private String nick;
     private static final String code = "123";
 
-    public void setMi(GUIMenuIni mi) {
-        this.mi = mi;
-    }
-
     /**
      * Creates new form GUIRegistrarse
      */
-    public GUIRegistrarse() {
-        this.base = new BaseDatos();
+    public GUIRegistrarse(GUIMenuIni menu) {
         initComponents();
+        this.base = new BaseDatos();
+        this.menuPrevio = menu;
+        
         this.setLocationRelativeTo(null);
     }
 
@@ -257,7 +255,7 @@ public class GUIRegistrarse extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitActionPerformed
 
     private void returnStart() {
-        mi.setVisible(true);
+        menuPrevio.setVisible(true);
         this.dispose();
     }
     
@@ -269,7 +267,7 @@ public class GUIRegistrarse extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_OperatorCodeActionPerformed
 
-    public static void main(String args[]) {
+    public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -296,7 +294,7 @@ public class GUIRegistrarse extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIRegistrarse().setVisible(true);
+                new GUIRegistrarse(menuPrevio).setVisible(true);
             }
         });
     }
