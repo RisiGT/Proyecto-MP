@@ -60,6 +60,7 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
             }
         });
 
+        CrearPersonaje.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         CrearPersonaje.setText("Crear personaje");
         CrearPersonaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +68,7 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
             }
         });
 
+        BorrarPersonaje.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         BorrarPersonaje.setText("Borrar personaje");
         BorrarPersonaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +76,7 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
             }
         });
 
+        ElegirEquipamiento.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         ElegirEquipamiento.setText("Seleccionar equipamiento");
         ElegirEquipamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +84,7 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
             }
         });
 
+        Desafiar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Desafiar.setText("Desafiar");
         Desafiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +92,7 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
             }
         });
 
+        ConsultarOro.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         ConsultarOro.setText("Consultar oro");
         ConsultarOro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +100,7 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
             }
         });
 
+        Ranking.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Ranking.setText("Ranking");
         Ranking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +108,7 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
             }
         });
 
+        Salir.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,43 +121,41 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CrearPersonaje)
-                            .addComponent(BorrarPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Desafiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Ranking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ConsultarOro, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                .addComponent(Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(ElegirEquipamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(409, Short.MAX_VALUE))
+                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(CrearPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ElegirEquipamiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BorrarPersonaje, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Desafiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ConsultarOro, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                            .addComponent(Ranking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(67, 67, 67))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(CrearPersonaje)
-                .addGap(18, 18, 18)
-                .addComponent(BorrarPersonaje)
-                .addGap(29, 29, 29)
-                .addComponent(ElegirEquipamiento)
-                .addGap(18, 18, 18)
-                .addComponent(Desafiar)
-                .addGap(34, 34, 34)
-                .addComponent(ConsultarOro)
-                .addGap(18, 18, 18)
-                .addComponent(Ranking)
-                .addGap(18, 18, 18)
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CrearPersonaje)
+                    .addComponent(Desafiar))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BorrarPersonaje)
+                    .addComponent(ConsultarOro))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ElegirEquipamiento)
+                    .addComponent(Ranking))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(Salir)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(51, 51, 51))
         );
 
         pack();
