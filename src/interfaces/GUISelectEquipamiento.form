@@ -28,10 +28,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="MostrarPersonaje" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="MostrarArmas" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                          <Component id="MostrarArmaduras" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="MostrarArmaduras" max="32767" attributes="0"/>
+                          <Component id="MostrarArmas" alignment="0" max="32767" attributes="0"/>
+                          <Component id="MostrarPersonaje" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -47,7 +47,7 @@
                       <Component id="Aceptar" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,7 +70,7 @@
                       <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Component id="MostrarArmas" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -81,7 +81,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
                       <Component id="MostrarArmaduras" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -98,6 +98,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="MostrarArmas">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Mostrar Armas"/>
       </Properties>
       <Events>
@@ -106,6 +109,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="MostrarArmaduras">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Mostrar Armaduras"/>
       </Properties>
       <Events>
@@ -114,6 +120,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Aceptar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
       </Properties>
       <Events>
@@ -179,6 +188,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="MostrarPersonaje">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Mostrar Personaje"/>
       </Properties>
       <Events>
@@ -187,6 +199,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Cancelar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
       <Events>
