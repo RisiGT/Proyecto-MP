@@ -24,8 +24,9 @@ public class GUIOroBatallas extends javax.swing.JFrame {
      * Creates new form GUIOroBatallas
      */
     public GUIOroBatallas(Usuario usuario) {
-        this.usuario=usuario;
         initComponents();
+        this.usuario=usuario;
+        this.setLocationRelativeTo(null);
     }
 
     /**
