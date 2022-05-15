@@ -46,6 +46,7 @@ public class GUIOperador extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
+        EditarPersonaje.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         EditarPersonaje.setText("Editar personaje");
         EditarPersonaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,6 +54,7 @@ public class GUIOperador extends javax.swing.JFrame {
             }
         });
 
+        AñadirAtributos.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         AñadirAtributos.setText("Añadir atributos");
         AñadirAtributos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +62,7 @@ public class GUIOperador extends javax.swing.JFrame {
             }
         });
 
+        ValidarDesafios.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         ValidarDesafios.setText("Validar desafios");
         ValidarDesafios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +70,7 @@ public class GUIOperador extends javax.swing.JFrame {
             }
         });
 
+        Salir.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +78,7 @@ public class GUIOperador extends javax.swing.JFrame {
             }
         });
 
+        Banear_Desbanear.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Banear_Desbanear.setText("Banear/Desbanear");
         Banear_Desbanear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,29 +91,31 @@ public class GUIOperador extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ValidarDesafios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AñadirAtributos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Banear_Desbanear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EditarPersonaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(379, Short.MAX_VALUE))
+                    .addComponent(EditarPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(AñadirAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Banear_Desbanear))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(EditarPersonaje)
-                .addGap(18, 18, 18)
-                .addComponent(AñadirAtributos)
-                .addGap(18, 18, 18)
-                .addComponent(ValidarDesafios)
-                .addGap(18, 18, 18)
-                .addComponent(Banear_Desbanear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EditarPersonaje)
+                    .addComponent(AñadirAtributos))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ValidarDesafios)
+                    .addComponent(Banear_Desbanear))
+                .addGap(53, 53, 53)
                 .addComponent(Salir)
-                .addGap(66, 66, 66))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
