@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import java.awt.HeadlessException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -38,17 +39,28 @@ public class GUIDesafiar extends javax.swing.JFrame {
         initComponents();
         this.usuario = usuario;
         this.base = new BaseDatos();
-        initializeLista(usuario);
+        initializeListaPersonajes(usuario);
+        initializeListaAdversarios();
         this.setLocationRelativeTo(null);
     }
 
-    private void initializeLista(Usuario usuario) {
-        DefaultListModel dlm1 = new DefaultListModel();
-        int i = usuario.getPersonajes().size();
-        for (int j = 0; j < i; j++) {
-            dlm1.addElement(usuario.getPersonajes().get(j).getNombre());
+    private void initializeListaPersonajes(Usuario usuario) {
+        DefaultListModel dlm = new DefaultListModel();
+        for (Personaje p : usuario.getPersonajes()) {
+            dlm.addElement(p.getNombre());
         }
-        Lista.setModel(dlm1);
+        personajes.setModel(dlm);
+    }
+    
+    private void initializeListaAdversarios(){
+        DefaultListModel dlm = new DefaultListModel();
+        deserialize(base, "Usuario");
+        for (Usuario adver : base.getListausuarios()) {
+            if (!(adver.getNombre().equals(usuario.getNombre()))){
+                dlm.addElement(adver.getNombre());
+            }
+        }
+        desafiados.setModel(dlm);
     }
 
     /**
@@ -62,166 +74,117 @@ public class GUIDesafiar extends javax.swing.JFrame {
 
         Aceptar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        Desafiado = new javax.swing.JTextField();
+        desafiado = new javax.swing.JLabel();
+        oro = new javax.swing.JLabel();
         Oro = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        personaje = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Lista = new javax.swing.JList<>();
+        personajes = new javax.swing.JList<>();
         nombreEsbirro = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         seleccionEsbirro = new javax.swing.JList<>();
         añadirEsbirro = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        precio = new javax.swing.JLabel();
+        creacionEsbirro = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        desafiados = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(821, 631));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Aceptar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 530, -1, -1));
 
+        Cancelar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Cancelar.setText("Cancelar");
         Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 530, -1, -1));
 
-        jLabel1.setText("Usuario desafiado");
+        desafiado.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        desafiado.setText("¿A quién vas a desafiar?");
+        getContentPane().add(desafiado, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 253, -1));
 
-        jLabel2.setText("Oro apostado");
+        oro.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        oro.setText("¿Cuánto oro quieres apostar?");
+        getContentPane().add(oro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 186, -1));
 
+        Oro.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Oro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OroActionPerformed(evt);
             }
         });
+        getContentPane().add(Oro, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 110, -1));
 
-        jLabel3.setText("Personaje");
+        personaje.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        personaje.setText("¿Cuál será tu personaje?");
+        getContentPane().add(personaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 169, -1));
 
-        jScrollPane1.setViewportView(Lista);
+        personajes.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        personajes.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Lorem ipsum" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(personajes);
 
-        jLabel4.setText("Nombre");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 280, -1));
 
+        nombreEsbirro.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        getContentPane().add(nombreEsbirro, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, 121, -1));
+
+        nombre.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        nombre.setText("Nombre");
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 86, -1));
+
+        seleccionEsbirro.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         seleccionEsbirro.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Humano", "Ghoul", "Demonio" };
+            String[] strings = { "10 monedas - Humano", "20 monedas - Ghoul", "30 monedas - Demonio" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane2.setViewportView(seleccionEsbirro);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 200, 70));
+
+        añadirEsbirro.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         añadirEsbirro.setText("Añadir");
         añadirEsbirro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 añadirEsbirroActionPerformed(evt);
             }
         });
+        getContentPane().add(añadirEsbirro, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, -1, -1));
 
-        jLabel5.setText("10");
+        precio.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        precio.setText("Tablón de precios:");
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 210, -1));
 
-        jLabel6.setText("20");
+        creacionEsbirro.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        creacionEsbirro.setText("Creación de esbirro (Opcional)");
+        getContentPane().add(creacionEsbirro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 400, -1));
 
-        jLabel7.setText("30");
+        desafiados.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        desafiados.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Lorem ipsum" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(desafiados);
 
-        jLabel8.setText("Precio");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(Cancelar)
-                .addGap(280, 280, 280))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nombreEsbirro, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(añadirEsbirro))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(385, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Desafiado, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                    .addComponent(Oro))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(Desafiado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Oro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel3))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nombreEsbirro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(añadirEsbirro)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cancelar)
-                    .addComponent(Aceptar))
-                .addGap(76, 76, 76))
-        );
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 310, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -231,67 +194,65 @@ public class GUIDesafiar extends javax.swing.JFrame {
     }//GEN-LAST:event_OroActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        String nombre = Desafiado.getText();
+        String adversario = desafiados.getSelectedValue();
         BaseDatos b = this.base;
-        try {
-            b.deserializePro("Usuario");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if ((b.pertenece(nombre))) {
-            if (!(Oro.getText().equals(""))) {
-                if (usuario.getOro() >= Integer.valueOf(Oro.getText())) {
-                    if (!(Lista.getSelectedValue() == (null))) {
-                        if ((!(usuario.getPersonaje(Lista.getSelectedValue()).getArmaActiva() == null)) && (!(usuario.getPersonaje(Lista.getSelectedValue()).getArmaduraActiva() == null))) {
-                            BaseDatos b2 = this.base;
-                            try {
-                                b2.deserializePro("Desafio");
-                            } catch (IOException ex) {
-                                Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
-                            } catch (ClassNotFoundException ex) {
-                                Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            if (!(b2.yaDesafiado(nombre))) {
-                                Personaje p = usuario.getPersonaje(Lista.getSelectedValue());
-                                p.setEsbirros(listaEsbirros);
-                                Desafio desafio = new Desafio(usuario, b.getUsuario(nombre), Integer.valueOf(Oro.getText()), p);
-                                usuario.setOro(usuario.getOro()-Integer.valueOf(Oro.getText()));
-                                b.actualizarUsuario(usuario);
-                                try {
-                                    b.serializePro("Usuario");
-                                } catch (IOException ex) {
-                                    Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                                b.getListadesafios().add(desafio);
-                                try {
-                                    b2.serializePro("Desafio");
-                                } catch (IOException ex) {
-                                    Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                                GUIMenuUsuario i = new GUIMenuUsuario(usuario);
-                                i.setVisible(true);
-                                this.setVisible(false);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "No tienes un arma y una armadura activa");
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Este usuario ya ha sido desafiado");
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Seleccione un personaje");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Oro insuficiente");
-                }
+        deserialize(b, "Usuario");
+        retar(adversario, b);
+    }//GEN-LAST:event_AceptarActionPerformed
+
+    private void retar(String adversario, BaseDatos b) throws NumberFormatException, HeadlessException {
+        if (!(adversario == (null))) {
+            BaseDatos b2 = this.base;
+            deserialize(b2,"Desafio");
+            if (!(b2.yaDesafiado(adversario))) {
+                String elegido = personajes.getSelectedValue();
+                equipar(elegido, b, adversario);
             } else {
-                JOptionPane.showMessageDialog(null, "Introduzca la cantidad de oro apostada");
+                JOptionPane.showMessageDialog(null, "Este usuario ya ha sido desafiado");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+            JOptionPane.showMessageDialog(null, "Seleccione a alguien como adversario");
         }
-    }//GEN-LAST:event_AceptarActionPerformed
+    }
+
+    private void equipar(String elegido, BaseDatos b, String adversario) throws NumberFormatException, HeadlessException {
+        if (!(elegido == (null))) {
+            Personaje p = usuario.getPersonaje(elegido);
+            if ((!(p.getArmaActiva() == null) || (p.getArmaduraActiva() == null))) {
+                apostar(p, b, adversario);
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un arma y una armadura");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un personaje");
+        }
+    }
+
+    private void apostar(Personaje p, BaseDatos b, String adversario) throws HeadlessException, NumberFormatException {
+        if (!(Oro.getText().equals(""))) {
+            if (usuario.getOro() >= Integer.valueOf(Oro.getText())) {
+                oficializarDesafio(p, b, adversario);
+            } else {
+                JOptionPane.showMessageDialog(null, "No dispone de esa cantidad de oro");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No tengas miedo, apuesta algo de oro");
+        }
+    }
+
+    private void oficializarDesafio(Personaje p, BaseDatos b, String adversario) throws NumberFormatException {
+        p.setEsbirros(listaEsbirros);
+        Desafio desafio = new Desafio(usuario, b.getUsuario(adversario), Integer.valueOf(Oro.getText()), p);
+        
+        b.actualizarUsuario(usuario);
+        serialize(b, "Usuario");
+        b.getListadesafios().add(desafio);
+        serialize(b, "Desafio");
+        
+        GUIMenuUsuario i = new GUIMenuUsuario(usuario);
+        i.setVisible(true);
+        this.setVisible(false);
+    }
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         GUIMenuUsuario g3 = new GUIMenuUsuario(usuario);
@@ -305,8 +266,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
                 case 1:
                     if (usuario.getOro() >= 10) {
                         Humano h = new Humano(nombreEsbirro.getText(), 2, 0);
-                        listaEsbirros.add(h);
-                        usuario.setOro(usuario.getOro() - 10);
+                        addMinion(h, 10);
                     } else {
                         JOptionPane.showMessageDialog(null, "Oro insuficiente");                //oro insuficiente
                     }
@@ -314,8 +274,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
                 case 2:
                     if (usuario.getOro() >= 20) {
                         Ghoul g = new Ghoul(nombreEsbirro.getText(), 2, 0);
-                        listaEsbirros.add(g);
-                        usuario.setOro(usuario.getOro() - 20);
+                        addMinion(g, 20);
                     } else {
                         JOptionPane.showMessageDialog(null, "Oro insuficiente");                //oro insuficiente
                     }
@@ -329,8 +288,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
                             String s = Integer.toString(i);
                             Ghoul g = new Ghoul("Esbirro del demonio " + nombreEsbirro.getText() + " número " + s, 2, 0);
                         }
-                        listaEsbirros.add(d);
-                        usuario.setOro(usuario.getOro() - 30);
+                        addMinion(d, 30);
                     } else {
                         JOptionPane.showMessageDialog(null, "Oro insuficiente");                //oro insuficiente
                     }
@@ -341,6 +299,27 @@ public class GUIDesafiar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Seleccione el tipo de esbirro");
         } 
     }//GEN-LAST:event_añadirEsbirroActionPerformed
+
+    private void addMinion(Esbirro minion, int coste) {
+        listaEsbirros.add(minion);
+        usuario.setOro(usuario.getOro() - coste);
+    }
+    
+    private void deserialize(BaseDatos b, String thing) {
+        try {
+            base.deserializePro(thing);
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void serialize(BaseDatos b, String thing) {
+        try {
+            b.serializePro(thing);
+        } catch (IOException ex) {
+            Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -380,21 +359,20 @@ public class GUIDesafiar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
     private javax.swing.JButton Cancelar;
-    private javax.swing.JTextField Desafiado;
-    private javax.swing.JList<String> Lista;
     private javax.swing.JTextField Oro;
     private javax.swing.JButton añadirEsbirro;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel creacionEsbirro;
+    private javax.swing.JLabel desafiado;
+    private javax.swing.JList<String> desafiados;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel nombre;
     private javax.swing.JTextField nombreEsbirro;
+    private javax.swing.JLabel oro;
+    private javax.swing.JLabel personaje;
+    private javax.swing.JList<String> personajes;
+    private javax.swing.JLabel precio;
     private javax.swing.JList<String> seleccionEsbirro;
     // End of variables declaration//GEN-END:variables
 }
