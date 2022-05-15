@@ -65,6 +65,7 @@ public class GUISelectHabilidad extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jLabel1.setText("Habilidades");
 
+        Numero.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Numero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NumeroActionPerformed(evt);
@@ -74,6 +75,7 @@ public class GUISelectHabilidad extends javax.swing.JFrame {
         Valor.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Valor.setText("Seleccione...");
 
+        Lista.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(Lista);
 
         Aceptar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N

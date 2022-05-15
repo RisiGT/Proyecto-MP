@@ -62,30 +62,37 @@ public class GUIRegistrarse extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
+        lblName.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         lblName.setText("Nombre");
 
+        lblPassword.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         lblPassword.setText("Contraseña");
 
+        lblNick.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         lblNick.setText("Nick");
 
+        Name.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NameActionPerformed(evt);
             }
         });
 
+        Nick.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Nick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NickActionPerformed(evt);
             }
         });
 
+        Password.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PasswordActionPerformed(evt);
             }
         });
 
+        Ok.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Ok.setText("Aceptar");
         Ok.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -98,6 +105,7 @@ public class GUIRegistrarse extends javax.swing.JFrame {
             }
         });
 
+        Exit.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Exit.setText("Salir");
         Exit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,8 +118,10 @@ public class GUIRegistrarse extends javax.swing.JFrame {
             }
         });
 
+        lblOperatorCode.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         lblOperatorCode.setText("Opcional (Código de operador)");
 
+        OperatorCode.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         OperatorCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OperatorCodeActionPerformed(evt);
@@ -122,12 +132,6 @@ public class GUIRegistrarse extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(Exit)
-                .addGap(39, 39, 39)
-                .addComponent(Ok)
-                .addContainerGap(130, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,13 +139,19 @@ public class GUIRegistrarse extends javax.swing.JFrame {
                     .addComponent(lblPassword)
                     .addComponent(lblNick)
                     .addComponent(lblOperatorCode))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(OperatorCode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(OperatorCode, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Nick, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Password, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Name, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(79, 79, 79))
+                    .addComponent(Name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Exit)
+                .addGap(39, 39, 39)
+                .addComponent(Ok)
+                .addGap(119, 119, 119))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,11 +172,11 @@ public class GUIRegistrarse extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOperatorCode, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(OperatorCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Exit)
                     .addComponent(Ok))
-                .addGap(62, 62, 62))
+                .addGap(50, 50, 50))
         );
 
         pack();

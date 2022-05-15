@@ -88,10 +88,13 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
             }
         });
 
+        ListaArmas.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(ListaArmas);
 
+        ListaArmaduras.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jScrollPane3.setViewportView(ListaArmaduras);
 
+        listaPersonajes.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jScrollPane5.setViewportView(listaPersonajes);
 
         MostrarPersonaje.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N

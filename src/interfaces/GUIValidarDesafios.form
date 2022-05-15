@@ -26,68 +26,45 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="MostrarDeb1" max="32767" attributes="0"/>
-                              <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
-                              <Component id="MostrarDesafios" alignment="1" max="32767" attributes="0"/>
-                          </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="MostrarDeb1" alignment="2" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" linkSize="1" alignment="2" pref="199" max="32767" attributes="0"/>
+                          <Component id="AñadirDeb1" alignment="2" min="-2" pref="84" max="-2" attributes="0"/>
+                          <Component id="MostrarDesafios" alignment="2" min="-2" pref="179" max="-2" attributes="0"/>
+                          <Component id="Cancelar" alignment="2" min="-2" pref="84" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                          <Component id="AñadirDeb1" min="-2" pref="84" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="MostrarFort1" alignment="2" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" linkSize="1" alignment="2" pref="203" max="32767" attributes="0"/>
+                          <Component id="AñadirFort1" alignment="2" min="-2" pref="84" max="-2" attributes="0"/>
+                          <Component id="Rechazar" alignment="2" min="-2" pref="169" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="MostrarDeb2" alignment="2" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" linkSize="1" alignment="2" pref="194" max="32767" attributes="0"/>
+                          <Component id="AñadirDeb2" alignment="2" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="Aceptar" alignment="2" min="-2" pref="157" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="MostrarFort2" alignment="2" min="-2" pref="203" max="-2" attributes="0"/>
+                          <Component id="jScrollPane5" linkSize="1" alignment="2" pref="191" max="32767" attributes="0"/>
+                          <Component id="AñadirFort2" alignment="2" min="-2" pref="75" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="Cancelar" min="-2" pref="84" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="343" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="MostrarFort1" min="-2" pref="168" max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" min="-2" pref="168" max="-2" attributes="0"/>
-                              <Component id="Rechazar" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Component id="AñadirFort1" min="-2" pref="84" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="MostrarDeb2" min="-2" pref="157" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="MostrarFort2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="46" pref="46" max="-2" attributes="0"/>
-                              <Component id="AñadirDeb2" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="AñadirFort2" min="-2" pref="75" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="Aceptar" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane4" alignment="0" pref="157" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace min="-2" pref="249" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="452" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -106,26 +83,24 @@
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="MostrarDeb1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="MostrarFort1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="MostrarDeb2" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="MostrarFort2" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="MostrarDeb1" linkSize="4" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="MostrarFort1" linkSize="4" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="MostrarDeb2" linkSize="4" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="MostrarFort2" linkSize="4" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jScrollPane3" pref="143" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jScrollPane4" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jScrollPane5" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jScrollPane3" linkSize="2" pref="143" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" linkSize="2" alignment="1" max="32767" attributes="0"/>
+                  <Component id="jScrollPane4" linkSize="2" alignment="1" max="32767" attributes="0"/>
+                  <Component id="jScrollPane5" linkSize="2" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AñadirFort2" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="AñadirDeb2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="AñadirFort1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="AñadirDeb1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="AñadirDeb2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AñadirFort1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AñadirDeb1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AñadirFort2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -133,7 +108,7 @@
                   <Component id="Aceptar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -141,6 +116,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="Aceptar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Validar Desafio"/>
       </Properties>
       <Events>
@@ -149,6 +127,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="MostrarDesafios">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Mostrar Desafios"/>
       </Properties>
       <Events>
@@ -164,6 +145,9 @@
       <SubComponents>
         <Component class="javax.swing.JList" name="ListaDesafios">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tempus Sans ITC" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -179,6 +163,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="MostrarDeb1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Debilidades del desafiante"/>
       </Properties>
       <Events>
@@ -187,6 +174,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Rechazar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Rechazar Desafio"/>
       </Properties>
       <Events>
@@ -195,6 +185,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="MostrarFort1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Fortalezas del desafiante"/>
       </Properties>
       <Events>
@@ -203,6 +196,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="MostrarDeb2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Debilidades del desafiado"/>
       </Properties>
       <Events>
@@ -211,6 +207,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="MostrarFort2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Fortalezas del desafiado"/>
       </Properties>
       <Events>
@@ -226,6 +225,9 @@
       <SubComponents>
         <Component class="javax.swing.JList" name="ListaDeb1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tempus Sans ITC" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -245,6 +247,9 @@
       <SubComponents>
         <Component class="javax.swing.JList" name="ListaFort1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tempus Sans ITC" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -264,6 +269,9 @@
       <SubComponents>
         <Component class="javax.swing.JList" name="ListaDeb2">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tempus Sans ITC" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -283,6 +291,9 @@
       <SubComponents>
         <Component class="javax.swing.JList" name="ListaFort2">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tempus Sans ITC" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -295,6 +306,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="A&#xf1;adirDeb1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
       </Properties>
       <Events>
@@ -303,6 +317,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="A&#xf1;adirFort1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
       </Properties>
       <Events>
@@ -311,6 +328,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="A&#xf1;adirDeb2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
       </Properties>
       <Events>
@@ -319,6 +339,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="A&#xf1;adirFort2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
       </Properties>
       <Events>
@@ -327,6 +350,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Cancelar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tempus Sans ITC" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
       <Events>

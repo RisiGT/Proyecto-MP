@@ -31,7 +31,7 @@
     <Component class="javax.swing.JButton" name="Aceptar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tempus Sans ITC" size="14" style="0"/>
+          <Font name="Tempus Sans ITC" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
       </Properties>
@@ -40,14 +40,14 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="320" y="530" width="-1" height="-1"/>
+          <AbsoluteConstraints x="280" y="530" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="Cancelar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tempus Sans ITC" size="14" style="0"/>
+          <Font name="Tempus Sans ITC" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
@@ -63,13 +63,13 @@
     <Component class="javax.swing.JLabel" name="desafiado">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tempus Sans ITC" size="14" style="0"/>
+          <Font name="Tempus Sans ITC" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xbf;A qui&#xe9;n vas a desafiar?"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="30" width="253" height="-1"/>
+          <AbsoluteConstraints x="60" y="20" width="253" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -82,7 +82,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="70" y="260" width="186" height="-1"/>
+          <AbsoluteConstraints x="60" y="260" width="186" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -97,20 +97,20 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="270" y="260" width="110" height="-1"/>
+          <AbsoluteConstraints x="260" y="260" width="110" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="personaje">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tempus Sans ITC" size="14" style="0"/>
+          <Font name="Tempus Sans ITC" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xbf;Cu&#xe1;l ser&#xe1; tu personaje?"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="450" y="30" width="169" height="-1"/>
+          <AbsoluteConstraints x="450" y="20" width="240" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -233,7 +233,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tempus Sans ITC" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Creaci&#xf3;n de esbirro (Opcional)"/>
+        <Property name="text" type="java.lang.String" value="Compra de esbirros (Opcional)"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

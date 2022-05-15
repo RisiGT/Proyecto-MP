@@ -94,16 +94,16 @@ public class GUIDesafiar extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(821, 631));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Aceptar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        Aceptar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 530, -1, -1));
+        getContentPane().add(Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 530, -1, -1));
 
-        Cancelar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        Cancelar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         Cancelar.setText("Cancelar");
         Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,13 +112,13 @@ public class GUIDesafiar extends javax.swing.JFrame {
         });
         getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 530, -1, -1));
 
-        desafiado.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        desafiado.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         desafiado.setText("¿A quién vas a desafiar?");
-        getContentPane().add(desafiado, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 253, -1));
+        getContentPane().add(desafiado, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 253, -1));
 
         oro.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         oro.setText("¿Cuánto oro quieres apostar?");
-        getContentPane().add(oro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 186, -1));
+        getContentPane().add(oro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 186, -1));
 
         Oro.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Oro.addActionListener(new java.awt.event.ActionListener() {
@@ -126,11 +126,11 @@ public class GUIDesafiar extends javax.swing.JFrame {
                 OroActionPerformed(evt);
             }
         });
-        getContentPane().add(Oro, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 110, -1));
+        getContentPane().add(Oro, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 110, -1));
 
-        personaje.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        personaje.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         personaje.setText("¿Cuál será tu personaje?");
-        getContentPane().add(personaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 169, -1));
+        getContentPane().add(personaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 240, -1));
 
         personajes.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         personajes.setModel(new javax.swing.AbstractListModel<String>() {
@@ -173,7 +173,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
         getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 210, -1));
 
         creacionEsbirro.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
-        creacionEsbirro.setText("Creación de esbirro (Opcional)");
+        creacionEsbirro.setText("Compra de esbirros (Opcional)");
         getContentPane().add(creacionEsbirro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 400, -1));
 
         desafiados.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
