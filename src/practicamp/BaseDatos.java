@@ -237,8 +237,8 @@ public class BaseDatos implements Serializable {
     public boolean pertenece(String nombre) {
         if (this.listausuarios == null) {
         } else {
-            for (Usuario list : listausuarios) {
-                if (list.getNombre().equals(nombre)) {
+            for (Usuario thing : listausuarios) {
+                if (thing.getNombre().equals(nombre)) {
                     return true;
                 }
             }
@@ -249,8 +249,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceBaneado(String nombre) {
         if (this.listabaneados == null) {
         } else {
-            for (String list : listabaneados) {
-                if (list.equals(nombre)) {
+            for (String thing : listabaneados) {
+                if (thing.equals(nombre)) {
                     return true;
                 }
             }
@@ -259,18 +259,18 @@ public class BaseDatos implements Serializable {
     }
 
     public Usuario getUsuario(String nombre) {
-        for (Usuario usuario : listausuarios) {
-            if (usuario.getNombre().equals(nombre)) {
-                return usuario;
+        for (Usuario user : listausuarios) {
+            if (user.getNombre().equals(nombre)) {
+                return user;
             }
         }
         return null;
     }
 
     public Operador getOperador(String nombre) {
-        for (Operador operador : listaoperadores) {
-            if (operador.getNombre().equals(nombre)) {
-                return operador;
+        for (Operador op : listaoperadores) {
+            if (op.getNombre().equals(nombre)) {
+                return op;
             }
         }
         return null;
@@ -279,8 +279,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceOperador(String nombre) {
         if (this.listaoperadores == null) {
         } else {
-            for (Operador list : listaoperadores) {
-                if (list.getNombre().equals(nombre)) {
+            for (Operador thing : listaoperadores) {
+                if (thing.getNombre().equals(nombre)) {
                     return true;
                 }
             }
@@ -291,8 +291,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceDisciplina(String nombre) {
         if (this.listadisciplinas == null) {
         } else {
-            for (Disciplina list : listadisciplinas) {
-                if (list.getName().equals(nombre)) {
+            for (Disciplina thing : listadisciplinas) {
+                if (thing.getName().equals(nombre)) {
                     return true;
                 }
             }
@@ -303,8 +303,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceDon(String nombre) {
         if (this.listadones == null) {
         } else {
-            for (Don list : listadones) {
-                if (list.getName().equals(nombre)) {
+            for (Don thing : listadones) {
+                if (thing.getName().equals(nombre)) {
                     return true;
                 }
             }
@@ -315,8 +315,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceTalento(String nombre) {
         if (this.listatalentos == null) {
         } else {
-            for (Talento list : listatalentos) {
-                if (list.getName().equals(nombre)) {
+            for (Talento thing : listatalentos) {
+                if (thing.getName().equals(nombre)) {
                     return true;
                 }
             }
@@ -327,8 +327,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceDebilidades(String nombre) {
         if (this.listadebilidades == null) {
         } else {
-            for (Debilidad list : listadebilidades) {
-                if (list.getName().equals(nombre)) {
+            for (Debilidad thing : listadebilidades) {
+                if (thing.getName().equals(nombre)) {
                     return true;
                 }
             }
@@ -339,8 +339,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceFortalezas(String nombre) {
         if (this.listafortalezas == null) {
         } else {
-            for (Fortaleza list : listafortalezas) {
-                if (list.getName().equals(nombre)) {
+            for (Fortaleza thing : listafortalezas) {
+                if (thing.getName().equals(nombre)) {
                     return true;
                 }
             }
@@ -351,8 +351,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceBaneados(String nombre) {
         if (this.listabaneados == null) {
         } else {
-            for (String list : listabaneados) {
-                if (list.equals(nombre)) {
+            for (String thing : listabaneados) {
+                if (thing.equals(nombre)) {
                     return true;
                 }
             }
@@ -363,8 +363,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceArma(String nombre) {
         if (this.listaArmas == null) {
         } else {
-            for (Arma list : listaArmas) {
-                if (list.getName().equals(nombre)) {
+            for (Arma thing : listaArmas) {
+                if (thing.getName().equals(nombre)) {
                     return true;
                 }
             }
@@ -375,8 +375,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceArmadura(String nombre) {
         if (this.listaArmas == null) {
         } else {
-            for (Arma list : listaArmas) {
-                if (list.getName().equals(nombre)) {
+            for (Arma thing : listaArmas) {
+                if (thing.getName().equals(nombre)) {
                     return true;
                 }
             }
@@ -387,8 +387,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceHumano(String nombre) {
         if (this.listahumanos == null) {
         } else {
-            for (Humano list : listahumanos) {
-                if (list.getName().equals(nombre)) {
+            for (Humano thing : listahumanos) {
+                if (thing.getName().equals(nombre)) {
                     return true;
                 }
             }
@@ -399,8 +399,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceGhoul(String nombre) {
         if (this.listaghouls == null) {
         } else {
-            for (Ghoul list : listaghouls) {
-                if (list.getName().equals(nombre)) {
+            for (Ghoul thing : listaghouls) {
+                if (thing.getName().equals(nombre)) {
                     return true;
                 }
             }
@@ -411,8 +411,8 @@ public class BaseDatos implements Serializable {
     public boolean perteneceDemonio(String nombre) {
         if (this.listademonios == null) {
         } else {
-            for (Demonio list : listademonios) {
-                if (list.getName().equals(nombre)) {
+            for (Demonio thing : listademonios) {
+                if (thing.getName().equals(nombre)) {
                     return true;
                 }
             }
@@ -433,8 +433,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean okIni(String nombre, String password) {
-        for (Usuario list : listausuarios) {
-            if ((list.getNombre().equals(nombre)) && (list.getPassword().equals(password))) {
+        for (Usuario user : listausuarios) {
+            if ((user.getNombre().equals(nombre)) && (user.getPassword().equals(password))) {
                 return true;
             }
         }
@@ -442,8 +442,8 @@ public class BaseDatos implements Serializable {
     }
 
     public boolean okIniOperador(String nombre, String password) {
-        for (Operador list : listaoperadores) {
-            if ((list.getNombre().equals(nombre)) && (list.getPassword().equals(password))) {
+        for (Operador op : listaoperadores) {
+            if ((op.getNombre().equals(nombre)) && (op.getPassword().equals(password))) {
                 return true;
             }
         }
@@ -451,9 +451,9 @@ public class BaseDatos implements Serializable {
     }
 
     public void actualizarUsuario(Usuario u) {
-        for (Usuario list : listausuarios) {
-            if ((list.getNombre().equals(u.getNombre()))) {
-                listausuarios.remove(list);
+        for (Usuario user : listausuarios) {
+            if ((user.getNombre().equals(u.getNombre()))) {
+                listausuarios.remove(user);
                 listausuarios.add(u);
                 break;
             }
@@ -461,9 +461,9 @@ public class BaseDatos implements Serializable {
     }
 
     public void rechazarDesafio(String desafiado) throws IOException {
-        for (Desafio list : listadesafios) {
-            if ((list.getDesafiado().getNombre().equals(desafiado))) {
-                listausuarios.remove(list);
+        for (Desafio desafio : listadesafios) {
+            if ((desafio.getDesafiado().getNombre().equals(desafiado))) {
+                listausuarios.remove(desafio);
             }
         }
         serializePro("Desafio");
