@@ -45,6 +45,7 @@ public class BaseDatos implements Serializable {
     List<Demonio> listademonios;
     List<String> listabaneados;
     List<Desafio> listadesafios;
+    NotificadorCombate notificadorCombate;
 
     public BaseDatos() {
         listausuarios = new ArrayList<Usuario>();
@@ -61,6 +62,7 @@ public class BaseDatos implements Serializable {
         listademonios = new ArrayList<Demonio>();
         listabaneados = new ArrayList<String>();
         listadesafios = new ArrayList<Desafio>();
+        notificadorCombate = new NotificadorCombate();
     }
 
     public void serializePro(String nombre) throws FileNotFoundException, IOException {
@@ -75,6 +77,10 @@ public class BaseDatos implements Serializable {
                 salida.writeObject(this.listaoperadores);
                 salida.close();
                 break;
+            case "Notificador":
+                salida.writeObject(this.notificadorCombate);
+                salida.close();
+                break;    
             case "Disciplina":
                 salida.writeObject(this.listadisciplinas);
                 salida.close();
@@ -138,6 +144,9 @@ public class BaseDatos implements Serializable {
                 break;
             case "Operator":
                 listaoperadores = (List<Operador>) entrada.readObject();
+                break;
+            case "Notificador":
+                notificadorCombate = (NotificadorCombate) entrada.readObject();
                 ;
                 break;
             case "Disciplina":
@@ -232,6 +241,10 @@ public class BaseDatos implements Serializable {
 
     public List<Desafio> getListadesafios() {
         return listadesafios;
+    }
+
+    public NotificadorCombate getNotificadorCombate() {
+        return notificadorCombate;
     }
 
     public boolean pertenece(String nombre) {

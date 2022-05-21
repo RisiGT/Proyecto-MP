@@ -51,6 +51,7 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
         ConsultarOro = new javax.swing.JButton();
         Ranking = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -116,6 +117,13 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Ver Combates");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,6 +145,10 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
                             .addComponent(ConsultarOro, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                             .addComponent(Ranking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(67, 67, 67))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(269, 269, 269)
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +165,9 @@ public class GUIMenuUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ElegirEquipamiento)
                     .addComponent(Ranking))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
                 .addComponent(Salir)
                 .addGap(51, 51, 51))
         );
@@ -228,6 +242,10 @@ i.setVisible(true);
 this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_ConsultarOroActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       GUIVerCombatesAjenos  g = new GUIVerCombatesAjenos(usuario);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,5 +304,6 @@ this.setVisible(false);// TODO add your handling code here:
     private javax.swing.JButton ElegirEquipamiento;
     private javax.swing.JButton Ranking;
     private javax.swing.JButton Salir;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
