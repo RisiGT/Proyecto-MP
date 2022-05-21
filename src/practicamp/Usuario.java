@@ -41,6 +41,10 @@ public class Usuario extends Persona implements Serializable {
             oro = 0;
         }
     }
+    
+        public void sumarOro(int oroGanado) {
+             oro = oro + oroGanado;
+    }
 
     @Override
     public boolean isDev() {
