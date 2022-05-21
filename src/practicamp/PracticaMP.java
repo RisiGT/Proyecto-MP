@@ -6,7 +6,7 @@
 //Version 3.3
 package practicamp;
 
-import com.jtattoo.plaf.graphite.GraphiteLookAndFeel;
+//import com.jtattoo.plaf.graphite.GraphiteLookAndFeel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -17,7 +17,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class PracticaMP {
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
-        UIManager.setLookAndFeel(new GraphiteLookAndFeel());
+//        UIManager.setLookAndFeel(new GraphiteLookAndFeel());
         Multiplexor mult = new Multiplexor();
         mult.start();
     }
