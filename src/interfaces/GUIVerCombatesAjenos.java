@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import practicamp.BaseDatos;
 import practicamp.NotificadorCombate;
 import practicamp.Usuario;
@@ -17,13 +18,16 @@ import practicamp.Usuario;
  * @author PcCom
  */
 public class GUIVerCombatesAjenos extends javax.swing.JFrame {
-Usuario usuario;
+
+    Usuario usuario;
+
     /**
      * Creates new form GUIVerCombatesAjenos
      */
     public GUIVerCombatesAjenos(Usuario u) {
         initComponents();
         usuario = u;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -38,6 +42,7 @@ Usuario usuario;
         VerCombates = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaCombates = new javax.swing.JList<>();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,28 +55,39 @@ Usuario usuario;
 
         jScrollPane1.setViewportView(ListaCombates);
 
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(VerCombates)
-                .addGap(88, 88, 88)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(VerCombates)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(Cancelar)))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(VerCombates))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(116, Short.MAX_VALUE))
+                    .addComponent(VerCombates)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(Cancelar)
+                .addGap(48, 48, 48))
         );
 
         pack();
@@ -79,24 +95,38 @@ Usuario usuario;
 
     private void VerCombatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerCombatesActionPerformed
         BaseDatos b = new BaseDatos();
-    try {
-        b.deserializePro("Notificador");
-    } catch (IOException ex) {
-        Logger.getLogger(GUIVerCombatesAjenos.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(GUIVerCombatesAjenos.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    NotificadorCombate n = b.getNotificadorCombate();
-     if (n.pertenece(usuario)) {
-         DefaultListModel dlm1 = new DefaultListModel();
-         for (int i = 0; i<usuario.getResultadosCombatesAjenos().size(); i++){
-                dlm1.addElement(usuario.getResultadosCombatesAjenos().get(i).getNombre());           
-         }
-         ListaCombates.setModel(dlm1);
-     }    
-     else {}//obligar a subscribirse
-         
+        try {
+            b.deserializePro("Notificador");
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(GUIVerCombatesAjenos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        NotificadorCombate n = b.getNotificadorCombate();
+        if (n.pertenece(usuario)) {
+            DefaultListModel dlm1 = new DefaultListModel();
+            for (int i = 0; i < usuario.getResultadosCombatesAjenos().size(); i++) {
+                dlm1.addElement(usuario.getResultadosCombatesAjenos().get(i).getNombre());
+            }
+            ListaCombates.setModel(dlm1);
+        } else {
+            JOptionPane.showOptionDialog(null, "Debe suscribirse para poder ver los combates", "Suscripcion", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, null, null);
+
+            if (JOptionPane.OK_OPTION == JOptionPane.YES_OPTION) {
+                b.getNotificadorCombate().Subscribirse(usuario);
+                try {
+                    b.serializePro("Notificador");
+                } catch (IOException ex) {
+                    Logger.getLogger(GUIVerCombatesAjenos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
     }//GEN-LAST:event_VerCombatesActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        GUIMenuUsuario i = new GUIMenuUsuario(usuario);
+        i.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,6 +164,7 @@ Usuario usuario;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancelar;
     private javax.swing.JList<String> ListaCombates;
     private javax.swing.JButton VerCombates;
     private javax.swing.JScrollPane jScrollPane1;
