@@ -51,13 +51,15 @@ public class GUIDesafiar extends javax.swing.JFrame {
         }
         personajes.setModel(dlm);
     }
-    
-    private void initializeListaAdversarios(){
+
+    private void initializeListaAdversarios() {
         DefaultListModel dlm = new DefaultListModel();
         deserialize(base, "Usuario");
         for (Usuario adver : base.getListausuarios()) {
-            if (!(adver.getNombre().equals(usuario.getNombre()))){
-                dlm.addElement(adver.getNombre());
+            if (!(adver.getNombre().equals(usuario.getNombre()))) {
+                if (!(adver.getPersonajes().size() == 0)) {
+                    dlm.addElement(adver.getNombre());
+                }
             }
         }
         desafiados.setModel(dlm);
@@ -203,7 +205,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
     private void retar(String adversario, BaseDatos b) throws NumberFormatException, HeadlessException {
         if (!(adversario == (null))) {
             BaseDatos b2 = this.base;
-            deserialize(b2,"Desafio");
+            deserialize(b2, "Desafio");
             if (!(b2.yaDesafiado(adversario))) {
                 String elegido = personajes.getSelectedValue();
                 equipar(elegido, b, adversario);
@@ -243,12 +245,12 @@ public class GUIDesafiar extends javax.swing.JFrame {
     private void oficializarDesafio(Personaje p, BaseDatos b, String adversario) throws NumberFormatException {
         p.setEsbirros(listaEsbirros);
         Desafio desafio = new Desafio(usuario, b.getUsuario(adversario), Integer.valueOf(Oro.getText()), p);
-        
+
         b.actualizarUsuario(usuario);
         serialize(b, "Usuario");
         b.getListadesafios().add(desafio);
         serialize(b, "Desafio");
-        
+
         GUIMenuUsuario i = new GUIMenuUsuario(usuario);
         i.setVisible(true);
         this.setVisible(false);
@@ -297,14 +299,14 @@ public class GUIDesafiar extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione el tipo de esbirro");
-        } 
+        }
     }//GEN-LAST:event_añadirEsbirroActionPerformed
 
     private void addMinion(Esbirro minion, int coste) {
         listaEsbirros.add(minion);
         usuario.setOro(usuario.getOro() - coste);
     }
-    
+
     private void deserialize(BaseDatos b, String thing) {
         try {
             base.deserializePro(thing);
@@ -312,7 +314,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
             Logger.getLogger(GUIDesafiar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void serialize(BaseDatos b, String thing) {
         try {
             b.serializePro(thing);
