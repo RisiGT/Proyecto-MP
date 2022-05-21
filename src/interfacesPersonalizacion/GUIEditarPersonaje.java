@@ -200,13 +200,18 @@ public class GUIEditarPersonaje extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un usuario");
         }
+        salir();
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        salir();
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void salir() {
         GUIOperador i = new GUIOperador(operador);
         i.setVisible(true);
-        this.setVisible(false);        // TODO add your handling code here:
-    }//GEN-LAST:event_CancelarActionPerformed
+        this.dispose();
+    }
 
     /**
      * @param args the command line arguments
