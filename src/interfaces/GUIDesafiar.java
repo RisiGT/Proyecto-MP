@@ -91,6 +91,9 @@ public class GUIDesafiar extends javax.swing.JFrame {
         creacionEsbirro = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         desafiados = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ListaDeEsbirros = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(821, 631));
@@ -188,6 +191,14 @@ public class GUIDesafiar extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 310, -1));
 
+        jScrollPane4.setViewportView(ListaDeEsbirros);
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 190, 90));
+
+        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jLabel1.setText("No se admiten devoluciones");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 210, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -265,7 +276,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
     private void añadirEsbirroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirEsbirroActionPerformed
         if (!(seleccionEsbirro.getSelectedValue() == null)) {
             switch (seleccionEsbirro.getSelectedIndex()) {
-                case 1:
+                case 0:
                     if (usuario.getOro() >= 10) {
                         Humano h = new Humano(nombreEsbirro.getText(), 2, 0);
                         addMinion(h, 10);
@@ -273,7 +284,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Oro insuficiente");                //oro insuficiente
                     }
                     break;
-                case 2:
+                case 1:
                     if (usuario.getOro() >= 20) {
                         Ghoul g = new Ghoul(nombreEsbirro.getText(), 2, 0);
                         addMinion(g, 20);
@@ -281,7 +292,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Oro insuficiente");                //oro insuficiente
                     }
                     break;
-                case 3:
+                case 2:
                     if (usuario.getOro() >= 30) {
                         Demonio d = new Demonio(nombreEsbirro.getText(), 2, "Pacto del demonio " + nombreEsbirro.getText() + " con " + usuario.getNombre());
                         Random rand = new Random();
@@ -294,9 +305,13 @@ public class GUIDesafiar extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(null, "Oro insuficiente");                //oro insuficiente
                     }
-
-                    break;
             }
+            DefaultListModel dlm = new DefaultListModel();
+            for (Esbirro p : listaEsbirros) {
+                dlm.addElement(p.getName());
+            }
+            ListaDeEsbirros.setModel(dlm);
+            
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione el tipo de esbirro");
         }
@@ -361,14 +376,17 @@ public class GUIDesafiar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
     private javax.swing.JButton Cancelar;
+    private javax.swing.JList<String> ListaDeEsbirros;
     private javax.swing.JTextField Oro;
     private javax.swing.JButton añadirEsbirro;
     private javax.swing.JLabel creacionEsbirro;
     private javax.swing.JLabel desafiado;
     private javax.swing.JList<String> desafiados;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel nombre;
     private javax.swing.JTextField nombreEsbirro;
     private javax.swing.JLabel oro;
