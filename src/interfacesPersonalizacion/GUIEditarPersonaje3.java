@@ -190,9 +190,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
             case 1: {
                 try {
                     b.deserializePro("Disciplina");
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
+                } catch (IOException | ClassNotFoundException ex) {
                     Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 DefaultListModel dlm = new DefaultListModel();

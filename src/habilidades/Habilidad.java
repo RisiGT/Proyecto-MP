@@ -26,15 +26,15 @@ public abstract class Habilidad implements Serializable {
     }
 
     public int getAtaque() {
-        return this.ataque;
+        return ataque;
     }
 
     public int getDefensa() {
-        return this.defensa;
+        return defensa;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public int getCoste() {

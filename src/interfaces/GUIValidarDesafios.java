@@ -9,6 +9,7 @@ import habilidades.Debilidad;
 import habilidades.Fortaleza;
 import interfacesAdmin.GUIOperador;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,6 +24,7 @@ import practicamp.GestorCombate;
 import practicamp.NotificadorCombate;
 import practicamp.Operador;
 import practicamp.ResultadosCombate;
+import practicamp.Usuario;
 
 /**
  *
@@ -689,33 +691,35 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             }
             for (Desafio desafio : b.getListadesafios()) {
                 if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
-                    GestorCombate gest = new GestorCombate(desafio.getPersonajeDesafiante(), desafio.getPersonajeDesafiado(), desafio.getOro(), desafio.getOroDesafiado(), desafio.getDesafiante().getNombre(), desafio.getDesafiado().getNombre());
+                    Usuario desafiado = desafio.getDesafiado();
+                    Usuario desafiante = desafio.getDesafiante();
+                    System.out.println(desafiado.getNombre());
+                    
+                    LocalDate nombreF = LocalDate.now();
+                    String fecha = nombreF.toString();
+                    GestorCombate gest = new GestorCombate(desafio.getPersonajeDesafiante(), desafio.getPersonajeDesafiado(), desafio.getOro(), desafio.getOroDesafiado(), desafiante.getNombre(), desafiado.getNombre());
                     gest.generarCombate();
                     Combate comb = gest.getCombate();
-                    ResultadosCombate res = new ResultadosCombate(desafio.getDesafiante().getNombre() + " vs " + desafio.getDesafiado().getNombre(), comb);
-                    if (comb.getGanador().equals(desafio.getDesafiante().getNombre())) { //ha ganado el desafiante
-                        res.setGanador(desafio.getDesafiante().getNombre());
+                    ResultadosCombate res = new ResultadosCombate(desafiante.getNombre() + " vs " + desafiado.getNombre() + " - "+fecha, comb);
+                    if (comb.getGanador().equals(desafiante.getNombre())) { //ha ganado el desafiante
+                        res.setGanador(desafiante.getNombre());
                         desafio.getDesafiante().sumarOro(desafio.getOro());
                     } else { // gana el desafiado
-                        res.setGanador(desafio.getDesafiado().getNombre());
-                        desafio.getDesafiado().sumarOro(desafio.getOro());
+                        res.setGanador(desafiado.getNombre());
+                        desafiado.sumarOro(desafio.getOro());
                     }
                     desafio.getDesafiante().añadirCombate(res);
                     desafio.getDesafiado().añadirCombate(res);
-                    NotificadorCombate n = new NotificadorCombate();
+                    
                     try {
                         b.deserializePro("Notificador");
-                    } catch (IOException ex) {
-                        Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
+                    } catch (IOException | ClassNotFoundException ex) {
                         Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    n = b.getNotificadorCombate();
+                     NotificadorCombate n = b.getNotificadorCombate();
                     try {
                         n.Actualizar(res);
-                    } catch (IOException ex) {
-                        Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
+                    } catch (IOException | ClassNotFoundException ex) {
                         Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
@@ -724,15 +728,20 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un desafío");
         }
+        salir();
 
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        GUIOperador i = new GUIOperador(operador);
-        i.setVisible(true);
-        this.setVisible(false);// TODO add your handling code here:
+        salir();
     }//GEN-LAST:event_CancelarActionPerformed
 
+    private void salir() {
+        GUIOperador i = new GUIOperador(operador);
+        i.setVisible(true);
+        this.dispose();
+    }
+    
     private void ListaDesafiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaDesafiosMouseClicked
         DefaultListModel dlm = new DefaultListModel();
         ListaFort1.setModel(dlm);

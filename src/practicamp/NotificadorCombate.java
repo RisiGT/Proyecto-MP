@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author PcCom
  */
 public class NotificadorCombate {
-    private ArrayList<Usuario> subscriptores = new ArrayList<Usuario>();
+    private ArrayList<Usuario> subscriptores;
 
     public NotificadorCombate() {
     }

@@ -36,13 +36,13 @@ public class GestorCombate {
     private ArrayList<Ronda> listaRondas = new ArrayList<Ronda>();
     private Combate combate;
 
-    public GestorCombate(Personaje p1, Personaje p2, int oroApostado, int OroDesafiado, String desafiante, String desafiado) {
+    public GestorCombate(Personaje p1, Personaje p2, int oroApostado, int oroDesafiado, String desafiante, String desafiado) {
         pers1 = p1;
         pers2 = p2;
         defensa1 = p1.getArmaduraActiva().getModDefensa() + p1.getArmaActiva().getModDefensa() + p1.getHabilidadEspecial().getDefensa();
         defensa2 = p2.getArmaduraActiva().getModDefensa() + p2.getArmaActiva().getModDefensa() + p2.getHabilidadEspecial().getDefensa();
         this.oroApostado=oroApostado;
-        this.oroDesafiado=oroDesafiado;
+        this.oroDesafiado= oroDesafiado;
         this.desafiante = desafiante;
         this.desafiado = desafiado;
         int i;//variable auxiliar par recorrer la lista 
