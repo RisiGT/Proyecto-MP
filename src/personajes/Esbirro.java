@@ -13,9 +13,17 @@ public abstract class Esbirro {
 
     private String name;
     private int salud;
-
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public String getName() {
         return name;
+    }
+    
+    public void setSalud(int salud) {
+        this.salud = salud;
     }
 
     public int getSalud() {
@@ -23,14 +31,6 @@ public abstract class Esbirro {
     }
 
     public abstract int tipo();
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSalud(int salud) {
-        this.salud = salud;
-    }
     
     public abstract boolean esHumano();
 }

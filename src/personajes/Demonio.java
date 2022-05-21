@@ -26,18 +26,6 @@ public class Demonio extends Esbirro implements Serializable {
         this.salud = salud;
     }
 
-    public void addEsbirro(Esbirro esb) {
-        //Esbirros.add(esb);
-    }
-
-    public int getSalud() {
-        return salud;
-    }
-
-    public void setSalud(int salud) {
-        this.salud = salud;
-    }
-
     public String getPacto() {
         return pacto;
     }
@@ -49,19 +37,14 @@ public class Demonio extends Esbirro implements Serializable {
     public ArrayList<Esbirro> getListaEsbirros() {
         return listaEsbirros;
     }
-
-    public void setListaEsbirros(ArrayList<Esbirro> listaEsbirros) {
-        this.listaEsbirros = listaEsbirros;
+    
+    public void addEsbirro(Esbirro esb) {
+        listaEsbirros.add(esb);
     }
 
     @Override
     public boolean esHumano() {
         return false;
-    }
-
-    @Override
-    public String getName() {
-        return name;
     }
 
     @Override

@@ -38,11 +38,6 @@ public class Ghoul extends Esbirro implements Serializable {
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
     public int tipo() {
         return 2;
     }

@@ -24,22 +24,17 @@ public class Humano extends Esbirro implements Serializable {
         this.lealtad = lealtad;//valor inicial
     }
 
-    @Override
-    public boolean esHumano() {
-        return true;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
     public int getLealtad() {
         return lealtad;
     }
 
     public void setLealtad(int lealtad) {
         this.lealtad = lealtad;
+    }
+    
+    @Override
+    public boolean esHumano() {
+        return true;
     }
 
     @Override
