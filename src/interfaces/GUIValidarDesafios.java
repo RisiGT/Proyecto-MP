@@ -20,6 +20,7 @@ import practicamp.BaseDatos;
 import practicamp.Combate;
 import practicamp.Desafio;
 import practicamp.GestorCombate;
+import practicamp.NotificadorCombate;
 import practicamp.Operador;
 import practicamp.ResultadosCombate;
 
@@ -455,13 +456,13 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 b.rechazarDesafio(ListaDesafios.getSelectedValue());
             } catch (IOException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-            }       
-        GUIOperador i = new GUIOperador(operador);
-        i.setVisible(true);
-        this.setVisible(false);
-    }else{
-                                    JOptionPane.showMessageDialog(null, "Seleccione un desafío");
-                }
+            }
+            GUIOperador i = new GUIOperador(operador);
+            i.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un desafío");
+        }
     }//GEN-LAST:event_RechazarActionPerformed
 
     @SuppressWarnings("unchecked")
@@ -677,38 +678,52 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
     }//GEN-LAST:event_AñadirDeb2ActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-if (!(ListaDesafios.getSelectedValue()==null)){
-        BaseDatos b = new BaseDatos();
-        try {
-            b.deserializePro("Desafio");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        for (Desafio desafio : b.getListadesafios()) {
-            if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
-                GestorCombate gest = new GestorCombate(desafio.getPersonajeDesafiante(), desafio.getPersonajeDesafiado(), desafio.getOro(), desafio.getOroDesafiado(), desafio.getDesafiante().getNombre(), desafio.getDesafiado().getNombre());
-                gest.generarCombate();
-                Combate comb = gest.getCombate();
-                //              ResultadosCombate res = new ResultadosCombate("Nombre desafiante+Nombre desafiado+fecha y hora",comb);
-                //              if (comb.getGanador()==false){ //ha ganado el desafiante
-                //                   res.setGanador("usuario desafiante");
-                //usuarioDesafiante.añadirCombate(res);
-                //usuarioDesafiado.añadirCombate(res);
-                //usuarioDesafiante.setOro(Desafio.getOro());
-                //              }
-                //              else{ // gana el desafiado
-                //                  res.setGanador("usuario desafiado");
-                //usuarioDesafiado.añadirCombate(res);
-                //usuarioDesafiante.añadirCombate(res);
-                //usuarioDesafiado.setOro(Desafio.getOro());
+        if (!(ListaDesafios.getSelectedValue() == null)) {
+            BaseDatos b = new BaseDatos();
+            try {
+                b.deserializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        //  }
-}else{
-                                    JOptionPane.showMessageDialog(null, "Seleccione un desafío");
+            for (Desafio desafio : b.getListadesafios()) {
+                if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
+                    GestorCombate gest = new GestorCombate(desafio.getPersonajeDesafiante(), desafio.getPersonajeDesafiado(), desafio.getOro(), desafio.getOroDesafiado(), desafio.getDesafiante().getNombre(), desafio.getDesafiado().getNombre());
+                    gest.generarCombate();
+                    Combate comb = gest.getCombate();
+                    ResultadosCombate res = new ResultadosCombate(desafio.getDesafiante().getNombre() + " vs " + desafio.getDesafiado().getNombre(), comb);
+                    if (comb.getGanador().equals(desafio.getDesafiante().getNombre())) { //ha ganado el desafiante
+                        res.setGanador(desafio.getDesafiante().getNombre());
+                        desafio.getDesafiante().sumarOro(desafio.getOro());
+                    } else { // gana el desafiado
+                        res.setGanador(desafio.getDesafiado().getNombre());
+                        desafio.getDesafiado().sumarOro(desafio.getOro());
+                    }
+                    desafio.getDesafiante().añadirCombate(res);
+                    desafio.getDesafiado().añadirCombate(res);
+                    NotificadorCombate n = new NotificadorCombate();
+                    try {
+                        b.deserializePro("Notificador");
+                    } catch (IOException ex) {
+                        Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    n = b.getNotificadorCombate();
+                    try {
+                        n.Actualizar(res);
+                    } catch (IOException ex) {
+                        Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un desafío");
+        }
 
     }//GEN-LAST:event_AceptarActionPerformed
 
@@ -719,11 +734,11 @@ if (!(ListaDesafios.getSelectedValue()==null)){
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void ListaDesafiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaDesafiosMouseClicked
-     DefaultListModel dlm= new DefaultListModel();
-     ListaFort1.setModel(dlm);
-     ListaFort2.setModel(dlm);
-     ListaDeb1.setModel(dlm);
-     ListaDeb2.setModel(dlm);
+        DefaultListModel dlm = new DefaultListModel();
+        ListaFort1.setModel(dlm);
+        ListaFort2.setModel(dlm);
+        ListaDeb1.setModel(dlm);
+        ListaDeb2.setModel(dlm);
     }//GEN-LAST:event_ListaDesafiosMouseClicked
 
     /**
