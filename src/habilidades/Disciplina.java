@@ -13,41 +13,17 @@ import java.io.Serializable;
  */
 public class Disciplina extends Habilidad implements Serializable {
 
-    private String name;
-    private int ataque;
-    private int defensa;
+ //   private String name;
+//    private int ataque;
+//    private int defensa;
     private int coste;
 
     public Disciplina(String nombre, int at, int def, int cost) {
-        this.ataque = at;
-        this.defensa = def;
-        this.name = nombre;
+//        this.ataque = at;
+//        this.defensa = def;
+//        this.name = nombre;
+        super.Habilidad(nombre, at, def);
         this.coste = cost;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    public int getMin() {
-        return this.coste;
-    }
-
-    public int getAtaque() {
-        return ataque;
-    }
-
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
-    }
-
-    public int getDefensa() {
-        return defensa;
-    }
-
-    public void setDefensa(int defensa) {
-        this.defensa = defensa;
     }
 
     public int getCoste() {

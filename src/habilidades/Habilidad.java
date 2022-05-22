@@ -16,8 +16,8 @@ public abstract class Habilidad implements Serializable {
     private String name;
     private int ataque;
     private int defensa;
-    private int coste;
-    private int min;
+ //   private int coste;
+ //   private int min;
 
     public void Habilidad(String nombre, int at, int def) {
         this.ataque = at;
@@ -37,10 +37,22 @@ public abstract class Habilidad implements Serializable {
         return name;
     }
 
-    public int getCoste() {
-        return coste;
+//    public int getCoste() {
+//        return coste;
+//    }
+//    public int getMin() {
+//        return min;
+//    }
+
+    public void setName(String name) {
+        this.name = name;
     }
-    public int getMin() {
-        return min;
+
+    public void setAtaque(int ataque) {
+        this.ataque = ataque;
+    }
+
+    public void setDefensa(int defensa) {
+        this.defensa = defensa;
     }
 }

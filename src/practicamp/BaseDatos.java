@@ -80,7 +80,7 @@ public class BaseDatos implements Serializable {
             case "Notificador":
                 salida.writeObject(this.notificadorCombate);
                 salida.close();
-                break;    
+                break;
             case "Disciplina":
                 salida.writeObject(this.listadisciplinas);
                 salida.close();
@@ -192,14 +192,26 @@ public class BaseDatos implements Serializable {
     }
 
     public List<Disciplina> getListaDisciplinas() {
+        if (listadisciplinas.isEmpty()) {
+            Disciplina disciplina = new Disciplina("Default", 1, 1, 1);
+            listadisciplinas.add(disciplina);
+        }
         return listadisciplinas;
     }
 
     public List<Don> getListaDones() {
+        if (listadones.isEmpty()) {
+            Don don = new Don("Default", 1, 1, 1);
+            listadones.add(don);
+        }
         return listadones;
     }
 
     public List<Talento> getListaTalentos() {
+        if (listatalentos.isEmpty()) {
+            Talento talento = new Talento("Default", 1, 1, 1);
+            listatalentos.add(talento);
+        }
         return listatalentos;
     }
 
@@ -360,7 +372,7 @@ public class BaseDatos implements Serializable {
         }
         return false;
     }
-    
+
     public boolean perteneceBaneados(String nombre) {
         if (this.listabaneados == null) {
         } else {
@@ -371,7 +383,7 @@ public class BaseDatos implements Serializable {
             }
         }
         return false;
-    }    
+    }
 
     public boolean perteneceArma(String nombre) {
         if (this.listaArmas == null) {

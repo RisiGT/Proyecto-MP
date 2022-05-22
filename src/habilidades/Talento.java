@@ -13,20 +13,22 @@ import java.io.Serializable;
  */
 public class Talento extends Habilidad implements Serializable {
 
-    private String name;
-    private int ataque;
-    private int defensa;
+//    private String name;
+//    private int ataque;
+//    private int defensa;
     private int edad;
 
     public Talento(String nombre, int at, int def, int age) {
-        this.ataque = at;
-        this.defensa = def;
-        this.name = nombre;
+//        this.ataque = at;
+//        this.defensa = def;
+//        this.name = nombre;
+        super.Habilidad(nombre, at, def);
         this.edad = age;
     }
 
-    public String getName() {
-        return name;
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public int getEdad() {

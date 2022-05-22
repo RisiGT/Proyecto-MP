@@ -4,11 +4,16 @@
  */
 package interfacesPersonalizacion;
 
+import habilidades.Disciplina;
+import habilidades.Don;
+import habilidades.Habilidad;
+import habilidades.Talento;
 import interfacesAdmin.GUIOperador;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import personajes.Personaje;
 import practicamp.BaseDatos;
 import practicamp.Operador;
@@ -26,6 +31,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
     private Usuario usuario;
     private Personaje personaje;
     private Operador operador;
+
     /**
      * Creates new form GUIEditarPersonaje2
      */
@@ -50,15 +56,23 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaHabilidades = new javax.swing.JList<>();
         Mostrar = new javax.swing.JButton();
-        Seleccionar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        dsd = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        tfSalud = new javax.swing.JTextField();
-        tfPoder = new javax.swing.JTextField();
+        Ataque = new javax.swing.JTextField();
+        Defensa = new javax.swing.JTextField();
         Cancelar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        label = new javax.swing.JLabel();
+        Nombre = new javax.swing.JTextField();
+        Variable = new javax.swing.JLabel();
+        Var = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         Editar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         Editar.setText("Guardar cambios");
@@ -69,6 +83,11 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         });
 
         ListaHabilidades.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        ListaHabilidades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListaHabilidadesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(ListaHabilidades);
 
         Mostrar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
@@ -79,33 +98,23 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
             }
         });
 
-        Seleccionar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        Seleccionar.setText("Seleccionar Habilidad");
-        Seleccionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeleccionarActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel1.setText("Salud");
+        dsd.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        dsd.setText("Ataque");
 
         jLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        jLabel2.setText("Poder");
+        jLabel2.setText("Defensa");
 
-        tfSalud.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        tfSalud.setText("1");
-        tfSalud.addActionListener(new java.awt.event.ActionListener() {
+        Ataque.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        Ataque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfSaludActionPerformed(evt);
+                AtaqueActionPerformed(evt);
             }
         });
 
-        tfPoder.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
-        tfPoder.setText("1");
-        tfPoder.addActionListener(new java.awt.event.ActionListener() {
+        Defensa.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        Defensa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfPoderActionPerformed(evt);
+                DefensaActionPerformed(evt);
             }
         });
 
@@ -120,6 +129,27 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel3.setText("Editar habilidades");
 
+        label.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        label.setText("Nombre");
+
+        Nombre.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        Nombre.setText(" ");
+        Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreActionPerformed(evt);
+            }
+        });
+
+        Variable.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        Variable.setText(" ");
+
+        Var.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        Var.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,56 +159,66 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Seleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label)
+                            .addComponent(dsd, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Variable, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Var, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Defensa, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Ataque, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfSalud, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                                    .addComponent(tfPoder))
-                                .addGap(99, 99, 99))
+                                .addComponent(Mostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(Editar)
-                                .addGap(41, 41, 41))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Mostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Cancelar)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(81, 81, 81))
+                                .addGap(23, 23, 23)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cancelar))
+                .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Mostrar)
-                        .addGap(26, 26, 26)
-                        .addComponent(Seleccionar)
-                        .addGap(29, 29, 29)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(tfSalud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label)
+                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dsd)
+                            .addComponent(Ataque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(tfPoder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cancelar)
-                    .addComponent(Editar))
-                .addGap(59, 59, 59))
+                            .addComponent(Defensa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Variable)
+                            .addComponent(Var, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Editar)
+                            .addComponent(Cancelar))))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -236,51 +276,88 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MostrarActionPerformed
 
-    private void tfSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSaludActionPerformed
+    private void AtaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtaqueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfSaludActionPerformed
+    }//GEN-LAST:event_AtaqueActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         BaseDatos b = new BaseDatos();
-        switch (personaje.getTipo()) {
-            case 1: {
-                try {
-                    b.deserializePro("Disciplina");
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+        if (!(ListaHabilidades.getSelectedValue() == null)) {
+            if (!(Nombre.getText().equals(""))) {
+                if (!(Ataque.getText().equals(""))) {
+                    if (!(Defensa.getText().equals(""))) {
+                        if (!(Var.getText().equals(""))) {
+                            switch (personaje.getTipo()) {
+                                case 1: {
+                                    try {
+                                        b.deserializePro("Disciplina");
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                                    } catch (ClassNotFoundException ex) {
+                                        Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    Disciplina disciplina = b.getListaDisciplinas().get(ListaHabilidades.getSelectedIndex());
+                                    disciplina.setName(Nombre.getText());
+                                    disciplina.setAtaque(Integer.valueOf(Ataque.getText()));
+                                    disciplina.setDefensa(Integer.valueOf(Defensa.getText()));
+                                    disciplina.setCoste(Integer.valueOf(Var.getText()));
+                                                                        System.out.println("7474");
+                                    personaje.setHabilidadEspecial((disciplina));
+                                    System.out.println("dsdssdsd");
+                                }  
+                                case 2: {
+                                    try {
+                                        b.deserializePro("Don");
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                                    } catch (ClassNotFoundException ex) {
+                                        Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    Don don = b.getListaDones().get(ListaHabilidades.getSelectedIndex());
+                                    don.setName(Nombre.getText());
+                                    don.setAtaque(Integer.valueOf(Ataque.getText()));
+                                    don.setDefensa(Integer.valueOf(Defensa.getText()));
+                                    don.setMin(Integer.valueOf(Var.getText()));
+                                    personaje.setHabilidadEspecial(don);
+                                }
+                                case 3: {
+                                    try {
+                                        b.deserializePro("Talento");
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                                    } catch (ClassNotFoundException ex) {
+                                        Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    Talento talento = b.getListaTalentos().get(ListaHabilidades.getSelectedIndex());
+                                    talento.setName(Nombre.getText());
+                                    talento.setAtaque(Integer.valueOf(Ataque.getText()));
+                                    talento.setDefensa(Integer.valueOf(Defensa.getText()));
+                                    talento.setEdad(Integer.valueOf(Var.getText()));
+                                    personaje.setHabilidadEspecial(talento);
+                                }
+                                                                System.out.println("bb");
+                                usuario.getPersonajes().remove(personaje);
+                                System.out.println("aa");
+                                usuario.getPersonajes().add(personaje);
+                                b.actualizarUsuario(usuario);
+                                GUIOperador i = new GUIOperador(operador);
+                                i.setVisible(true);
+                                this.setVisible(false);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Complete todos los campos");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Introduzca la defensa");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Introduzca el ataque");
                 }
-                personaje.setHabilidadEspecial(b.getListaDisciplinas().get(ListaHabilidades.getSelectedIndex()));
+            } else {
+                JOptionPane.showMessageDialog(null, "Introduzca un nombre");
             }
-            case 2: {
-                try {
-                    b.deserializePro("Don");
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                personaje.setHabilidadEspecial(b.getListaDones().get(ListaHabilidades.getSelectedIndex()));
-            }
-            case 3: {
-                try {
-                    b.deserializePro("Talento");
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                personaje.setHabilidadEspecial(b.getListaTalentos().get(ListaHabilidades.getSelectedIndex()));
-            }
-            personaje.setSalud(Integer.valueOf(tfSalud.getText()));
-            personaje.setPoder(Integer.valueOf(tfPoder.getText()));
-            usuario.getPersonajes().remove(personaje);
-            usuario.getPersonajes().add(personaje);
-            b.actualizarUsuario(usuario);
-        GUIOperador i = new GUIOperador(operador);
-        i.setVisible(true);
-        this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una habilidad");
         }
     }//GEN-LAST:event_EditarActionPerformed
 
@@ -290,13 +367,76 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_CancelarActionPerformed
 
-    private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
+    private void DefensaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DefensaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SeleccionarActionPerformed
+    }//GEN-LAST:event_DefensaActionPerformed
 
-    private void tfPoderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPoderActionPerformed
+    private void ListaHabilidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaHabilidadesMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfPoderActionPerformed
+    }//GEN-LAST:event_ListaHabilidadesMouseClicked
+
+    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NombreActionPerformed
+
+    private void VarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        BaseDatos b = new BaseDatos();
+        switch (personaje.getTipo()) {
+            case 1: {
+                try {
+                    b.deserializePro("Disciplina");
+                } catch (IOException | ClassNotFoundException ex) {
+                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                DefaultListModel dlm = new DefaultListModel();
+                int i = b.getListaDisciplinas().size();
+                for (int j = 0; j < i; j++) {
+                    dlm.addElement(b.getListaDisciplinas().get(j).getName());
+                }
+                Variable.setText("Coste");
+                ListaHabilidades.setModel(dlm);
+                break;
+            }
+            case 2: {
+                try {
+                    b.deserializePro("Don");
+                } catch (IOException ex) {
+                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                DefaultListModel dlm = new DefaultListModel();
+                int i = b.getListaDones().size();
+                for (int j = 0; j < i; j++) {
+                    dlm.addElement(b.getListaDones().get(j).getName());
+                }
+                ListaHabilidades.setModel(dlm);
+                Variable.setText("Mínimo");
+                break;
+            }
+            case 3: {
+                try {
+                    b.deserializePro("Talento");
+                } catch (IOException ex) {
+                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                DefaultListModel dlm = new DefaultListModel();
+                int i = b.getListaTalentos().size();
+                for (int j = 0; j < i; j++) {
+                    dlm.addElement(b.getListaTalentos().get(j).getName());
+                }
+                Variable.setText("Edad");
+                ListaHabilidades.setModel(dlm);
+                break;
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -334,16 +474,19 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Ataque;
     private javax.swing.JButton Cancelar;
+    private javax.swing.JTextField Defensa;
     private javax.swing.JButton Editar;
     private javax.swing.JList<String> ListaHabilidades;
     private javax.swing.JButton Mostrar;
-    private javax.swing.JButton Seleccionar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField Nombre;
+    private javax.swing.JTextField Var;
+    private javax.swing.JLabel Variable;
+    private javax.swing.JLabel dsd;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField tfPoder;
-    private javax.swing.JTextField tfSalud;
+    private javax.swing.JLabel label;
     // End of variables declaration//GEN-END:variables
 }

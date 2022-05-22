@@ -192,15 +192,15 @@ public class GUIEditarPersonaje extends javax.swing.JFrame {
             if (!(ListaPersonajes.getSelectedValue() == null)) {
                 int numP = ListaPersonajes.getSelectedIndex();
                 Personaje p = Usuario.getPersonajes().get(numP);
-                GUIEditarPersonaje2 g = new GUIEditarPersonaje2(Usuario, p, operador);
+                GUIEditarPersonaje3 g = new GUIEditarPersonaje3(Usuario, p, operador);
                 g.setVisible(true);
+                this.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un personaje");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un usuario");
         }
-       this.setVisible(false);
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
