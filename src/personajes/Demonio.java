@@ -15,15 +15,16 @@ import personajes.Esbirro;
  */
 public class Demonio extends Esbirro implements Serializable {
 
-    private String name;
-    private int salud;
+   // private String name;
+   // private int salud;
     private String pacto;
    ArrayList<Esbirro> listaEsbirros  = new ArrayList<Esbirro>();//Esto hay que hacerlo con una lista
 
     public Demonio(String nombre, int salud, String pact) {
-        this.name = nombre;
+    super(nombre,salud);
+      //  this.name = nombre;
         this.pacto = pact;
-        this.salud = salud;
+        //this.salud = salud;
     }
 
     public String getPacto() {

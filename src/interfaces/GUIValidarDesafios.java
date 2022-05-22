@@ -33,9 +33,13 @@ import practicamp.Usuario;
 public class GUIValidarDesafios extends javax.swing.JFrame {
 
     private Operador operador;
+    @SuppressWarnings("unchecked")
     private List<Fortaleza> listaFortalezas1 = new ArrayList();
+    @SuppressWarnings("unchecked")
     private List<Debilidad> listaDebilidades1 = new ArrayList();
+    @SuppressWarnings("unchecked")
     private List<Fortaleza> listaFortalezas2 = new ArrayList();
+    @SuppressWarnings("unchecked")
     private List<Debilidad> listaDebilidades2 = new ArrayList();
 
     /**
@@ -297,7 +301,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             boolean encontrado = false;
             for (int j = 0; j < i; j++) {
                 if (b.getListadesafios().get(j).getEstado() == 1) {
-                    dlm1.addElement(b.getListadesafios().get(j).getDesafiado().getNombre());
+                    dlm1.addElement(b.getListadesafios().get(j).getDesafiado().getNombre() + " vs "+ b.getListadesafios().get(j).getDesafiante().getNombre());
                     encontrado = true;
                 }
             }
@@ -324,7 +328,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
             for (Desafio desafio : b.getListadesafios()) {
-                if ((desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
+                if (((desafio.getDesafiado().getNombre()+ " vs " + desafio.getDesafiante().getNombre()).equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
                     int tipo = desafio.getPersonajeDesafiado().getTipo();
                     try {
                         b.deserializePro("Fortaleza");
@@ -347,6 +351,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     private void MostrarDeb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarDeb1ActionPerformed
         if (!(ListaDesafios.getSelectedValue() == null)) {
+           
             DefaultListModel dlm1 = new DefaultListModel();
             BaseDatos b = new BaseDatos();
             try {
@@ -357,15 +362,17 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
             for (Desafio desafio : b.getListadesafios()) {
-                if ((desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
+                if (((desafio.getDesafiado().getNombre()+ " vs " + desafio.getDesafiante().getNombre()).equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
                     int tipo = desafio.getPersonajeDesafiante().getTipo();
                     try {
+           
                         b.deserializePro("Debilidad");
                     } catch (IOException ex) {
                         Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                
                     for (Debilidad list : b.getListaDebilidades()) {
                         if (list.getTipo() == tipo) {
                             dlm1.addElement(list.getName());
@@ -390,7 +397,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
             for (Desafio desafio : b.getListadesafios()) {
-                if ((desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
+                if (((desafio.getDesafiado().getNombre()+ " vs " + desafio.getDesafiante().getNombre()).equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
                     int tipo = desafio.getPersonajeDesafiante().getTipo();
                     try {
                         b.deserializePro("Fortaleza");
@@ -423,7 +430,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
             for (Desafio desafio : b.getListadesafios()) {
-                if ((desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
+                if (((desafio.getDesafiado().getNombre()+ " vs " + desafio.getDesafiante().getNombre()).equals(ListaDesafios.getSelectedValue())) && (desafio.getEstado() == 1)) {
                     int tipo = desafio.getPersonajeDesafiado().getTipo();
                     try {
                         b.deserializePro("Debilidad");
@@ -481,9 +488,12 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             int k = ListaDeb1.getSelectedIndex();
             listaDebilidades1.add(b.getListaDebilidades().get(k));
             DefaultListModel dlm1 = new DefaultListModel();
-            int i = b.getListaFortalezas().size();
+            int i = b.getListaDebilidades().size();
             boolean pertenece;
-            for (int j = 0; j < i; j++) {
+            
+
+            
+            /*for (int j = 0; j < i; j++) {
                 pertenece = false;
                 for (Debilidad list : listaDebilidades1) {
                     if (list.getName().equals(b.getListaDebilidades().get(j).getName())) {
@@ -497,7 +507,13 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                     }
                 }
                 ListaDeb1.setModel(dlm1);
-            }
+        
+            } */
+            
+            
+            
+            
+            
             try {
                 b.deserializePro("Desafio");
             } catch (IOException ex) {
@@ -640,7 +656,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             int k = ListaDeb2.getSelectedIndex();
             listaDebilidades2.add(b.getListaDebilidades().get(k));
             DefaultListModel dlm1 = new DefaultListModel();
-            int i = b.getListaFortalezas().size();
+            int i = b.getListaDebilidades().size();
             boolean pertenece;
             for (int j = 0; j < i; j++) {
                 pertenece = false;
@@ -742,6 +758,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
         this.dispose();
     }
     
+    @SuppressWarnings("unchecked")
     private void ListaDesafiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaDesafiosMouseClicked
         DefaultListModel dlm = new DefaultListModel();
         ListaFort1.setModel(dlm);

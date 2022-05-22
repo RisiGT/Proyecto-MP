@@ -17,6 +17,10 @@ public abstract class Esbirro {
     public void setName(String name) {
         this.name = name;
     }
+    public Esbirro (String nombre, int salud){
+        this.name= nombre;
+        this.salud=salud;
+    }
     
     public String getName() {
         return name;

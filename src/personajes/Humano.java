@@ -14,13 +14,14 @@ import personajes.Esbirro;
  */
 public class Humano extends Esbirro implements Serializable {
 
-    private String name;
-    private int salud;
+   // private String name;
+   // private int salud;
     private int lealtad;
 
     public Humano(String nombre, int salud, int lealtad) {
-        this.name = nombre;
-        this.salud = salud;
+        super(nombre,salud);
+       // this.name = nombre;
+        //this.salud = salud;
         this.lealtad = lealtad;//valor inicial
     }
 

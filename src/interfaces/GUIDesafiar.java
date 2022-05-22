@@ -44,6 +44,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    @SuppressWarnings("unchecked")
     private void initializeListaPersonajes(Usuario usuario) {
         DefaultListModel dlm = new DefaultListModel();
         for (Personaje p : usuario.getPersonajes()) {
@@ -52,6 +53,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
         personajes.setModel(dlm);
     }
 
+    @SuppressWarnings("unchecked")
     private void initializeListaAdversarios() {
         DefaultListModel dlm = new DefaultListModel();
         deserialize(base, "Usuario");
@@ -273,6 +275,7 @@ public class GUIDesafiar extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_CancelarActionPerformed
 
+    @SuppressWarnings("unchecked")
     private void añadirEsbirroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirEsbirroActionPerformed
         if (!(seleccionEsbirro.getSelectedValue() == null)) {
             switch (seleccionEsbirro.getSelectedIndex()) {

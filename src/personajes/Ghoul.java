@@ -19,8 +19,9 @@ public class Ghoul extends Esbirro implements Serializable {
     private int dependencia;
 
     public Ghoul(String nombre, int salud, int dependencia) {
-        this.name = nombre;
-        this.salud = salud;
+        super(nombre,salud);
+       // this.name = nombre;
+       // this.salud = salud;
         this.dependencia = dependencia;//valor inicial
     }
     

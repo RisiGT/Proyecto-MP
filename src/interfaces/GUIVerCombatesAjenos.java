@@ -93,6 +93,7 @@ public class GUIVerCombatesAjenos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("unchecked")
     private void VerCombatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerCombatesActionPerformed
         BaseDatos b = new BaseDatos();
         try {
