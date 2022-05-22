@@ -118,6 +118,7 @@ public class GUIEliminarPersonaje extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("unchecked")
     private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
         DefaultListModel dlm1 = new DefaultListModel();
         int i = usuario.getPersonajes().size();
@@ -133,9 +134,7 @@ public class GUIEliminarPersonaje extends javax.swing.JFrame {
         BaseDatos b = new BaseDatos();
         try {
             b.deserializePro("Usuario");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIEliminarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(GUIEliminarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (Usuario usuario : b.getListausuarios()){

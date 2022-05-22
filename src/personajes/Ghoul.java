@@ -14,8 +14,8 @@ import personajes.Esbirro;
  */
 public class Ghoul extends Esbirro implements Serializable {
 
-    private String name;
-    private int salud;
+//    private String name;
+//    private int salud;
     private int dependencia;
 
     public Ghoul(String nombre, int salud, int dependencia) {

@@ -172,6 +172,7 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("unchecked")
     private void MostrarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarArmasActionPerformed
         DefaultListModel dlm1 = new DefaultListModel();
         BaseDatos b = new BaseDatos();
@@ -189,14 +190,13 @@ public class GUISelectEquipamiento extends javax.swing.JFrame {
         ListaArmas.setModel(dlm1);
     }//GEN-LAST:event_MostrarArmasActionPerformed
 
+    @SuppressWarnings("unchecked")
     private void MostrarArmadurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarArmadurasActionPerformed
         DefaultListModel dlm1 = new DefaultListModel();
         BaseDatos b = new BaseDatos();
         try {
             b.deserializePro("Armadura");
-        } catch (IOException ex) {
-            Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
         }
         int i = b.getListaArmaduras().size();

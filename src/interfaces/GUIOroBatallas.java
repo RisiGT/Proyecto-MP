@@ -99,6 +99,7 @@ public class GUIOroBatallas extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+ @SuppressWarnings("unchecked")
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         DefaultListModel dlm = new DefaultListModel();
         int i = usuario.getResultadosCombates().size();

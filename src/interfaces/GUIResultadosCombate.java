@@ -257,6 +257,7 @@ Usuario usuario;
         // TODO add your handling code here:
     }//GEN-LAST:event_tfresultadoActionPerformed
 
+@SuppressWarnings("unchecked")
     private void mostrarResumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarResumenActionPerformed
        if (resultados.getGanador().equals(usuario.getNombre())){
            tfresultado.setText("Has ganado");

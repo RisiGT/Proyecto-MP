@@ -224,6 +224,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("unchecked")
     private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
         BaseDatos b = new BaseDatos();
         switch (personaje.getTipo()) {
@@ -260,9 +261,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
             case 3: {
                 try {
                     b.deserializePro("Talento");
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
+                } catch (IOException | ClassNotFoundException ex) {
                     Logger.getLogger(GUIEditarPersonaje3.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 DefaultListModel dlm = new DefaultListModel();
@@ -383,6 +382,7 @@ public class GUIEditarPersonaje3 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_VarActionPerformed
 
+    @SuppressWarnings("unchecked")
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         BaseDatos b = new BaseDatos();
         switch (personaje.getTipo()) {

@@ -198,14 +198,13 @@ public class GUIDesafiado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("unchecked")
     private void MostrarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarArmasActionPerformed
         DefaultListModel dlm1 = new DefaultListModel();
         BaseDatos b = new BaseDatos();
         try {
             b.deserializePro("Arma");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIDesafiado.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(GUIDesafiado.class.getName()).log(Level.SEVERE, null, ex);
         }
         int i = b.getListaArmas().size();
@@ -287,6 +286,7 @@ public class GUIDesafiado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AceptarActionPerformed
 
+    @SuppressWarnings("unchecked")
     private void MostrarArmadurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarArmadurasActionPerformed
         DefaultListModel dlm1 = new DefaultListModel();
         BaseDatos b = new BaseDatos();
@@ -328,6 +328,7 @@ public class GUIDesafiado extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_CancelarActionPerformed
 
+    @SuppressWarnings("unchecked")
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         MensajeIni.setText("Has sido desafiado por " + desafio.getDesafiante().getNombre());
         MensajeOro.setText("Si cancelas perderas " + Integer.toString(desafio.oroPorRechazar()) + " de oro");
@@ -411,6 +412,7 @@ public class GUIDesafiado extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @SuppressWarnings("unchecked")
             public void run() {
                 new GUIDesafiado(usuario, desafio).setVisible(true);
                 MensajeIni.setText("Has sido desafiado por " + desafio.getDesafiante());

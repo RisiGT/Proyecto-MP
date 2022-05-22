@@ -257,13 +257,12 @@ public class GUIEditarPersonaje2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("unchecked")
     private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
         BaseDatos b = new BaseDatos();
         try {
             b.deserializePro("Debilidad");
-        } catch (IOException ex) {
-            Logger.getLogger(GUIEditarPersonaje2.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(GUIEditarPersonaje2.class.getName()).log(Level.SEVERE, null, ex);
         }
         DefaultListModel dlm1 = new DefaultListModel();
@@ -305,6 +304,7 @@ public class GUIEditarPersonaje2 extends javax.swing.JFrame {
         Mostrar.doClick();
     }//GEN-LAST:event_QuitarDebilidadActionPerformed
 
+    @SuppressWarnings("unchecked")
     private void Mostrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mostrar2ActionPerformed
         BaseDatos b = new BaseDatos();
         try {
