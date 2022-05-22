@@ -4,6 +4,7 @@
  */
 package practicamp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import personajes.Esbirro;
 
@@ -11,7 +12,7 @@ import personajes.Esbirro;
  *
  * @author PcCom
  */
-public class Combate {
+public class Combate implements Serializable {
 private     String ganador; //false si gana el desafiante true si gana el desafiado
 private     ArrayList<Ronda> listaRondas = new ArrayList<Ronda>();
 private     ArrayList<Esbirro> listaEsbirrosPers1 = new ArrayList<Esbirro>(); //esbirros que han sobrevivido del desafiante

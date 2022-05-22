@@ -34,13 +34,13 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
 
     private Operador operador;
     @SuppressWarnings("unchecked")
-    private List<Fortaleza> listaFortalezas1 = new ArrayList();
+    private List<Fortaleza> listaFortalezas1 = new ArrayList<>();
     @SuppressWarnings("unchecked")
-    private List<Debilidad> listaDebilidades1 = new ArrayList();
+    private List<Debilidad> listaDebilidades1 = new ArrayList<>();
     @SuppressWarnings("unchecked")
-    private List<Fortaleza> listaFortalezas2 = new ArrayList();
+    private List<Fortaleza> listaFortalezas2 = new ArrayList<>();
     @SuppressWarnings("unchecked")
-    private List<Debilidad> listaDebilidades2 = new ArrayList();
+    private List<Debilidad> listaDebilidades2 = new ArrayList<>();
 
     /**
      * Creates new form GUIValidarDesafios
@@ -485,35 +485,6 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
             }
-            int k = ListaDeb1.getSelectedIndex();
-            listaDebilidades1.add(b.getListaDebilidades().get(k));
-            DefaultListModel dlm1 = new DefaultListModel();
-            int i = b.getListaDebilidades().size();
-            boolean pertenece;
-            
-
-            
-            /*for (int j = 0; j < i; j++) {
-                pertenece = false;
-                for (Debilidad list : listaDebilidades1) {
-                    if (list.getName().equals(b.getListaDebilidades().get(j).getName())) {
-                        pertenece = true;
-                    }
-
-                    if (pertenece) {
-                        dlm1.addElement("");
-                    } else {
-                        dlm1.addElement(b.getListaDebilidades().get(j).getName());
-                    }
-                }
-                ListaDeb1.setModel(dlm1);
-        
-            } */
-            
-            
-            
-            
-            
             try {
                 b.deserializePro("Desafio");
             } catch (IOException ex) {
@@ -521,6 +492,53 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
+             ArrayList<Debilidad> listaDebTipo = new ArrayList<Debilidad>();
+           
+             Desafio desafioo = b.getListadesafios().get(ListaDesafios.getSelectedIndex());
+             
+             for (Debilidad debilidad : b.getListaDebilidades()) {
+                    if (debilidad.getTipo()==(desafioo.getPersonajeDesafiante().getTipo())){
+                        listaDebTipo.add(debilidad);
+                    }
+                        }
+            int k = ListaDeb1.getSelectedIndex();
+            listaDebilidades1.add(listaDebTipo.get(k));
+            DefaultListModel dlm1 = new DefaultListModel();
+          
+            int i = listaDebTipo.size();
+          
+            boolean pertenece;
+            
+
+            
+            for (int j = 0; j < i; j++) {
+                pertenece = false;
+                for (Debilidad debilidad: listaDebTipo) {
+                    if (debilidad.getName().equals(listaDebTipo.get(j).getName())) {
+                        pertenece = true;
+                    }
+
+                    if (pertenece) {
+                        dlm1.addElement("");
+                    } else {
+                        dlm1.addElement(listaDebTipo.get(j).getName());
+                    }
+                }
+                ListaDeb1.setModel(dlm1);
+        
+            } 
+            
+            
+            
+            
+            
+           /* try {
+                b.deserializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            } */
             for (Desafio desafio : b.getListadesafios()) {
                 if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
                     desafio.getPersonajeDesafiante().getDebilidades().add(b.getListaDebilidades().get(k));
@@ -547,14 +565,32 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
             }
+             try {
+                b.deserializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+              ArrayList<Fortaleza> listaFortTipo = new ArrayList<Fortaleza>();
+              Desafio desafioo = b.getListadesafios().get(ListaDesafios.getSelectedIndex());
+              
+               for (Fortaleza fortaleza : b.getListaFortalezas()) {
+                    if (fortaleza.getTipo()==(desafioo.getPersonajeDesafiante().getTipo())){
+                        listaFortTipo.add(fortaleza);
+                    }
+               }
+             
             int k = ListaFort1.getSelectedIndex();
-            listaFortalezas1.add(b.getListaFortalezas().get(k));
+            listaFortalezas1.add(listaFortTipo.get(k));
             DefaultListModel dlm1 = new DefaultListModel();
-            int i = b.getListaFortalezas().size();
+            int i = listaFortTipo.size();
+            
             boolean pertenece;
+            
             for (int j = 0; j < i; j++) {
                 pertenece = false;
-                for (Fortaleza list : listaFortalezas1) {
+                for (Fortaleza list : listaFortTipo) {
                     if (list.getName().equals(b.getListaFortalezas().get(j).getName())) {
                         pertenece = true;
                     }
@@ -562,18 +598,18 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                     if (pertenece) {
                         dlm1.addElement("");
                     } else {
-                        dlm1.addElement(b.getListaFortalezas().get(j).getName());
+                        dlm1.addElement(listaFortTipo.get(j).getName());
                     }
                 }
                 ListaFort1.setModel(dlm1);
             }
-            try {
+           /* try {
                 b.deserializePro("Desafio");
             } catch (IOException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } */
             for (Desafio desafio : b.getListadesafios()) {
                 if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
                     desafio.getPersonajeDesafiante().getFortalezas().add(b.getListaFortalezas().get(k));
@@ -591,7 +627,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
 
     @SuppressWarnings({"unchecked", "unchecked"})
     private void AñadirFort2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirFort2ActionPerformed
-        if (!(ListaFort2.getSelectedValue() == null)) {
+         if (!(ListaFort2.getSelectedValue() == null)) {
             BaseDatos b = new BaseDatos();
             try {
                 b.deserializePro("Fortaleza");
@@ -600,14 +636,32 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
             }
+             try {
+                b.deserializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+              ArrayList<Fortaleza> listaFortTipo = new ArrayList<Fortaleza>();
+              Desafio desafioo = b.getListadesafios().get(ListaDesafios.getSelectedIndex());
+              
+               for (Fortaleza fortaleza : b.getListaFortalezas()) {
+                    if (fortaleza.getTipo()==(desafioo.getPersonajeDesafiado().getTipo())){
+                        listaFortTipo.add(fortaleza);
+                    }
+               }
+             
             int k = ListaFort2.getSelectedIndex();
-            listaFortalezas2.add(b.getListaFortalezas().get(k));
+            listaFortalezas2.add(listaFortTipo.get(k));
             DefaultListModel dlm1 = new DefaultListModel();
-            int i = b.getListaFortalezas().size();
+            int i = listaFortTipo.size();
+            
             boolean pertenece;
+            
             for (int j = 0; j < i; j++) {
                 pertenece = false;
-                for (Fortaleza list : listaFortalezas2) {
+                for (Fortaleza list : listaFortTipo) {
                     if (list.getName().equals(b.getListaFortalezas().get(j).getName())) {
                         pertenece = true;
                     }
@@ -615,21 +669,21 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
                     if (pertenece) {
                         dlm1.addElement("");
                     } else {
-                        dlm1.addElement(b.getListaFortalezas().get(j).getName());
+                        dlm1.addElement(listaFortTipo.get(j).getName());
                     }
                 }
                 ListaFort2.setModel(dlm1);
             }
-            try {
+           /* try {
                 b.deserializePro("Desafio");
             } catch (IOException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } */
             for (Desafio desafio : b.getListadesafios()) {
                 if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
-                    desafio.getPersonajeDesafiado().getFortalezas().add(b.getListaFortalezas().get(k));
+                    desafio.getPersonajeDesafiante().getFortalezas().add(b.getListaFortalezas().get(k));
                 }
             }
             try {
@@ -644,7 +698,7 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     private void AñadirDeb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirDeb2ActionPerformed
-        if (!(ListaDeb2.getSelectedValue() == null)) {
+         if (!(ListaDeb2.getSelectedValue() == null)) {
             BaseDatos b = new BaseDatos();
             try {
                 b.deserializePro("Debilidad");
@@ -653,26 +707,6 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUISelectEquipamiento.class.getName()).log(Level.SEVERE, null, ex);
             }
-            int k = ListaDeb2.getSelectedIndex();
-            listaDebilidades2.add(b.getListaDebilidades().get(k));
-            DefaultListModel dlm1 = new DefaultListModel();
-            int i = b.getListaDebilidades().size();
-            boolean pertenece;
-            for (int j = 0; j < i; j++) {
-                pertenece = false;
-                for (Debilidad list : listaDebilidades2) {
-                    if (list.getName().equals(b.getListaDebilidades().get(j).getName())) {
-                        pertenece = true;
-                    }
-
-                    if (pertenece) {
-                        dlm1.addElement("");
-                    } else {
-                        dlm1.addElement(b.getListaDebilidades().get(j).getName());
-                    }
-                }
-                ListaDeb2.setModel(dlm1);
-            }
             try {
                 b.deserializePro("Desafio");
             } catch (IOException ex) {
@@ -680,9 +714,56 @@ public class GUIValidarDesafios extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
             }
+             ArrayList<Debilidad> listaDebTipo = new ArrayList<Debilidad>();
+           
+             Desafio desafioo = b.getListadesafios().get(ListaDesafios.getSelectedIndex());
+             
+             for (Debilidad debilidad : b.getListaDebilidades()) {
+                    if (debilidad.getTipo()==(desafioo.getPersonajeDesafiado().getTipo())){
+                        listaDebTipo.add(debilidad);
+                    }
+                        }
+            int k = ListaDeb2.getSelectedIndex();
+            listaDebilidades2.add(listaDebTipo.get(k));
+            DefaultListModel dlm1 = new DefaultListModel();
+          
+            int i = listaDebTipo.size();
+          
+            boolean pertenece;
+            
+
+            
+            for (int j = 0; j < i; j++) {
+                pertenece = false;
+                for (Debilidad debilidad: listaDebTipo) {
+                    if (debilidad.getName().equals(listaDebTipo.get(j).getName())) {
+                        pertenece = true;
+                    }
+
+                    if (pertenece) {
+                        dlm1.addElement("");
+                    } else {
+                        dlm1.addElement(listaDebTipo.get(j).getName());
+                    }
+                }
+                ListaDeb2.setModel(dlm1);
+        
+            } 
+            
+            
+            
+            
+            
+           /* try {
+                b.deserializePro("Desafio");
+            } catch (IOException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUIValidarDesafios.class.getName()).log(Level.SEVERE, null, ex);
+            } */
             for (Desafio desafio : b.getListadesafios()) {
                 if (desafio.getDesafiado().getNombre().equals(ListaDesafios.getSelectedValue())) {
-                    desafio.getPersonajeDesafiado().getDebilidades().add(b.getListaDebilidades().get(k));
+                    desafio.getPersonajeDesafiante().getDebilidades().add(b.getListaDebilidades().get(k));
                 }
             }
             try {
